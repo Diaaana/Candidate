@@ -1,0 +1,17 @@
+{
+    "projectName": "Candidates",
+    "username": "candidate-final-project@mail.ru",
+    "id": "6d0059b0-81ea-11e8-a93c-bb9adb52614b",
+    "namespace": "",
+    "orgType": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "instanceUrl": "https://ap4.salesforce.com",
+    "workspace": "C:\\Users\\Asus\\Documents",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}

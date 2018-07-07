@@ -1,0 +1,88 @@
+<apex:page controller="RegistrationController" title="Registration">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head></head>
+<body>
+	<apex:form >
+	<apex:actionFunction name="setParameters" action="{!doRegistration}" reRender="view">
+	<apex:param id="surname" name="surname" value="" assignTo="{!surname}" />
+	<apex:param id="name" name="name" value="" assignTo="{!name}" />
+	<apex:param id="middle-name" name="middleName" value="" assignTo="{!middleName}" />
+	<apex:param id="login" name="login" value="" assignTo="{!login}" />
+	<apex:param id="password" name="password" value="" assignTo="{!password}" />
+</apex:actionFunction>
+</apex:form>
+
+<apex:slds />
+<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Фамилия
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="surname" class="slds-input" placeholder="Фамилия" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Имя
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="name" class="slds-input" placeholder="Имя" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Отчество
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="middle-name" class="slds-input" placeholder="Отчество" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Логин
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="login" class="slds-input" placeholder="Логин" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Пароль
+		</label>
+		<div class="slds-form-element__control">
+			<input type="password" id="password" class="slds-input" placeholder="Пароль" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Подтверждение пароля
+		</label>
+		<div class="slds-form-element__control">
+			<input type="password" id="repeat-password" class="slds-input" placeholder="Подтверждение пароля" />
+		</div>
+	</div>
+	<div class="slds-m-vertical--medium"></div>
+	<div class="slds-align_absolute-center">
+		<button class="slds-button slds-button_brand" onclick="registration()" reRender="view">Зарегистрироваться</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+function registration() {
+	let surname = document.querySelector('#surname').value;
+	let name = document.querySelector('#name').value;
+	let middleName = document.querySelector('#middle-name').value;
+	let login = document.querySelector('#login').value;
+	let password = document.querySelector('#password').value;
+	let repeatPassword = document.querySelector('#repeat-password').value;
+
+	if (repeatPassword == password) {
+		setParameters(surname, name, middleName, login, password);
+	}
+};
+</script>
+
+</body>
+</html>
+</apex:page>
