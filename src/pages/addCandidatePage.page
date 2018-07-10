@@ -1,3 +1,194 @@
-<apex:page showHeader="true" sidebar="true">
-	
+<apex:page controller="AddCandidateController" id="tPage">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head></head>
+<body>
+	<apex:form>
+	<apex:actionFunction name="setParameters" action="{!createCandidate}" reRender="view">
+	<apex:param id="surname" name="surname" value="" assignTo="{!surname}" />
+	<apex:param id="name" name="name" value="" assignTo="{!name}" />
+	<apex:param id="middle-name" name="middleName" value="" assignTo="{!middleName}" />
+	<apex:param id="resume" name="resume" value="" assignTo="{!resume}" />
+	<apex:param id="position" name="position" value="" assignTo="{!position}" />
+	<apex:param name="HR" value="" assignTo="{!HR}" />
+	<apex:param id="salary" name="salary" value="" assignTo="{!salary}" />
+	<apex:param id="experience" name="experience" value="" assignTo="{!experience}" />
+	<apex:param id="telephone" name="telephone" value="" assignTo="{!telephone}" />
+	<apex:param id="mail" name="mail" value="" assignTo="{!mail}" />
+	<apex:param id="skype" name="skype" value="" assignTo="{!skype}" />
+	<apex:param id="coming" name="coming" value="" assignTo="{!coming}" />
+	<apex:param id="contact" name="contact" value="" assignTo="{!contact}" />
+</apex:actionFunction>
+
+<apex:slds />
+<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small" id="grid">
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Фамилия
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="surname" class="slds-input" placeholder="Фамилия" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Имя
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="name" class="slds-input" placeholder="Имя" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Отчество
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="middle-name" class="slds-input" placeholder="Отчество" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">Ссылка на резюме</label>
+		<div class="slds-form-element__control">
+			<input type="url" id="resume" class="slds-input" placeholder="Ссылка на резюме" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Позиция
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="position" class="slds-input" placeholder="Позиция" />
+		</div>
+	</div>
+	<div class="slds-form-element" id="picklist-element">
+		<label class="slds-form-element__label">
+			<abbr class="slds-required" title="required">*</abbr>HR
+		</label>
+		<div class="slds-form-element__control" id="picklist-element-control">
+			<div class="slds-select_container" id="picklist-selected-element">
+				<apex:selectList id="HR" size="1" value="{!selectHR}" onchange="getHR(this)">
+					<apex:selectOptions value="{!getHR}"/>
+				</apex:selectList>
+			</div>
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>ЗП
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="salary" class="slds-input" placeholder="ЗП" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Опыт
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="experience" class="slds-input" placeholder="Опыт" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Телефон
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="telephone" class="slds-input" placeholder="Телефон" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">Электронный адрес</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="mail" class="slds-input" placeholder="Электронный адрес" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">Скайп</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="skype" class="slds-input" placeholder="Скайп" />
+		</div>
+	</div>
+	<fieldset class="slds-form-element">
+		<legend class="slds-form-element__legend slds-form-element__label">
+			<abbr class="slds-required" title="required">*</abbr>Источник</legend>
+			<div class="slds-form-element__control">
+				<div class="slds-radio_button-group">
+					<span class="slds-button slds-radio_button">
+						<input type="radio" name="radio" id="work-invite" value="Инвайт" />
+						<label class="slds-radio_button__label" for="work-invite">
+							<span class="slds-radio_faux">Инвайт</span>
+						</label>
+					</span>
+					<span class="slds-button slds-radio_button">
+						<input type="radio" name="radio" id="work-response" value="Отклик" />
+						<label class="slds-radio_button__label" for="work-response">
+							<span class="slds-radio_faux">Отклик</span>
+						</label>
+					</span>
+				</div>
+			</div>
+		</fieldset>
+		<fieldset class="slds-form-element">
+			<div class="slds-form-element__control">
+				<div class="slds-radio_button-group">
+					<span class="slds-button slds-radio_button">
+						<input type="radio" name="radio" id="work-skype" value="Скайп" />
+						<label class="slds-radio_button__label" for="work-skype">
+							<span class="slds-radio_faux">Скайп</span>
+						</label>
+					</span>
+					<span class="slds-button slds-radio_button">
+						<input type="radio" name="radio" id="work-telephone" value="Телефон" />
+						<label class="slds-radio_button__label" for="work-telephone">
+							<span class="slds-radio_faux">Телефон</span>
+						</label>
+					</span>
+					<span class="slds-button slds-radio_button">
+						<input type="radio" name="radio" id="work-linkedIn" value="LinkedIn" />
+						<label class="slds-radio_button__label" for="work-linkedIn">
+							<span class="slds-radio_faux">LinkedIn</span>
+						</label>
+					</span>
+					<span class="slds-button slds-radio_button">
+						<input type="radio" name="radio" id="work-site" value="Сайт поиска работы" />
+						<label class="slds-radio_button__label" for="work-site">
+							<span class="slds-radio_faux">Сайт поиска работы</span>
+						</label>
+					</span>
+				</div>
+			</div>
+		</fieldset>
+		<div class="slds-m-vertical--medium"></div>
+		<div class="slds-align_absolute-center">
+			<button class="slds-button slds-button_brand" onclick="getParameters()" reRender="view">Создать</button>
+		</div>
+	</div>
+</apex:form>
+<script type="text/javascript">
+function getHR(selectedHR) {
+	var HR = selectedHR.options[selectedHR.selectedIndex].value;
+};
+function getParameters() {
+	let surnameValue = document.querySelector('#surname').value;
+	let nameValue = document.querySelector('#name').value;
+	let middleNameValue = document.querySelector('#middle-name').value;
+	let resumeValue = document.querySelector('#resume').value;
+	let positionValue = document.querySelector('#position').value;
+
+	/*vSelectedItem = document.getElementById("tPage:tForm:grid:picklist-element:picklist-element-control:picklist-selected-element:HR").selectedIndex
+    vFieldName = document.getElementById("tPage:tForm:grid:picklist-element:picklist-element-control:picklist-selected-element:HR").options[vSelectedItem].text
+	console.log(vFieldName);*/
+
+	let salaryValue = document.querySelector('#salary').value;
+	let experienceValue = document.querySelector('#experience').value;
+	let telephoneValue = document.querySelector('#telephone').value;
+	let mailValue = document.querySelector('#mail').value;
+	let skypeValue = document.querySelector('#skype').value;
+	setParameters(surnameValue, nameValue, middleNameValue, resumeValue, positionValue, salaryValue, experienceValue, telephoneValue, mailValue, skypeValue);
+};
+    
+    
+</script>
+
+</body>
+</html>
 </apex:page>

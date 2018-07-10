@@ -6,7 +6,7 @@ var j$ = jQuery.noConflict();
 <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
 <head></head>
 <body>
-	<apex:form>
+	<apex:form >
 	<apex:actionFunction name="addCandidate" action="{!goToAddCandidatePage}" />
 </apex:form>
 <apex:slds />
@@ -26,16 +26,19 @@ var j$ = jQuery.noConflict();
 		</li>
 	</ul>
 	<div id="tab-default-1" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
-		Item One Content
+		<c:clientTable />
 	</div>
 	<div id="tab-default-2" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">
 		<button class="slds-button slds-button_brand" onclick="addCandidate()">Добавить кандидата
 		</button>
+		<div class="slds-m-vertical--large"></div>
+		<c:candidateTable />
 	</div>
 	<div id="tab-default-3" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">
-		Item Three Content
+		<c:workerTable />
 	</div>
 </div>
+
 <script>
 
 j$('.slds-tabs--default__link,.slds-tabs--scoped__link').click(function(){
@@ -49,6 +52,7 @@ j$('.slds-tabs--default__link,.slds-tabs--scoped__link').click(function(){
 }); 
 
 </script>
+
 </body>
 </html>
 </apex:page>

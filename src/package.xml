@@ -14,7 +14,14 @@
 		<members>LoginController</members>
 		<members>RegistartionController</members>
 		<members>MainController</members>
+		<members>AddCandidateController</members>
 		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>clientTable</members>
+		<members>candidateTable</members>
+		<members>workerTable</members>
+		<name>ApexComponent</name>
 	</types>
 	<version>42.0</version>
 </Package>
