@@ -26,9 +26,9 @@ public with sharing class LoginController {
 		if (worker.Role__r.Name == 'Manager') {
 			return Page.mainPage;
 		} else if (worker.Role__r.Name == 'HR') {
-			return Page.mainHR;
+			return Page.mainPage;
 		} else {
-			return Page.mainWorker;
+			return Page.mainPage;
 		}
 		
 	}

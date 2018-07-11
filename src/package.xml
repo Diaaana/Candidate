@@ -4,8 +4,6 @@
 		<members>loginPage</members>
 		<members>RegistrationPage</members>
 		<members>MainManager</members>
-		<members>mainHR</members>
-		<members>mainWorker</members>
 		<members>mainPage</members>
 		<members>addCandidatePage</members>
 		<name>ApexPage</name>

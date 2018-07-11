@@ -13,15 +13,15 @@ var j$ = jQuery.noConflict();
 <div class="slds-tabs--default">
 	<ul class="slds-tabs--default__nav" role="tablist">
 		<li class="slds-tabs--default__item slds-text-heading--label slds-active" title="Item One" role="presentation">
-			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Пользователи
+			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Users
 			</a>
 		</li>
 		<li class="slds-tabs--default__item slds-text-heading--label" title="Item Two" role="presentation">
-			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Кандидаты
+			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Candidates
 			</a>
 		</li>
 		<li class="slds-tabs--default__item slds-text-heading--label" title="Item Three" role="presentation">
-			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item">Сотрудники
+			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item">Workers
 			</a>
 		</li>
 	</ul>
@@ -29,7 +29,7 @@ var j$ = jQuery.noConflict();
 		<c:clientTable />
 	</div>
 	<div id="tab-default-2" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">
-		<button class="slds-button slds-button_brand" onclick="addCandidate()">Добавить кандидата
+		<button class="slds-button slds-button_brand" onclick="addCandidate()">Add candidate
 		</button>
 		<div class="slds-m-vertical--large"></div>
 		<c:candidateTable />

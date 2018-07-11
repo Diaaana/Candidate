@@ -14,27 +14,29 @@
 <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
 	<div class="slds-form-element">
 		<div class="slds-form-element__control">
-			<input type="text" id="login" class="slds-input" placeholder="Логин" />
+			<input type="text" id="login" class="slds-input" placeholder="Login" />
 		</div>
 	</div>
 	<div class="slds-form-element">
 		<div class="slds-form-element__control">
-			<input type="password" id="password" class="slds-input" placeholder="Пароль" />
+			<input type="password" id="password" class="slds-input" placeholder="Password" />
 		</div>
 	</div>
 	<div class="slds-m-vertical--medium"></div>
 	<div class="slds-align_absolute-center">
-		<button class="slds-button" onclick="goToRegistration()" reRender="view">Регистрация</button>
-		<button class="slds-button slds-button_brand" onclick="getParameters()" reRender="view">Вход</button>
+		<button class="slds-button" onclick="goToRegistration()" reRender="view">Registration</button>
+		<button class="slds-button slds-button_brand" onclick="getParameters()" reRender="view">Login</button>
 	</div>
 </div>
 
 <script type="text/javascript">
+
 function getParameters() {
 	let login = document.querySelector('#login').value;
 	let password = document.querySelector('#password').value;
 	setParameters(login, password);
 };
+
 </script>
 
 </body>

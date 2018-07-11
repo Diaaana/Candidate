@@ -1,7 +1,7 @@
 public with sharing class AddCandidateController {
 	public String selectHR { get; set; }
-	public String surname { get; set; }
 	public String name { get; set; }
+	public String surname { get; set; }
 	public String middleName { get; set; }
 	public String resume { get; set; }
 	public String position { get; set; }
@@ -13,6 +13,23 @@ public with sharing class AddCandidateController {
 	public String skype { get; set; }
 	public String coming { get; set; }
 	public String contact { get; set; }
+
+	public List<SelectOption> getHR {
+		get {
+
+			List<Worker__c> HRList = [SELECT Name, Surname__c FROM Worker__c WHERE Role__r.Name = 'HR'];
+			List<SelectOption> listOptions = new List<SelectOption>();
+
+			for (Worker__c HRWorker : HRList) {
+
+				String value = HRWorker.Name + ' ' + HRWorker.Surname__c;
+				listOptions.add(new SelectOption(value, value));
+
+			}
+			return listOptions;
+		}
+		set;
+	}
 
 	public AddCandidateController() {
 		this.surname = '';
@@ -30,33 +47,24 @@ public with sharing class AddCandidateController {
 		this.contact = '';
 	}
 
-	public List<SelectOption> getHR {
-		get {
-
-			List<Worker__c> HRList = [SELECT Name, Surname__c FROM Worker__c WHERE Role__r.Name = 'HR'];
-			List<SelectOption> listOptions = new List<SelectOption>();
-
-			for (Worker__c HRWorker : HRList) {
-
-				String value = HRWorker.Name + ' ' + HRWorker.Surname__c;
-				listOptions.add(new SelectOption(HRWorker.Surname__c, value));
-
-			}
-			return listOptions;
-		}
-		set;
-	}
-
-	public void createCandidate() {
+	public PageReference createCandidate() {
 		insert new Candidate__c(
 			Name = name, 
 			Surname__c = surname,
 			MiddleName__c = middleName,
 			Resume__c = resume,
 			Position__c = position,
-			Salary__c = 50.0, 
-			Experience__c = 20,
-			PhoneNumber__c = telephone
+			HR__C = needHR,
+			Salary__c = Integer.valueOf(salary), 
+			Experience__c = Integer.valueOf(experience),
+			PhoneNumber__c = telephone,
+			Mail__c = mail, 
+			Skype__c = skype,
+			Coming__c = coming,
+			Contact__c = contact,
+			Status__c = 'Старт'
 		);
+
+		return Page.mainPage;
 	}
 }

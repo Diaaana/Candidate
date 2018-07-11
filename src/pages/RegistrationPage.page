@@ -16,59 +16,60 @@
 <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
 	<div class="slds-form-element">
 		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Фамилия
+			<abbr class="slds-required" title="required">*</abbr>Surname
 		</label>
 		<div class="slds-form-element__control">
-			<input type="text" id="surname" class="slds-input" placeholder="Фамилия" />
+			<input type="text" id="surname" class="slds-input" placeholder="Surname" />
 		</div>
 	</div>
 	<div class="slds-form-element">
 		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Имя
+			<abbr class="slds-required" title="required">*</abbr>Name
 		</label>
 		<div class="slds-form-element__control">
-			<input type="text" id="name" class="slds-input" placeholder="Имя" />
+			<input type="text" id="name" class="slds-input" placeholder="Name" />
 		</div>
 	</div>
 	<div class="slds-form-element">
 		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Отчество
+			<abbr class="slds-required" title="required">*</abbr>Middle Name
 		</label>
 		<div class="slds-form-element__control">
-			<input type="text" id="middle-name" class="slds-input" placeholder="Отчество" />
+			<input type="text" id="middle-name" class="slds-input" placeholder="Middle Name" />
 		</div>
 	</div>
 	<div class="slds-form-element">
 		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Логин
+			<abbr class="slds-required" title="required">*</abbr>Login
 		</label>
 		<div class="slds-form-element__control">
-			<input type="text" id="login" class="slds-input" placeholder="Логин" />
+			<input type="text" id="login" class="slds-input" placeholder="Login" />
 		</div>
 	</div>
 	<div class="slds-form-element">
 		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Пароль
+			<abbr class="slds-required" title="required">*</abbr>Password
 		</label>
 		<div class="slds-form-element__control">
-			<input type="password" id="password" class="slds-input" placeholder="Пароль" />
+			<input type="password" id="password" class="slds-input" placeholder="Password" />
 		</div>
 	</div>
 	<div class="slds-form-element">
 		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Подтверждение пароля
+			<abbr class="slds-required" title="required">*</abbr>Repeat password
 		</label>
 		<div class="slds-form-element__control">
-			<input type="password" id="repeat-password" class="slds-input" placeholder="Подтверждение пароля" />
+			<input type="password" id="repeat-password" class="slds-input" placeholder="Repeat password" />
 		</div>
 	</div>
 	<div class="slds-m-vertical--medium"></div>
 	<div class="slds-align_absolute-center">
-		<button class="slds-button slds-button_brand" onclick="registration()" reRender="view">Зарегистрироваться</button>
+		<button class="slds-button slds-button_brand" onclick="registration()" reRender="view">Registration</button>
 	</div>
 </div>
 
 <script type="text/javascript">
+
 function registration() {
 	let surname = document.querySelector('#surname').value;
 	let name = document.querySelector('#name').value;
@@ -81,6 +82,7 @@ function registration() {
 		setParameters(surname, name, middleName, login, password);
 	}
 };
+
 </script>
 
 </body>

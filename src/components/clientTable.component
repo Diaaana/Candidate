@@ -1,35 +1,12 @@
 <apex:component controller="MainController">
+<apex:slds />
 	<apex:pageBlock>
-		<apex:pageBlockTable value="{!clientsList}" var="client">
-			<apex:column value="{!client.CreatedDate}"/>
-			<apex:column value="{!client.name}"/>
-			<apex:column value="{!client.Surname__c}"/>
-			<apex:column value="{!client.MiddleName__c}"/>
-			<apex:column value="{!client.ClientName__c}"/>
+		<apex:pageBlockTable value="{!clientsList}" var="client" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+			<apex:column value="{!client.CreatedDate}" />
+			<apex:column value="{!client.name}" />
+			<apex:column value="{!client.Surname__c}" />
+			<apex:column value="{!client.MiddleName__c}" />
+			<apex:column value="{!client.ClientName__c}" />
 		</apex:pageBlockTable>
 	</apex:pageBlock>
 </apex:component>
-
-<!-- <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered" id="data-table" hidden="true">
-	<thead>
-		<tr class="slds-text-title_caps">
-			<th scope="col">
-				<div class="slds-truncate" title="Дата регистрации">Дата регистрации</div>
-			</th>
-			<th scope="col">
-				<div class="slds-truncate" title="Фамилия">Фамилия</div>
-			</th>
-			<th scope="col">
-				<div class="slds-truncate" title="Имя">Имя</div>
-			</th>
-			<th scope="col">
-				<div class="slds-truncate" title="Отчество">Отчество</div>
-			</th>
-			<th scope="col">
-				<div class="slds-truncate" title="Имя пользователя">Имя пользователя</div>
-			</th>
-		</tr>
-	</thead>
-	<tbody id="tBody">
-	</tbody>
-</table> -->
