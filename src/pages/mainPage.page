@@ -12,11 +12,11 @@
 			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Candidates
 			</a>
 		</li>
-		<li class="slds-tabs--default__item slds-text-heading--label" title="Item Two" role="presentation">
+		<li id="id-li-users" class="slds-tabs--default__item slds-text-heading--label" title="Item Two" role="presentation" hidden="true">
 			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Users
 			</a>
 		</li>
-		<li id="id-li-users" class="slds-tabs--default__item slds-text-heading--label" title="Item Three" role="presentation" hidden="true">
+		<li class="slds-tabs--default__item slds-text-heading--label" title="Item Three" role="presentation">
 			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item">Workers
 			</a>
 		</li>
@@ -25,13 +25,43 @@
 		<button class="slds-button slds-button_brand" onclick="addCandidate()">Add candidate
 		</button>
 		<div class="slds-m-vertical--large"></div>
-		<c:candidateTable />
+		<apex:pageBlock>
+		<apex:pageBlockTable value="{!candidatesList}" var="candidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+		<apex:column value="{!candidate.name}"/>
+		<apex:column value="{!candidate.Surname__c}"/>
+		<apex:column value="{!candidate.MiddleName__c}"/>
+		<apex:column value="{!candidate.LastMeeting__c}"/>
+		<apex:column value="{!candidate.Resume__c}"/>
+		<apex:column value="{!candidate.Position__c}"/>
+		<apex:column value="{!candidate.HR__c}"/>
+		<apex:column value="{!candidate.Salary__c}"/>
+		<apex:column value="{!candidate.Experience__c}"/>
+		<apex:column value="{!candidate.PhoneNumber__c}"/>
+		<apex:column value="{!candidate.Skype__c}"/>
+		<apex:column value="{!candidate.Status__c}"/>
+		</apex:pageBlockTable>
+		</apex:pageBlock>
 	</div>
 	<div id="tab-default-2" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">
-		<c:clientTable />
+		<apex:pageBlock>
+		<apex:pageBlockTable value="{!usersList}" var="user" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+		<apex:column value="{!user.CreatedDate}" />
+		<apex:column value="{!user.Worker__r.name}" />
+		<apex:column value="{!user.Worker__r.Surname__c}" />
+		<apex:column value="{!user.Worker__r.MiddleName__c}" />
+		<apex:column value="{!user.Login__c}" />
+		</apex:pageBlockTable>
+		</apex:pageBlock>
 	</div>
 	<div id="tab-default-3" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">
-		<c:workerTable />
+		<apex:pageBlock>
+		<apex:pageBlockTable value="{!workersList}" var="worker" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+		<apex:column value="{!worker.name}"/>
+		<apex:column value="{!worker.Surname__c}"/>
+		<apex:column value="{!worker.MiddleName__c}"/>
+		<!-- <apex:column value="{!worker.Role__r.Name}"/> -->
+		</apex:pageBlockTable>
+		</apex:pageBlock>
 	</div>
 </div>
 

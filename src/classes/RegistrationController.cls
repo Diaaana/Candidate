@@ -14,16 +14,12 @@ public class RegistrationController {
 	}
 
 	public PageReference doRegistration() {
-		Role__c workerRole = [SELECT ID, Name FROM Role__c WHERE Name = 'Worker'];
-		
-		Worker__c worker = new Worker__c(Surname__c = surname, Name = name, MiddleName__c = middleName, 
-			Role__c = workerRole.ID, Login__c = login, Password__c = password);
-		insert worker;
+		Worker__c worker = new Worker__c(Surname__c = surname, Name = name, MiddleName__c = middleName);
 
-		insert new RoleWorkers__c(
-			Name = 'Worker',
-			Worker__c = worker.ID,
-			Role__c = workerRole.ID
+		insert new User__c(
+			Worker__c = worker.ID, 
+			Login__c = login,
+			Password__c = password
 		);
 
 		return Page.loginPage;

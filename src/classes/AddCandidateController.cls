@@ -17,7 +17,7 @@ public with sharing class AddCandidateController {
 	public List<SelectOption> getHR {
 		get {
 
-			List<Worker__c> HRList = [SELECT Name, Surname__c FROM Worker__c WHERE Role__r.Name = 'HR'];
+			List<Worker__c> HRList = [SELECT Name, Surname__c FROM Worker__c WHERE RecordType.Name = 'HR'];
 			List<SelectOption> listOptions = new List<SelectOption>();
 
 			for (Worker__c HRWorker : HRList) {
