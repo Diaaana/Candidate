@@ -4,7 +4,7 @@
 <body>
 	<apex:form >
 	<apex:actionFunction name="setParameters" action="{!login}" reRender="view">
-	<apex:param id = "login" name="login" value="" assignTo="{!login}" />
+	<apex:param id="login" name="login" value="" assignTo="{!login}" />
 	<apex:param id="password" name="password" value="" assignTo="{!password}" />
 </apex:actionFunction>
 </apex:form>

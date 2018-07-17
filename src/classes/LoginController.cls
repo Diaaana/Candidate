@@ -1,4 +1,4 @@
-public with sharing class LoginController {
+public class LoginController {
 	public String login { get; set; }
 	public String password { get; set; }
 
@@ -14,23 +14,21 @@ public with sharing class LoginController {
 	public PageReference login() {
 
 		User__c user = [
-			SELECT ID, Worker__r.RecordTypeId
+			SELECT Worker__r.Position__c
 			FROM User__c 
-			WHERE Login__c = :login AND Password__c = :password
+			WHERE Name = :login AND Password__c = :password
 			LIMIT 1
 		];
-
-		RecordType role = [SELECT Name FROM RecordType WHERE ID = :user.Worker__r.RecordTypeId LIMIT 1];
 		
 		if (user == NULL) {
 			//
 		}
 
-		if (role.Name == 'Manager') {
+		if (user.Worker__r.Position__c == 'Manager') {
 			PageReference page = new PageReference('/apex/mainPage?role=manager');
 			page.setRedirect(true);
 			return page;
-		} else if (role.Name == 'HR') {
+		} else if (user.Worker__r.Position__c == 'HR') {
 			PageReference page = new PageReference('/apex/mainPage?role=HR');
 			page.setRedirect(true);
 			return page;

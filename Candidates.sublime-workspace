@@ -691,7 +691,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/MavensMate/sublime/lang/Apex.sublime-syntax"
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

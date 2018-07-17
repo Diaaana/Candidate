@@ -3,7 +3,8 @@
 <head></head>
 <body>
 	<apex:form >
-	<apex:actionFunction name="setParameters" action="{!doRegistration}" reRender="view">
+	<apex:pageMessages />
+	<apex:actionFunction name="setParameters" action="{!doRegistration}">
 	<apex:param id="surname" name="surname" value="" assignTo="{!surname}" />
 	<apex:param id="name" name="name" value="" assignTo="{!name}" />
 	<apex:param id="middle-name" name="middleName" value="" assignTo="{!middleName}" />
@@ -16,18 +17,18 @@
 <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
 	<div class="slds-form-element">
 		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Surname
-		</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="surname" class="slds-input" placeholder="Surname" />
-		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
 			<abbr class="slds-required" title="required">*</abbr>Name
 		</label>
 		<div class="slds-form-element__control">
 			<input type="text" id="name" class="slds-input" placeholder="Name" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Surname
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="surname" class="slds-input" placeholder="Surname" />
 		</div>
 	</div>
 	<div class="slds-form-element">

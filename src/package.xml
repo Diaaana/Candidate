@@ -6,6 +6,8 @@
 		<members>MainManager</members>
 		<members>mainPage</members>
 		<members>addCandidatePage</members>
+		<members>addWorkerPage</members>
+		<members>communionCandidatePage</members>
 		<name>ApexPage</name>
 	</types>
 	<types>
@@ -13,6 +15,8 @@
 		<members>RegistartionController</members>
 		<members>MainController</members>
 		<members>AddCandidateController</members>
+		<members>AddWorkerController</members>
+		<members>CommunionCandidateController</members>
 		<name>ApexClass</name>
 	</types>
 	<types>

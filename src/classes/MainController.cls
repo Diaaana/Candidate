@@ -2,7 +2,7 @@ public class MainController {
 	public List<User__c> usersList {
 		get {
 			List<User__c> usersList = [
-			SELECT CreatedDate, Worker__r.Name, Worker__r.Surname__c, Worker__r.MiddleName__c, Login__c
+			SELECT CreatedDate, Worker__r.Name, Worker__r.Surname__c, Worker__r.MiddleName__c, Name
 			FROM User__c
 			];
 			return usersList;
@@ -25,16 +25,33 @@ public class MainController {
 	public List<Worker__c> workersList {
 		get {
 			List<Worker__c> workersList = [
-			SELECT Name, Surname__c, MiddleName__c
+			SELECT Name, Surname__c, MiddleName__c, Position__c
 			FROM Worker__c
 			];
 			return workersList;
 		} 
 		set;
 	}
-	public MainController() {}
+
+	public String candidateID { get; set; }
+
+	public MainController() {
+		this.candidateID = '';
+	}
 
 	public pageReference goToAddCandidatePage() {
 		return Page.addCandidatePage;
 	}
+
+	public pageReference goToAddWorkerPage() {
+		return Page.addWorkerPage;
+	}
+
+	public pageReference goToCandidatePage() {
+		ID candidateIDValue = ID.valueOf(candidateID);
+		PageReference page = new PageReference('/apex/communionCandidatePage?candidate=' + candidateIDValue);
+		page.setRedirect(true);
+		return page;
+	}
+
 }

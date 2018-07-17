@@ -1,0 +1,69 @@
+<apex:page controller="AddWorkerController">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+<head></head>
+<body>
+	<apex:form>
+	<apex:actionFunction name="setParameters" action="{!createWorker}" reRender="view">
+	<apex:param id="surname" name="surname" value="" assignTo="{!surname}" />
+	<apex:param id="name" name="name" value="" assignTo="{!name}" />
+	<apex:param id="middle-name" name="middleName" value="" assignTo="{!middleName}" />
+	<apex:param id="position" name="position" value="" assignTo="{!position}" />
+</apex:actionFunction>
+
+<apex:slds />
+<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Name
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="name" class="slds-input" placeholder="Name" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Surname
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="surname" class="slds-input" placeholder="Surname" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Middle Name
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="middle-name" class="slds-input" placeholder="Middle Name" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label" for="text-input-id-1">
+			<abbr class="slds-required" title="required">*</abbr>Position
+		</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="position" class="slds-input" placeholder="Position" />
+		</div>
+	</div>
+	<div class="slds-m-vertical--medium"></div>
+	<div class="slds-align_absolute-center">
+		<button class="slds-button slds-button_brand" onclick="getParameters()" reRender="view">Create worker</button>
+	</div>
+</div>
+</apex:form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+function getParameters() {
+	let surnameValue = document.querySelector('#surname').value;
+	let nameValue = document.querySelector('#name').value;
+	let middleNameValue = document.querySelector('#middle-name').value;
+	let positionValue = document.querySelector('#position').value;
+	setParameters(surnameValue, nameValue, middleNameValue, positionValue);
+};
+       
+</script>
+
+</body>
+</html>
+</apex:page>

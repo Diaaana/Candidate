@@ -1,4 +1,4 @@
-public with sharing class AddCandidateController {
+public class AddCandidateController {
 	public String selectHR { get; set; }
 	public String name { get; set; }
 	public String surname { get; set; }
@@ -17,7 +17,7 @@ public with sharing class AddCandidateController {
 	public List<SelectOption> getHR {
 		get {
 
-			List<Worker__c> HRList = [SELECT Name, Surname__c FROM Worker__c WHERE RecordType.Name = 'HR'];
+			List<Worker__c> HRList = [SELECT Name, Surname__c FROM Worker__c WHERE Position__c = 'HR'];
 			List<SelectOption> listOptions = new List<SelectOption>();
 
 			for (Worker__c HRWorker : HRList) {
