@@ -91,10 +91,10 @@
 	</div>
 	<div class="slds-form-element">
 		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Number phone
+			<abbr class="slds-required" title="required">*</abbr>Phone number
 		</label>
 		<div class="slds-form-element__control">
-			<input type="text" id="telephone" class="slds-input" placeholder="Number phone" />
+			<input type="text" id="telephone" class="slds-input" placeholder="Phone number" />
 		</div>
 	</div>
 	<div class="slds-form-element">

@@ -49,8 +49,8 @@ public class MainController {
 
 	public pageReference goToCandidatePage() {
 		ID candidateIDValue = ID.valueOf(candidateID);
-		PageReference page = new PageReference('/apex/communionCandidatePage?candidate=' + candidateIDValue);
-		page.setRedirect(true);
+		PageReference page = Page.communionCandidatePage;
+		page.getParameters().put('candidateID', candidateIDValue);
 		return page;
 	}
 

@@ -523,7 +523,7 @@
 			"file": "src/classes/MainController.cls",
 			"settings":
 			{
-				"buffer_size": 881,
+				"buffer_size": 1397,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -678,15 +678,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 881,
+						"buffer_size": 1397,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								217,
-								220
+								0,
+								0
 							]
 						],
 						"settings":
