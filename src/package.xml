@@ -17,6 +17,7 @@
 		<members>AddCandidateController</members>
 		<members>AddWorkerController</members>
 		<members>CommunionCandidateController</members>
+		<members>DeleteCandidate</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
@@ -25,6 +26,9 @@
 		<members>workerTable</members>
 		<members>dataTable</members>
 		<name>ApexComponent</name>
+	</types>
+	<types>
+		<name>ApexTrigger</name>
 	</types>
 	<version>42.0</version>
 </Package>

@@ -1,5 +1,5 @@
 public with sharing class CommunionCandidateController {
-	public Candidate__c candidate { get; set; }
+	public List<Candidate__c> candidates { get; set; }
 	public ID candidateID;
 	public String name { get; set; }
 	public String surname { get; set; }
@@ -21,16 +21,14 @@ public with sharing class CommunionCandidateController {
 	public String decision { get; set; }
 	public String amount { get; set; }
 	public List<Candidate__History> changeCandidate { get; set; }
-	public String dateChange { get; set; }
 
 	public CommunionCandidateController() {
 		candidateID = ApexPages.currentPage().getParameters().get('candidateID');
-		candidate = [
+		candidates = [
 			SELECT Name, Surname__c, MiddleName__c, PhoneNumber__c, Mail__c, Skype__c,
-			Position__c, Salary__c, Experience__c, HR__c, Resume__c
+			Position__c, Salary__c, Experience__c, HR__c, Resume__c, Status__c
 			FROM Candidate__c
 			WHERE ID = :candidateID
-			LIMIT 1
 		];
 
 		this.surname = '';
@@ -73,7 +71,8 @@ public with sharing class CommunionCandidateController {
 			Experience__c = Integer.valueOf(experience),
 			PhoneNumber__c = telephone,
 			Mail__c = mail, 
-			Skype__c = skype
+			Skype__c = skype,
+			Status__c = status
 		);
 		update candidate;
 

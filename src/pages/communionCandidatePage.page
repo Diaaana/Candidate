@@ -3,6 +3,7 @@
 <head></head>
 <body>
 	<apex:form>
+	<apex:pageMessages />
 	<apex:actionFunction name="setCandidateParameters" action="{!editCandidate}" reRender="view">
 	<apex:param id="surname" name="surname" value="" assignTo="{!surname}" />
 	<apex:param id="name" name="name" value="" assignTo="{!name}" />
@@ -15,218 +16,253 @@
 	<apex:param id="telephone" name="telephone" value="" assignTo="{!telephone}" />
 	<apex:param id="mail" name="mail" value="" assignTo="{!mail}" />
 	<apex:param id="skype" name="skype" value="" assignTo="{!skype}" />
+	<apex:param id="status" name="status" value="" assignTo="{!status}" />
 </apex:actionFunction>
-	<apex:actionFunction name="setCommunionParameters" action="{!createCommunionCandidate}" reRender="view">
-	<apex:param id="statusValue" name="statusValue" value="" assignTo="{!status}" />
-	<apex:param id="taskValue" name="taskValue" value="" assignTo="{!task}" />
-	<apex:param id="comingValue" name="comingValue" value="" assignTo="{!coming}" />
-	<apex:param id="contactValue" name="contactValue" value="" assignTo="{!contact}" />
-	<apex:param id="dateInterviewValue" name="dateInterviewValue" value="" assignTo="{!dateInterview}" />
-	<apex:param id="decisionPeriodValue" name="decisionPeriodValue" value="" assignTo="{!decisionPeriod}" />
-	<apex:param id="decisionValue" name="decisionValue" value="" assignTo="{!decision}" />
-	<apex:param id="amountValue" name="amountValue" value="" assignTo="{!amount}" />
+<apex:actionFunction name="setCommunionParameters" action="{!createCommunionCandidate}" reRender="view">
+<apex:param id="statusValue" name="statusValue" value="" assignTo="{!status}" />
+<apex:param id="taskValue" name="taskValue" value="" assignTo="{!task}" />
+<apex:param id="comingValue" name="comingValue" value="" assignTo="{!coming}" />
+<apex:param id="contactValue" name="contactValue" value="" assignTo="{!contact}" />
+<apex:param id="dateInterviewValue" name="dateInterviewValue" value="" assignTo="{!dateInterview}" />
+<apex:param id="decisionPeriodValue" name="decisionPeriodValue" value="" assignTo="{!decisionPeriod}" />
+<apex:param id="decisionValue" name="decisionValue" value="" assignTo="{!decision}" />
+<apex:param id="amountValue" name="amountValue" value="" assignTo="{!amount}" />
 </apex:actionFunction>
 <apex:slds />
 <div class="slds-m-vertical--medium"></div>
 <div class="slds-text-heading_medium" style="font-weight: bold;">View candidate</div>
 <div class="slds-m-vertical--medium"></div>
-<!-- <div class="slds-form slds-form_horizontal" style="position: relative; right: 28rem; width: 100%;"> -->
-	<div class="slds-grid slds-wrap">
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">Name</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="name-id" class="slds-input" value="{!candidate.Name}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">Position</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="position-id" class="slds-input" value="{!candidate.Position__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">Surname</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="surname-id" class="slds-input" value="{!candidate.Surname__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">Salary</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="salary-id" class="slds-input" value="{!candidate.Salary__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">Middle Name</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="middle-name-id" class="slds-input" value="{!candidate.MiddleName__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">Experience</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="experience-id" class="slds-input" value="{!candidate.Experience__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">Phone number</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="telephone-id" class="slds-input" value="{!candidate.PhoneNumber__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">HR</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="HR-id" class="slds-input" value="{!candidate.HR__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">Mail</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="mail-id" class="slds-input" value="{!candidate.Mail__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<a href="javascript:void(0);" class="slds-text-link_reset" onclick="window.location='{!candidate.Resume__c}'">Resume link</a>
-				<div class="slds-form-element__control">
-					<input type="url" id="resume-id" class="slds-input" value="{!candidate.Resume__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">Skype</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="skype-id" class="slds-input" value="{!candidate.Skype__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-m-vertical--medium"></div>
-			<div class="slds-align_absolute-center">
-				<button class="slds-button slds-button_brand" onclick="getCandidateParameters()" reRender="view">Edit information</button>
+<apex:dataList value="{!candidates}" var="candidate">
+<div class="slds-grid slds-wrap">
+	<div class="slds-col slds-size_1-of-2">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Name</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="name-id" class="slds-input" value="{!candidate.Name}" />
 			</div>
 		</div>
 	</div>
-	<div class="slds-m-vertical--medium"></div>
-	<div class="slds-text-heading_medium" style="font-weight: bold;">Communication with the candidate</div>
-
-	<div class="slds-m-vertical--medium"></div>
-	<div class="slds-align_absolute-left">
-		<button class="slds-button slds-button_brand" onclick="showCandidateHistory(); return false;" reRender="view">Show change history of candidate</button>
-		<div class="slds-m-vertical--medium"></div>
+	<div class="slds-col slds-size_1-of-2">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Position</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="position-id" class="slds-input" value="{!candidate.Position__c}" />
+			</div>
+		</div>
 	</div>
-	<div  id="history-candidate-table-id" hidden="true">
-		<apex:pageBlock>
-		<apex:pageBlockTable value="{!changeCandidate}" var="cangeCandidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
-		<apex:column value="{!cangeCandidate.CreatedDate}" />
-		<apex:column value="{!cangeCandidate.Field}" />
-		<apex:column value="{!cangeCandidate.OldValue}" />
-		<apex:column value="{!cangeCandidate.NewValue}" />
-		</apex:pageBlockTable>
-		</apex:pageBlock>
+	<div class="slds-col slds-size_1-of-2">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Surname</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="surname-id" class="slds-input" value="{!candidate.Surname__c}" />
+			</div>
+		</div>
 	</div>
-	<div class="slds-m-vertical--medium"></div>
-
-	<div class="slds-text-heading_medium" style="font-weight: bold;">Interaction</div>
-	<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+	<div class="slds-col slds-size_1-of-2">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Salary</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="salary-id" class="slds-input" value="{!candidate.Salary__c}" />
+			</div>
+		</div>
+	</div>
+	<div class="slds-col slds-size_1-of-2">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Middle Name</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="middle-name-id" class="slds-input" value="{!candidate.MiddleName__c}" />
+			</div>
+		</div>
+	</div>
+	<div class="slds-col slds-size_1-of-2">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Experience</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="experience-id" class="slds-input" value="{!candidate.Experience__c}" />
+			</div>
+		</div>
+	</div>
+	<div class="slds-col slds-size_1-of-2">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Phone number</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="telephone-id" class="slds-input" value="{!candidate.PhoneNumber__c}" />
+			</div>
+		</div>
+	</div>
+	<div class="slds-col slds-size_1-of-2">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">HR</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="HR-id" class="slds-input" value="{!candidate.HR__c}" />
+			</div>
+		</div>
+	</div>
+	<div class="slds-col slds-size_1-of-2">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Mail</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="mail-id" class="slds-input" value="{!candidate.Mail__c}" />
+			</div>
+		</div>
+	</div>
+	<div class="slds-col slds-size_1-of-2">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Skype</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="skype-id" class="slds-input" value="{!candidate.Skype__c}" />
+			</div>
+		</div>
+	</div>
+	<div class="slds-col slds-size_1-of-1">
+		<div class="slds-form-element">
+			<a href="javascript:void(0);" class="slds-text-link_reset" onclick="window.location='{!candidate.Resume__c}'">Resume link</a>
+			<div class="slds-form-element__control">
+				<input type="url" id="resume-id" class="slds-input" value="{!candidate.Resume__c}" />
+			</div>
+		</div>
+	</div>
+	<div class="slds-col slds-size_1-of-2">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Status</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="edit-status-id" class="slds-input" value="{!candidate.Status__c}" />
+			</div>
+		</div>
+	</div>
+	<div class="slds-col slds-size_1-of-2">
 		<div class="slds-form-element">
 			<label class="slds-form-element__label">Status</label>
 			<div class="slds-form-element__control">
 				<div class="slds-select_container">
-					<apex:selectList styleClass="status-class" size="1">
+					<apex:selectList styleClass="edit-status-class" size="1">
+					<apex:selectOption itemValue=""/>
 					<apex:selectOption itemValue="Start"/>
 					<apex:selectOption itemValue="Questionnaire"/>
 					<apex:selectOption itemValue="Executing the test task"/>
 					<apex:selectOption itemValue="Interview"/>
 					<apex:selectOption itemValue="Decision making"/>
 					<apex:selectOption itemValue="Decision is made"/>
-					</apex:selectList>
-				</div>
-			</div>
-		</div>
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Task</label>
-			<div class="slds-form-element__control">
-				<input type="file" id="task-id" class="slds-input" placeholder="Task" />
-			</div>
-		</div>
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Source</label>
-			<div class="slds-form-element__control">
-				<div class="slds-select_container">
-					<apex:selectList styleClass="coming-class" size="1">
-					<apex:selectOption itemValue="Invite"/>
-					<apex:selectOption itemValue="Response"/>
-					</apex:selectList>
-				</div>
-			</div>
-		</div>
-		<div class="slds-form-element__control">
-			<div class="slds-select_container">
-				<apex:selectList styleClass="contact-class" size="1">
-				<apex:selectOption itemValue="Skype"/>
-				<apex:selectOption itemValue="Phone"/>
-				<apex:selectOption itemValue="LinkedIn"/>
-				<apex:selectOption itemValue="Job search site"/>
 				</apex:selectList>
 			</div>
 		</div>
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Date of interview</label>
-			<div class="slds-form-element__control">
-				<input type="date" id="date-interview-id" class="slds-input" placeholder="Date of interview" />
-			</div>
-		</div>
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Decision period (days) </label>
-			<div class="slds-form-element__control">
-				<input type="text" id="decision-period-id" class="slds-input" placeholder="Decision period" />
-			</div>
-		</div>
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Decision</label>
-			<div class="slds-form-element__control">
-				<div class="slds-select_container">
-					<apex:selectList styleClass="decision-class" size="1">
-					<apex:selectOption itemValue="Offer"/>
-					<apex:selectOption itemValue="Closed"/>
-					<apex:selectOption itemValue="Later"/>
-					</apex:selectList>
-				</div>
-			</div>
-		</div>
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Amount ($)</label>
-			<div class="slds-form-element__control">
-				<input type="text" id="amount-id" class="slds-input" placeholder="Amount" />
-			</div>
-		</div>
-		<div class="slds-m-vertical--medium"></div>
-		<div class="slds-align_absolute-center">
-			<button class="slds-button slds-button_brand" onclick="getCommunionParameters()" reRender="view">OK</button>
-		</div>
-		<div class="slds-text-heading_medium" style="font-weight: bold;">Сomments</div>
 	</div>
+</div>
+<div class="slds-col slds-size_1-of-1">
+	<div class="slds-m-vertical--medium"></div>
+	<div class="slds-align_absolute-right">
+		<button class="slds-button slds-button_brand" onclick="getCandidateParameters()" reRender="view">Edit information</button>
+	</div>
+</div>
+</div>
+</apex:dataList>
+
+<div class="slds-m-vertical--medium"></div>
+<div class="slds-text-heading_medium" style="font-weight: bold;">Communication with the candidate</div>
+<div class="slds-m-vertical--medium"></div>
+<div class="slds-align_absolute-center">
+	<button class="slds-button slds-button_brand" onclick="showCandidateHistory(); return false;" reRender="view">Show change history of candidate</button>
+	<div class="slds-m-left--medium"></div>
+	<button id="hide-table-id" class="slds-button slds-button_brand" onclick="hideCandidateHistory(); return false;" reRender="view" style="display: none;">Hide table</button>
+	<div class="slds-m-vertical--medium"></div>
+</div>
+
+<div class="slds-m-vertical--medium"></div>
+<div id="history-candidate-table-id" hidden="true">
+	<apex:pageBlock>
+	<apex:pageBlockTable value="{!changeCandidate}" var="historyCandidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+	<apex:column value="{!historyCandidate.CreatedDate}" />
+	<apex:column value="{!historyCandidate.Field}" />
+	<apex:column value="{!historyCandidate.OldValue}" />
+	<apex:column value="{!historyCandidate.NewValue}" />
+</apex:pageBlockTable>
+</apex:pageBlock>
+</div>
+<div class="slds-m-vertical--medium"></div>
+
+<div class="slds-align_absolute-left">
+	<button class="slds-button slds-button_brand" onclick="addInteraction(); return false;" reRender="view">Interaction</button>
+</div>
+
+<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small" id="interaction-id" hidden="true">
+	<div class="slds-form-element">
+		<label class="slds-form-element__label">Status</label>
+		<div class="slds-form-element__control">
+			<div class="slds-select_container">
+				<apex:selectList styleClass="status-class" size="1">
+				<apex:selectOption itemValue="Start"/>
+				<apex:selectOption itemValue="Questionnaire"/>
+				<apex:selectOption itemValue="Executing the test task"/>
+				<apex:selectOption itemValue="Interview"/>
+				<apex:selectOption itemValue="Decision making"/>
+				<apex:selectOption itemValue="Decision is made"/>
+			</apex:selectList>
+		</div>
+	</div>
+</div>
+<div class="slds-form-element">
+	<label class="slds-form-element__label">Task</label>
+	<div class="slds-form-element__control">
+		<input type="file" id="task-id" class="slds-input" placeholder="Task" />
+	</div>
+</div>
+<div class="slds-form-element">
+	<label class="slds-form-element__label">Source</label>
+	<div class="slds-form-element__control">
+		<div class="slds-select_container">
+			<apex:selectList styleClass="coming-class" size="1">
+			<apex:selectOption itemValue="Invite"/>
+			<apex:selectOption itemValue="Response"/>
+		</apex:selectList>
+	</div>
+</div>
+</div>
+<div class="slds-form-element__control">
+	<div class="slds-select_container">
+		<apex:selectList styleClass="contact-class" size="1">
+		<apex:selectOption itemValue="Skype"/>
+		<apex:selectOption itemValue="Phone"/>
+		<apex:selectOption itemValue="LinkedIn"/>
+		<apex:selectOption itemValue="Job search site"/>
+	</apex:selectList>
+</div>
+</div>
+<div class="slds-form-element">
+	<label class="slds-form-element__label">Date of interview</label>
+	<div class="slds-form-element__control">
+		<input type="date" id="date-interview-id" class="slds-input" placeholder="Date of interview" />
+	</div>
+</div>
+<div class="slds-form-element">
+	<label class="slds-form-element__label">Decision period (days) </label>
+	<div class="slds-form-element__control">
+		<input type="text" id="decision-period-id" class="slds-input" placeholder="Decision period" />
+	</div>
+</div>
+<div class="slds-form-element">
+	<label class="slds-form-element__label">Decision</label>
+	<div class="slds-form-element__control">
+		<div class="slds-select_container">
+			<apex:selectList styleClass="decision-class" size="1">
+			<apex:selectOption itemValue="Offer"/>
+			<apex:selectOption itemValue="Closed"/>
+			<apex:selectOption itemValue="Later"/>
+		</apex:selectList>
+	</div>
+</div>
+</div>
+<div class="slds-form-element">
+	<label class="slds-form-element__label">Amount ($)</label>
+	<div class="slds-form-element__control">
+		<input type="text" id="amount-id" class="slds-input" placeholder="Amount" />
+	</div>
+</div>
+<div class="slds-m-vertical--medium"></div>
+<div class="slds-align_absolute-center">
+	<button class="slds-button slds-button_brand" onclick="getCommunionParameters()" reRender="view">OK</button>
+</div>
+<div class="slds-text-heading_medium" style="font-weight: bold;">Сomments</div>
+</div>
 </apex:form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -247,8 +283,14 @@ function getCandidateParameters() {
 	let telephoneValue = document.querySelector('#telephone-id').value;
 	let mailValue = document.querySelector('#mail-id').value;
 	let skypeValue = document.querySelector('#skype-id').value;
+	let statusValue = document.querySelector('#edit-status-id').value;
+	let listStatusValue = document.querySelector('.edit-status-class').value;
 	
-	setCandidateParameters(surnameValue, nameValue, middleNameValue, resumeValue, positionValue, HRValue, salaryValue, experienceValue, telephoneValue, mailValue, skypeValue);
+	if (listStatusValue != '') {
+		setCandidateParameters(surnameValue, nameValue, middleNameValue, resumeValue, positionValue, HRValue, salaryValue, experienceValue, telephoneValue, mailValue, skypeValue, listStatusValue);
+	} else {
+		setCandidateParameters(surnameValue, nameValue, middleNameValue, resumeValue, positionValue, HRValue, salaryValue, experienceValue, telephoneValue, mailValue, skypeValue, statusValue);
+	}
 };
 
 function getCommunionParameters() {
@@ -266,6 +308,16 @@ function getCommunionParameters() {
 
 function showCandidateHistory() {
 	j$('#history-candidate-table-id').show();
+	j$('#hide-table-id').show();
+};
+
+function hideCandidateHistory() {
+	j$('#history-candidate-table-id').hide();
+	j$('#hide-table-id').hide();
+};
+
+function addInteraction() {
+	j$('#interaction-id').show();
 };
 
 </script>
