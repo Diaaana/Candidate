@@ -19,6 +19,8 @@ public class AddWorkerController {
 			Position__c = position
 		);
 
-		return Page.mainPage;
+		PageReference page = new PageReference('/apex/mainPage');
+		page.setRedirect(true);
+		return page;
 	}
 }

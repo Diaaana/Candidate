@@ -5,11 +5,11 @@
 	<apex:form >
 	<apex:pageMessages />
 	<apex:actionFunction name="setParameters" action="{!doRegistration}">
-	<apex:param id="surname" name="surname" value="" assignTo="{!surname}" />
-	<apex:param id="name" name="name" value="" assignTo="{!name}" />
-	<apex:param id="middle-name" name="middleName" value="" assignTo="{!middleName}" />
-	<apex:param id="login" name="login" value="" assignTo="{!login}" />
-	<apex:param id="password" name="password" value="" assignTo="{!password}" />
+	<apex:param name="surname" value="" assignTo="{!surname}" />
+	<apex:param name="name" value="" assignTo="{!name}" />
+	<apex:param name="middleName" value="" assignTo="{!middleName}" />
+	<apex:param name="login" value="" assignTo="{!login}" />
+	<apex:param name="password" value="" assignTo="{!password}" />
 </apex:actionFunction>
 </apex:form>
 
@@ -20,7 +20,7 @@
 			<abbr class="slds-required" title="required">*</abbr>Name
 		</label>
 		<div class="slds-form-element__control">
-			<input type="text" id="name" class="slds-input" placeholder="Name" />
+			<input type="text" id="name-id" class="slds-input" placeholder="Name" />
 		</div>
 	</div>
 	<div class="slds-form-element">
@@ -28,7 +28,7 @@
 			<abbr class="slds-required" title="required">*</abbr>Surname
 		</label>
 		<div class="slds-form-element__control">
-			<input type="text" id="surname" class="slds-input" placeholder="Surname" />
+			<input type="text" id="surname-id" class="slds-input" placeholder="Surname" />
 		</div>
 	</div>
 	<div class="slds-form-element">
@@ -36,7 +36,7 @@
 			<abbr class="slds-required" title="required">*</abbr>Middle Name
 		</label>
 		<div class="slds-form-element__control">
-			<input type="text" id="middle-name" class="slds-input" placeholder="Middle Name" />
+			<input type="text" id="middle-name-id" class="slds-input" placeholder="Middle Name" />
 		</div>
 	</div>
 	<div class="slds-form-element">
@@ -44,7 +44,7 @@
 			<abbr class="slds-required" title="required">*</abbr>Login
 		</label>
 		<div class="slds-form-element__control">
-			<input type="text" id="login" class="slds-input" placeholder="Login" />
+			<input type="text" id="login-id" class="slds-input" placeholder="Login" />
 		</div>
 	</div>
 	<div class="slds-form-element">
@@ -52,7 +52,7 @@
 			<abbr class="slds-required" title="required">*</abbr>Password
 		</label>
 		<div class="slds-form-element__control">
-			<input type="password" id="password" class="slds-input" placeholder="Password" />
+			<input type="password" id="password-id" class="slds-input" placeholder="Password" />
 		</div>
 	</div>
 	<div class="slds-form-element">
@@ -60,7 +60,7 @@
 			<abbr class="slds-required" title="required">*</abbr>Repeat password
 		</label>
 		<div class="slds-form-element__control">
-			<input type="password" id="repeat-password" class="slds-input" placeholder="Repeat password" />
+			<input type="password" id="repeat-password-id" class="slds-input" placeholder="Repeat password" />
 		</div>
 	</div>
 	<div class="slds-m-vertical--medium"></div>
@@ -72,12 +72,12 @@
 <script type="text/javascript">
 
 function registration() {
-	let surname = document.querySelector('#surname').value;
-	let name = document.querySelector('#name').value;
-	let middleName = document.querySelector('#middle-name').value;
-	let login = document.querySelector('#login').value;
-	let password = document.querySelector('#password').value;
-	let repeatPassword = document.querySelector('#repeat-password').value;
+	let surname = document.querySelector('#surname-id').value;
+	let name = document.querySelector('#name-id').value;
+	let middleName = document.querySelector('#middle-name-id').value;
+	let login = document.querySelector('#login-id').value;
+	let password = document.querySelector('#password-id').value;
+	let repeatPassword = document.querySelector('#repeat-password-id').value;
 
 	if (repeatPassword == password) {
 		setParameters(surname, name, middleName, login, password);

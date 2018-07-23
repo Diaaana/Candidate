@@ -7,28 +7,37 @@ public class LoginController {
 		this.password = '';
 	}
 
-	public PageReference goToRegistration() {
-		return Page.RegistrationPage;
+	public PageReference goToRegistrationPage() {
+		PageReference page = new PageReference('/apex/RegistrationPage');
+		page.setRedirect(true);
+		return page;
 	}
 
-	public PageReference login() {
+	public PageReference doLogin() {
 
-		User__c user = [
+		List<User__c> user = [
 			SELECT Worker__r.Position__c
 			FROM User__c 
 			WHERE Name = :login AND Password__c = :password
-			LIMIT 1
 		];
-		
-		if (user == NULL) {
-			//
+
+		if (user.isEmpty()) {
+			ApexPages.addMessage(
+				new ApexPages.Message(
+					ApexPages.Severity.ERROR, 
+					'Incorrect login or password!'
+				)
+			);
+			PageReference page = new PageReference('/apex/loginPage');
+			page.setRedirect(true);
+			return page;
 		}
 
-		if (user.Worker__r.Position__c == 'Manager') {
+		if (user[0].Worker__r.Position__c == 'Manager') {
 			PageReference page = new PageReference('/apex/mainPage?role=manager');
 			page.setRedirect(true);
 			return page;
-		} else if (user.Worker__r.Position__c == 'HR') {
+		} else if (user[0].Worker__r.Position__c == 'HR') {
 			PageReference page = new PageReference('/apex/mainPage?role=HR');
 			page.setRedirect(true);
 			return page;

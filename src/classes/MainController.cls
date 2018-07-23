@@ -34,9 +34,11 @@ public class MainController {
 	}
 
 	public String candidateID { get; set; }
+	public String workerID { get; set; }
 
 	public MainController() {
 		this.candidateID = '';
+		this.workerID = '';
 	}
 
 	public pageReference goToAddCandidatePage() {
@@ -51,6 +53,14 @@ public class MainController {
 		ID candidateIDValue = ID.valueOf(candidateID);
 		PageReference page = Page.communionCandidatePage;
 		page.getParameters().put('candidateID', candidateIDValue);
+		return page;
+	}
+
+	public pageReference deleteWorker() {
+		Worker__c worker = new Worker__c(ID = ID.valueOf(workerID));
+		delete worker;
+		PageReference page = new PageReference('/apex/mainPage');
+		page.setRedirect(true);
 		return page;
 	}
 

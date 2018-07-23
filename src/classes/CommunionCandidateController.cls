@@ -21,6 +21,7 @@ public with sharing class CommunionCandidateController {
 	public String decision { get; set; }
 	public String amount { get; set; }
 	public List<Candidate__History> changeCandidate { get; set; }
+	public List<Interaction__c> interactions { get; set; }
 
 	public CommunionCandidateController() {
 		candidateID = ApexPages.currentPage().getParameters().get('candidateID');
@@ -56,6 +57,12 @@ public with sharing class CommunionCandidateController {
 			FROM Candidate__History
 			WHERE parentId = :CandidateId AND (Field ='Name' OR Field = 'Status__c')
 		];
+
+		interactions = [
+			SELECT Interview__c, Task__c, DecisionPeriod__c, Decision__c, Amount__c
+			FROM Interaction__c
+			WHERE Candidate__c = :candidateID
+		];
 	}
 
 	public PageReference editCandidate() {
@@ -82,10 +89,11 @@ public with sharing class CommunionCandidateController {
 	}
 
 	public void createCommunionCandidate() {
-		Candidate__c candidate = new Candidate__c(ID = candidateID, Status__c = status, Coming__c = coming, Contact__c = contact);
+		Candidate__c candidate = new Candidate__c(ID = candidateID, Coming__c = coming, Contact__c = contact);
 
 		insert new Interaction__c(
 			Candidate__c = candidate.ID,
+			Task__c = task,
 			Interview__c = Date.valueOf(dateInterview),
 			DecisionPeriod__c = Integer.valueOf(decisionPeriod),
 			Decision__c = decision,

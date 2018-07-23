@@ -2,31 +2,30 @@
 <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
 <head></head>
 <body>
-	<apex:form>
+	<apex:form >
 	<apex:pageMessages />
 	<apex:actionFunction name="setCandidateParameters" action="{!editCandidate}" reRender="view">
-	<apex:param id="surname" name="surname" value="" assignTo="{!surname}" />
-	<apex:param id="name" name="name" value="" assignTo="{!name}" />
-	<apex:param id="middle-name" name="middleName" value="" assignTo="{!middleName}" />
-	<apex:param id="resume" name="resume" value="" assignTo="{!resume}" />
-	<apex:param id="position" name="position" value="" assignTo="{!position}" />
-	<apex:param id="HR" name="HR" value="" assignTo="{!needHR}" />
-	<apex:param id="salary" name="salary" value="" assignTo="{!salary}" />
-	<apex:param id="experience" name="experience" value="" assignTo="{!experience}" />
-	<apex:param id="telephone" name="telephone" value="" assignTo="{!telephone}" />
-	<apex:param id="mail" name="mail" value="" assignTo="{!mail}" />
-	<apex:param id="skype" name="skype" value="" assignTo="{!skype}" />
-	<apex:param id="status" name="status" value="" assignTo="{!status}" />
+	<apex:param name="surname" value="" assignTo="{!surname}" />
+	<apex:param name="name" value="" assignTo="{!name}" />
+	<apex:param name="middleName" value="" assignTo="{!middleName}" />
+	<apex:param name="resume" value="" assignTo="{!resume}" />
+	<apex:param name="position" value="" assignTo="{!position}" />
+	<apex:param name="HR" value="" assignTo="{!needHR}" />
+	<apex:param name="salary" value="" assignTo="{!salary}" />
+	<apex:param name="experience" value="" assignTo="{!experience}" />
+	<apex:param name="telephone" value="" assignTo="{!telephone}" />
+	<apex:param name="mail" value="" assignTo="{!mail}" />
+	<apex:param name="skype" value="" assignTo="{!skype}" />
+	<apex:param name="status" value="" assignTo="{!status}" />
 </apex:actionFunction>
 <apex:actionFunction name="setCommunionParameters" action="{!createCommunionCandidate}" reRender="view">
-<apex:param id="statusValue" name="statusValue" value="" assignTo="{!status}" />
-<apex:param id="taskValue" name="taskValue" value="" assignTo="{!task}" />
-<apex:param id="comingValue" name="comingValue" value="" assignTo="{!coming}" />
-<apex:param id="contactValue" name="contactValue" value="" assignTo="{!contact}" />
-<apex:param id="dateInterviewValue" name="dateInterviewValue" value="" assignTo="{!dateInterview}" />
-<apex:param id="decisionPeriodValue" name="decisionPeriodValue" value="" assignTo="{!decisionPeriod}" />
-<apex:param id="decisionValue" name="decisionValue" value="" assignTo="{!decision}" />
-<apex:param id="amountValue" name="amountValue" value="" assignTo="{!amount}" />
+<apex:param name="taskValue" value="" assignTo="{!task}" />
+<apex:param name="comingValue" value="" assignTo="{!coming}" />
+<apex:param name="contactValue" value="" assignTo="{!contact}" />
+<apex:param name="dateInterviewValue" value="" assignTo="{!dateInterview}" />
+<apex:param name="decisionPeriodValue" value="" assignTo="{!decisionPeriod}" />
+<apex:param name="decisionValue" value="" assignTo="{!decision}" />
+<apex:param name="amountValue" value="" assignTo="{!amount}" />
 </apex:actionFunction>
 <apex:slds />
 <div class="slds-m-vertical--medium"></div>
@@ -169,7 +168,7 @@
 
 <div class="slds-m-vertical--medium"></div>
 <div id="history-candidate-table-id" hidden="true">
-	<apex:pageBlock>
+	<apex:pageBlock >
 	<apex:pageBlockTable value="{!changeCandidate}" var="historyCandidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
 	<apex:column value="{!historyCandidate.CreatedDate}" />
 	<apex:column value="{!historyCandidate.Field}" />
@@ -181,29 +180,16 @@
 <div class="slds-m-vertical--medium"></div>
 
 <div class="slds-align_absolute-left">
-	<button class="slds-button slds-button_brand" onclick="addInteraction(); return false;" reRender="view">Interaction</button>
+	<button class="slds-button slds-button_brand" onclick="addInteraction(); return false;" reRender="view">Create interaction</button>
+	<button id="button-hide-interaction-id" class="slds-button slds-button_brand" onclick="hideInteraction(); return false;" reRender="view" style="display: none;">Hide Interaction</button>
 </div>
+<div class="slds-m-vertical--medium"></div>
 
 <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small" id="interaction-id" hidden="true">
-	<div class="slds-form-element">
-		<label class="slds-form-element__label">Status</label>
-		<div class="slds-form-element__control">
-			<div class="slds-select_container">
-				<apex:selectList styleClass="status-class" size="1">
-				<apex:selectOption itemValue="Start"/>
-				<apex:selectOption itemValue="Questionnaire"/>
-				<apex:selectOption itemValue="Executing the test task"/>
-				<apex:selectOption itemValue="Interview"/>
-				<apex:selectOption itemValue="Decision making"/>
-				<apex:selectOption itemValue="Decision is made"/>
-			</apex:selectList>
-		</div>
-	</div>
-</div>
 <div class="slds-form-element">
 	<label class="slds-form-element__label">Task</label>
 	<div class="slds-form-element__control">
-		<input type="file" id="task-id" class="slds-input" placeholder="Task" />
+		<input type="text" id="task-id" class="slds-input" placeholder="Task" />
 	</div>
 </div>
 <div class="slds-form-element">
@@ -261,8 +247,28 @@
 <div class="slds-align_absolute-center">
 	<button class="slds-button slds-button_brand" onclick="getCommunionParameters()" reRender="view">OK</button>
 </div>
-<div class="slds-text-heading_medium" style="font-weight: bold;">Сomments</div>
 </div>
+
+<div class="slds-align_absolute-left">
+	<button class="slds-button slds-button_brand" onclick="showInteractions(); return false;" reRender="view">Show interactions</button>
+	<button id="button-hide-interactions-id" class="slds-button slds-button_brand" onclick="hideInteractions(); return false;" reRender="view" style="display: none;">Hide interactions</button>
+</div>
+
+<div class="slds-m-vertical--medium"></div>
+<div id="interactions-table-id" hidden="true">
+	<apex:pageBlock >
+	<apex:pageBlockTable value="{!interactions}" var="interaction" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+	<apex:column value="{!interaction.Interview__c}" />
+	<apex:column value="{!interaction.Task__c}" />
+	<apex:column value="{!interaction.DecisionPeriod__c}" />
+	<apex:column value="{!interaction.Decision__c}" />
+	<apex:column value="{!interaction.Amount__c}" />
+</apex:pageBlockTable>
+</apex:pageBlock>
+</div>
+<div class="slds-m-vertical--medium"></div>
+
+<!-- <div class="slds-text-heading_medium" style="font-weight: bold;">Сomments</div> -->
 </apex:form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -294,7 +300,6 @@ function getCandidateParameters() {
 };
 
 function getCommunionParameters() {
-	let statusValue = document.querySelector('.status-class').value;
 	let taskValue = document.querySelector('#task-id').value;
 	let comingValue = document.querySelector('.coming-class').value;
 	let contactValue = document.querySelector('.contact-class').value;
@@ -303,7 +308,7 @@ function getCommunionParameters() {
 	let decisionValue = document.querySelector('.decision-class').value;
 	let amountValue = document.querySelector('#amount-id').value;
 
-	setCommunionParameters(statusValue, taskValue, comingValue, contactValue, dateInterviewValue, decisionPeriodValue, decisionValue, amountValue);
+	setCommunionParameters(taskValue, comingValue, contactValue, dateInterviewValue, decisionPeriodValue, decisionValue, amountValue);
 };
 
 function showCandidateHistory() {
@@ -318,7 +323,23 @@ function hideCandidateHistory() {
 
 function addInteraction() {
 	j$('#interaction-id').show();
+	j$('#button-hide-interaction-id').show();
 };
+
+function showInteractions() {
+	j$('#interactions-table-id').show();
+	j$('#button-hide-interactions-id').show();
+};
+
+function hideInteraction() {
+	j$('#interaction-id').hide();
+	j$('#button-hide-interaction-id').hide();
+}
+
+function hideInteractions() {
+	j$('#interactions-table-id').hide();
+	j$('#button-hide-interactions-id').hide();
+}
 
 </script>
 

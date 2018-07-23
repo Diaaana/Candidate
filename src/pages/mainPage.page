@@ -6,18 +6,22 @@
 	<apex:actionFunction name="addCandidate" action="{!goToAddCandidatePage}" />
 	<apex:actionFunction name="addWorker" action="{!goToAddWorkerPage}" />
 	<apex:actionFunction name="setCandidate" action="{!goToCandidatePage}" reRender="view" >
-	<apex:param id="candidateID" name="candidateID" value="" assignTo="{!candidateID}" />
+	<apex:param name="candidateID" value="" assignTo="{!candidateID}" />
+	</apex:actionFunction>
+	<apex:actionFunction name="deleteWorkerById" action="{!deleteWorker}" reRender="view" >
+	<apex:param name="workerID" value="" assignTo="{!workerID}" />
 	</apex:actionFunction>
 </apex:form>
 
 <apex:slds />
 <div class="slds-tabs--default">
 	<ul class="slds-tabs--default__nav" role="tablist">
+
 		<li class="slds-tabs--default__item slds-text-heading--label slds-active" title="Item One" role="presentation">
 			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Candidates
 			</a>
 		</li>
-		<li id="id-li-users" class="slds-tabs--default__item slds-text-heading--label" title="Item Two" role="presentation" hidden="true">
+		<li id="li-users-id" class="slds-tabs--default__item slds-text-heading--label" title="Item Two" role="presentation" hidden="true">
 			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Users
 			</a>
 		</li>
@@ -33,47 +37,48 @@
 		<apex:pageBlock>
 		<apex:pageBlockTable value="{!candidatesList}" var="candidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
 		<apex:column>
-			<a href="javascript:void(0);" class="slds-text-link_reset" onclick="getCandidate('{!candidate.ID}')">Show</a>
-		</apex:column>
-		<apex:column value="{!candidate.Name}"/>
-		<apex:column value="{!candidate.Surname__c}"/>
-		<apex:column value="{!candidate.MiddleName__c}"/>
-		<apex:column value="{!candidate.LastMeeting__c}"/>
-		<apex:column value="{!candidate.Resume__c}"/>
-		<apex:column value="{!candidate.Position__c}"/>
-		<apex:column value="{!candidate.HR__c}"/>
-		<apex:column value="{!candidate.Salary__c}"/>
-		<apex:column value="{!candidate.Experience__c}"/>
-		<apex:column value="{!candidate.PhoneNumber__c}"/>
-		<apex:column value="{!candidate.Skype__c}"/>
-		<apex:column value="{!candidate.Status__c}"/>
-		</apex:pageBlockTable>
-		</apex:pageBlock>
-	</div>
-	<div id="tab-default-2" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">
-		<apex:pageBlock>
-		<apex:pageBlockTable value="{!usersList}" var="user" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
-		<apex:column value="{!user.CreatedDate}" />
-		<apex:column value="{!user.Worker__r.Name}" />
-		<apex:column value="{!user.Worker__r.Surname__c}" />
-		<apex:column value="{!user.Worker__r.MiddleName__c}" />
-		<apex:column value="{!user.Name}" />
-		</apex:pageBlockTable>
-		</apex:pageBlock>
-	</div>
-	<div id="tab-default-3" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">
-		<button class="slds-button slds-button_brand" onclick="addWorker()">Add worker
-		</button>
-		<div class="slds-m-vertical--large"></div>
-		<apex:pageBlock>
-		<apex:pageBlockTable value="{!workersList}" var="worker" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
-		<apex:column value="{!worker.Name}"/>
-		<apex:column value="{!worker.Surname__c}"/>
-		<apex:column value="{!worker.MiddleName__c}"/>
-		<apex:column value="{!worker.Position__c}"/>
-		</apex:pageBlockTable>
-		</apex:pageBlock>
-	</div>
+		<a href="javascript:void(0);" class="slds-text-link_reset" onclick="getCandidate('{!candidate.ID}')">Show</a>
+	</apex:column>
+	<apex:column value="{!candidate.Name}"/>
+	<apex:column value="{!candidate.Surname__c}"/>
+	<apex:column value="{!candidate.MiddleName__c}"/>
+	<apex:column value="{!candidate.LastMeeting__c}"/>
+	<apex:column value="{!candidate.Resume__c}"/>
+	<apex:column value="{!candidate.Position__c}"/>
+	<apex:column value="{!candidate.HR__c}"/>
+	<apex:column value="{!candidate.Salary__c}"/>
+	<apex:column value="{!candidate.Experience__c}"/>
+	<apex:column value="{!candidate.PhoneNumber__c}"/>
+	<apex:column value="{!candidate.Skype__c}"/>
+	<apex:column value="{!candidate.Status__c}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</div>
+<div id="tab-default-2" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">
+	<apex:pageBlock>
+	<apex:pageBlockTable value="{!usersList}" var="user" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+	<apex:column value="{!user.CreatedDate}" />
+	<apex:column value="{!user.Worker__r.Name}" />
+	<apex:column value="{!user.Worker__r.Surname__c}" />
+	<apex:column value="{!user.Worker__r.MiddleName__c}" />
+	<apex:column value="{!user.Name}" />
+</apex:pageBlockTable>
+</apex:pageBlock>
+</div>
+<div id="tab-default-3" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">
+	<button class="slds-button slds-button_brand" onclick="addWorker()">Add worker
+	</button>
+	<div class="slds-m-vertical--large"></div>
+	<apex:pageBlock>
+	<apex:pageBlockTable value="{!workersList}" var="worker" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+	<apex:column><button class="slds-button slds-button_brand" onclick="deleteWorker('{!worker.ID}')">Delete</button></apex:column>
+	<apex:column value="{!worker.Name}"/>
+	<apex:column value="{!worker.Surname__c}"/>
+	<apex:column value="{!worker.MiddleName__c}"/>
+	<apex:column value="{!worker.Position__c}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -96,21 +101,25 @@ function getCandidate(candidateID) {
 	setCandidate(candidateID);
 };
 
+function deleteWorker(workerID) {
+	deleteWorkerById(workerID);
+};
+
 function getUrlRole() {
 	var vars = {};
 	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
 		vars[key] = value;
 	});
 	return vars;
-}
+};
 
 window.onload = function() {
 	var roleValue = getUrlRole()["role"];
 
 	if (roleValue == 'manager') {
-		document.getElementById('id-li-users').removeAttribute('hidden');
+		document.getElementById('li-users-id').removeAttribute('hidden');
 	}	
-}
+};
 
 </script>
 
