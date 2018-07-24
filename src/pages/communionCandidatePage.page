@@ -27,10 +27,16 @@
 <apex:param name="decisionValue" value="" assignTo="{!decision}" />
 <apex:param name="amountValue" value="" assignTo="{!amount}" />
 </apex:actionFunction>
+<apex:actionFunction name="mainPage" action="{!goToMainPage}" reRender="view" />
+
 <apex:slds />
 <div class="slds-m-vertical--medium"></div>
 <div class="slds-text-heading_medium" style="font-weight: bold;">View candidate</div>
 <div class="slds-m-vertical--medium"></div>
+<div class="slds-align_absolute-right">
+	<button class="slds-button slds-button_brand" onclick="mainPage()" reRender="view">Main Page</button>
+	<div class="slds-m-vertical--medium"></div>
+</div>
 <apex:dataList value="{!candidates}" var="candidate">
 <div class="slds-grid slds-wrap">
 	<div class="slds-col slds-size_1-of-2">

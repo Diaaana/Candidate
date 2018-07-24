@@ -35,31 +35,60 @@ public class MainController {
 
 	public String candidateID { get; set; }
 	public String workerID { get; set; }
+	public String roleValue { get; set; }
+	public String userID { get; set; }
+	public String workerSurname { get; set; }
 
 	public MainController() {
 		this.candidateID = '';
 		this.workerID = '';
+		this.roleValue = '';
+		userID = ApexPages.currentPage().getParameters().get('user');
+		this.workerSurname = '';
 	}
 
-	public pageReference goToAddCandidatePage() {
-		return Page.addCandidatePage;
-	}
-
-	public pageReference goToAddWorkerPage() {
-		return Page.addWorkerPage;
-	}
-
-	public pageReference goToCandidatePage() {
-		ID candidateIDValue = ID.valueOf(candidateID);
-		PageReference page = Page.communionCandidatePage;
-		page.getParameters().put('candidateID', candidateIDValue);
+	public PageReference goToAddCandidatePage() {
+		PageReference page = new PageReference('/apex/addCandidatePage?role=' + roleValue);
+		page.setRedirect(true);
 		return page;
 	}
 
-	public pageReference deleteWorker() {
+	public PageReference goToAddWorkerPage() {
+		PageReference page = new PageReference('/apex/addWorkerPage?role=' + roleValue);
+		page.setRedirect(true);
+		return page;
+	}
+
+	public PageReference goToCandidatePage() {
+		PageReference page = Page.communionCandidatePage;
+		page.getParameters().put('candidateID', ID.valueOf(candidateID));
+		page.getParameters().put('role', roleValue);
+		page.setRedirect(true);
+		return page;
+	}
+
+	public PageReference deleteWorker() {
 		Worker__c worker = new Worker__c(ID = ID.valueOf(workerID));
 		delete worker;
 		PageReference page = new PageReference('/apex/mainPage');
+		page.setRedirect(true);
+		return page;
+	}
+
+	public PageReference goToPersonalPage() {
+		PageReference page = new PageReference('/apex/personalUserPage?user=' + userID);
+		page.setRedirect(true);
+		return page;
+	}
+
+	public PageReference logout() {
+		PageReference page = new PageReference('/apex/loginPage');
+		page.setRedirect(true);
+		return page;
+	}
+
+	public PageReference showWorkerInteraction() {
+		PageReference page = new PageReference('/apex/workerInteractionPage?worker=' + workerSurname);
 		page.setRedirect(true);
 		return page;
 	}

@@ -1,0 +1,76 @@
+<apex:page showHeader="true" sidebar="true" controller="PersonalUserController">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head></head>
+<body>
+<apex:form>
+	<apex:actionFunction name="setParameters" action="{!editUser}" reRender="view">
+	<apex:param name="name" value="" assignTo="{!name}" />
+	<apex:param name="surname" value="" assignTo="{!surname}" />
+	<apex:param name="middleName" value="" assignTo="{!middleName}" />
+	<apex:param name="login" value="" assignTo="{!login}" />
+	<apex:param name="password" value="" assignTo="{!password}" />
+</apex:actionFunction>
+<apex:actionFunction name="mainPage" action="{!goToMainPage}" />
+</apex:form>
+
+<apex:slds />
+<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+	<div class="slds-align_absolute-center">
+		<button class="slds-button slds-button_brand" onclick="mainPage()" reRender="view">Main page</button>
+	</div>
+	<div class="slds-m-vertical--x-medium"></div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label">Created date: {!user.CreatedDate}</label>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label">Name</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="name-id" class="slds-input" value="{!user.Worker__r.Name}" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label">Surname</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="surname-id" class="slds-input" value="{!user.Worker__r.Surname__c}" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label">Middle name</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="middle-name-id" class="slds-input" value="{!user.Worker__r.MiddleName__c}" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label">Login</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="login-id" class="slds-input" value="{!user.Name}" />
+		</div>
+	</div>
+	<div class="slds-form-element">
+		<label class="slds-form-element__label">Password</label>
+		<div class="slds-form-element__control">
+			<input type="text" id="password-id" class="slds-input" value="{!user.Password__c}" />
+		</div>
+	</div>
+	<div class="slds-m-vertical--medium"></div>
+	<div class="slds-align_absolute-center">
+		<button class="slds-button slds-button_brand" onclick="getParameters()" reRender="view">Edit information</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+	
+	function getParameters() {
+		let nameValue = document.querySelector('#name-id').value;
+		let surnameValue = document.querySelector('#surname-id').value;
+		let middleNameValue = document.querySelector('#middle-name-id').value;
+		let loginValue = document.querySelector('#login-id').value;
+		let passwordValue = document.querySelector('#password-id').value;
+		setParameters(nameValue, surnameValue, middleNameValue, loginValue, passwordValue);
+	}
+
+</script>
+
+</body>
+</html>
+</apex:page>

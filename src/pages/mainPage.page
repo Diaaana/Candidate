@@ -3,56 +3,67 @@
 <head></head>
 <body>
 	<apex:form >
-	<apex:actionFunction name="addCandidate" action="{!goToAddCandidatePage}" />
-	<apex:actionFunction name="addWorker" action="{!goToAddWorkerPage}" />
-	<apex:actionFunction name="setCandidate" action="{!goToCandidatePage}" reRender="view" >
-	<apex:param name="candidateID" value="" assignTo="{!candidateID}" />
-	</apex:actionFunction>
-	<apex:actionFunction name="deleteWorkerById" action="{!deleteWorker}" reRender="view" >
-	<apex:param name="workerID" value="" assignTo="{!workerID}" />
-	</apex:actionFunction>
+	<apex:actionFunction name="addCandidatePage" action="{!goToAddCandidatePage}" reRender="view" >
+	<apex:param name="role" value="" assignTo="{!roleValue}" />
+</apex:actionFunction>
+<apex:actionFunction name="addWorkerPage" action="{!goToAddWorkerPage}" reRender="view" >
+<apex:param name="role" value="" assignTo="{!roleValue}" />
+</apex:actionFunction>
+<apex:actionFunction name="setCandidate" action="{!goToCandidatePage}" reRender="view" >
+<apex:param name="candidateID" value="" assignTo="{!candidateID}" />
+<apex:param name="role" value="" assignTo="{!roleValue}" />
+</apex:actionFunction>
+<apex:actionFunction name="deleteWorkerById" action="{!deleteWorker}" reRender="view" >
+<apex:param name="workerID" value="" assignTo="{!workerID}" />
+</apex:actionFunction>
+<apex:actionFunction name="personalPage" action="{!goToPersonalPage}" reRender="view" />
+<apex:actionFunction name="logout" action="{!logout}" />
+<apex:actionFunction name="setWorker" action="{!showWorkerInteraction}" reRender="view" >
+<apex:param name="worker" value="" assignTo="{!workerSurname}" />
+<apex:param name="role" value="" assignTo="{!roleValue}" />
+</apex:actionFunction>
 </apex:form>
 
 <apex:slds />
+<div class="slds-m-vertical--medium"></div>
+<div class="slds-align_absolute-center">
+	<button class="slds-button slds-button_brand" onclick="logout()" reRender="view">Log Out</button>
+</div>
 <div class="slds-tabs--default">
 	<ul class="slds-tabs--default__nav" role="tablist">
-
-		<li class="slds-tabs--default__item slds-text-heading--label slds-active" title="Item One" role="presentation">
-			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Candidates
+		<li id="li-workers-id" class="slds-tabs--default__item slds-text-heading--label slds-active" title="Item One" role="presentation">
+			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Workers
 			</a>
 		</li>
 		<li id="li-users-id" class="slds-tabs--default__item slds-text-heading--label" title="Item Two" role="presentation" hidden="true">
 			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Users
 			</a>
 		</li>
-		<li class="slds-tabs--default__item slds-text-heading--label" title="Item Three" role="presentation">
-			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item">Workers
+		<li id="li-candidates-id" class="slds-tabs--default__item slds-text-heading--label" title="Item Three" role="presentation" hidden="true">
+			<a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item">Candidates
 			</a>
 		</li>
 	</ul>
 	<div id="tab-default-1" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
-		<button class="slds-button slds-button_brand" onclick="addCandidate()">Add candidate
+		<button id="personal-page-buttton-id" class="slds-button slds-button_brand" onclick="personalPage()" style="display: none;">Personal page</button>
+		<button id="add-worker-buttton-id" class="slds-button slds-button_brand" onclick="addWorker()" style="display: none;">Add worker
 		</button>
 		<div class="slds-m-vertical--large"></div>
 		<apex:pageBlock>
-		<apex:pageBlockTable value="{!candidatesList}" var="candidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
-		<apex:column>
-		<a href="javascript:void(0);" class="slds-text-link_reset" onclick="getCandidate('{!candidate.ID}')">Show</a>
+		<apex:pageBlockTable value="{!workersList}" var="worker" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+	<apex:column value="{!worker.Name}"/>
+	<apex:column value="{!worker.Surname__c}"/>
+	<apex:column value="{!worker.MiddleName__c}"/>
+	<apex:column value="{!worker.Position__c}"/>
+	<apex:column style="display: none;" styleClass="delete-worker-buttton-class">
+		<a href="javascript:void(0);" class="slds-text-link_reset" onclick="deleteWorker('{!worker.ID}')">Delete</a>
 	</apex:column>
-	<apex:column value="{!candidate.Name}"/>
-	<apex:column value="{!candidate.Surname__c}"/>
-	<apex:column value="{!candidate.MiddleName__c}"/>
-	<apex:column value="{!candidate.LastMeeting__c}"/>
-	<apex:column value="{!candidate.Resume__c}"/>
-	<apex:column value="{!candidate.Position__c}"/>
-	<apex:column value="{!candidate.HR__c}"/>
-	<apex:column value="{!candidate.Salary__c}"/>
-	<apex:column value="{!candidate.Experience__c}"/>
-	<apex:column value="{!candidate.PhoneNumber__c}"/>
-	<apex:column value="{!candidate.Skype__c}"/>
-	<apex:column value="{!candidate.Status__c}"/>
+	<apex:column style="display: none;" styleClass="show-worker-buttton-class">
+		<a href="javascript:void(0);" class="slds-text-link_reset" onclick="showWorkerInteractionr('{!worker.Surname__c}')">Show Interaction</a>
+	</apex:column>
 </apex:pageBlockTable>
 </apex:pageBlock>
+
 </div>
 <div id="tab-default-2" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">
 	<apex:pageBlock>
@@ -66,16 +77,26 @@
 </apex:pageBlock>
 </div>
 <div id="tab-default-3" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">
-	<button class="slds-button slds-button_brand" onclick="addWorker()">Add worker
+	<button class="slds-button slds-button_brand" onclick="addCandidate()">Add candidate
 	</button>
 	<div class="slds-m-vertical--large"></div>
 	<apex:pageBlock>
-	<apex:pageBlockTable value="{!workersList}" var="worker" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
-	<apex:column><button class="slds-button slds-button_brand" onclick="deleteWorker('{!worker.ID}')">Delete</button></apex:column>
-	<apex:column value="{!worker.Name}"/>
-	<apex:column value="{!worker.Surname__c}"/>
-	<apex:column value="{!worker.MiddleName__c}"/>
-	<apex:column value="{!worker.Position__c}"/>
+	<apex:pageBlockTable value="{!candidatesList}" var="candidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+	<apex:column>
+	<a href="javascript:void(0);" class="slds-text-link_reset" onclick="getCandidate('{!candidate.ID}')">Show</a>
+</apex:column>
+<apex:column value="{!candidate.Name}"/>
+<apex:column value="{!candidate.Surname__c}"/>
+<apex:column value="{!candidate.MiddleName__c}"/>
+<apex:column value="{!candidate.LastMeeting__c}"/>
+<apex:column value="{!candidate.Resume__c}"/>
+<apex:column value="{!candidate.Position__c}"/>
+<apex:column value="{!candidate.HR__c}"/>
+<apex:column value="{!candidate.Salary__c}"/>
+<apex:column value="{!candidate.Experience__c}"/>
+<apex:column value="{!candidate.PhoneNumber__c}"/>
+<apex:column value="{!candidate.Skype__c}"/>
+<apex:column value="{!candidate.Status__c}"/>
 </apex:pageBlockTable>
 </apex:pageBlock>
 </div>
@@ -85,26 +106,14 @@
 <script>
 var j$ = jQuery.noConflict();
 </script>
-<script>
 
-j$('.slds-tabs--default__link,.slds-tabs--scoped__link').click(function(){
-	j$(this).parent().parent().find('.slds-tabs--default__link').attr('aria-selected','false');
-	j$(this).attr('aria-selected','true');
-	j$(this).parent().parent().find('.slds-tabs--default__link').attr('tabindex','-1');
-	j$(this).attr('tabindex','0');
-	j$(this).parent().addClass('slds-active').siblings().removeClass('slds-active');
-	j$(this).parent().parent().parent().find('.'+j$(this).parent().parent().parent().find('.slds-tabs--default__content')[0].classList[0]).removeClass('slds-show').addClass('slds-hide');
-	j$(this).parent().parent().parent().find('#'+j$(this).attr('aria-controls')).removeClass('slds-hide').addClass('slds-show');
-});
-
-function getCandidate(candidateID) {
-	setCandidate(candidateID);
+<script type="text/javascript">
+function setSelectedTab(tab) {
+	setTab(tab);
 };
+</script>
 
-function deleteWorker(workerID) {
-	deleteWorkerById(workerID);
-};
-
+<script type="text/javascript">
 function getUrlRole() {
 	var vars = {};
 	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
@@ -117,9 +126,102 @@ window.onload = function() {
 	var roleValue = getUrlRole()["role"];
 
 	if (roleValue == 'manager') {
-		document.getElementById('li-users-id').removeAttribute('hidden');
+		j$('#add-worker-buttton-id').show();
+		j$('.show-worker-buttton-class').show();
+		j$('.delete-worker-buttton-class').show();
+		j$('#li-users-id').show();
+		j$('#li-candidates-id').show();
+	}
+
+	if (roleValue == 'HR') {
+		j$('#li-candidates-id').show();
+		j$('#add-worker-buttton-id').show();
+		j$('.show-worker-buttton-class').show();
+		j$('#delete-worker-buttton-id').show();
+	}
+
+	if (roleValue == 'worker') {
+		j$('#delete-worker-buttton-id').hide();
+		j$('#personal-page-buttton-id').show();
 	}	
+
+	getSelectedTab();
 };
+
+function addCandidate() {
+	var roleValue = getUrlRole()["role"];
+	addCandidatePage(roleValue);
+};
+
+function addWorker() {
+	var roleValue = getUrlRole()["role"];
+	addWorkerPage(roleValue);
+};
+
+function getCandidate(candidateID) {
+	var roleValue = getUrlRole()["role"];
+	setCandidate(candidateID, roleValue);
+};
+
+function deleteWorker(workerID) {
+	deleteWorkerById(workerID);
+};
+
+function showWorkerInteractionr(worker) {
+	var roleValue = getUrlRole()["role"];
+	setWorker(worker, roleValue);
+};
+
+    // get the tab value from the URL 
+    var urlParameter = function getURLParam( param ) {
+    	var pageUrl = decodeURIComponent( window.location.search.substring( 1 )),
+    	urlVars = pageUrl.split( "&" ),
+    	parmName;
+
+    	for( var i = 0; i < urlVars.length; i++ ){
+
+    		parmName = urlVars[ i ].split( '=' );
+
+    		if( parmName[ 0 ] === param ){
+                return ( parmName[ 1 ] === undefined ? "tab1" : parmName[ 1 ] );    // default return first tab - otherwise selected tab
+            }
+        }
+
+    };
+
+
+    // get the selected tab and set the others unselected 
+    function getSelectedTab() {
+    	var tab = urlParameter("selectedTab");
+
+    	j$("#" + tab).attr("aria-selected", true );
+    	j$("#" + tab).parent("li").siblings().children("a").attr("tabindex", -1);
+
+    	j$("#" + tab).parent("li").addClass("slds-active");
+
+    	j$("[ class^='slds-tab' ]").each( function(index){
+    		if( j$(this).id !== tab ){
+                // remove the selected
+                j$(this).children( "a" ).attr( "aria-selected", false );
+                j$(this).removeClass( "slds-active" );
+
+                // hide the other tab panel
+                j$(this).children( "div[role='tabpanel'].slds-show" ).removeClass( "slds-show" );
+                j$(this).children( "div[role='tabpanel'].slds-show" ).addClass( "slds-hide" );
+            }
+        });
+    };
+
+
+    j$('.slds-tabs--default__link,.slds-tabs--scoped__link').click(function(){
+    	j$(this).parent().parent().find('.slds-tabs--default__link').attr('aria-selected','false');
+    	j$(this).attr('aria-selected','true');
+    	j$(this).parent().parent().find('.slds-tabs--default__link').attr('tabindex','-1');
+    	j$(this).attr('tabindex','0');
+    	j$(this).parent().addClass('slds-active').siblings().removeClass('slds-active');
+    	j$(this).parent().parent().parent().find('.'+j$(this).parent().parent().parent().find('.slds-tabs--default__content')[0].classList[0]).removeClass('slds-show').addClass('slds-hide');
+    	j$(this).parent().parent().parent().find('#'+j$(this).attr('aria-controls')).removeClass('slds-hide').addClass('slds-show');
+    });
 
 </script>
 

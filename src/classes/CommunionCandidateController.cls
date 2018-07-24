@@ -22,6 +22,7 @@ public with sharing class CommunionCandidateController {
 	public String amount { get; set; }
 	public List<Candidate__History> changeCandidate { get; set; }
 	public List<Interaction__c> interactions { get; set; }
+	public String roleValue;
 
 	public CommunionCandidateController() {
 		candidateID = ApexPages.currentPage().getParameters().get('candidateID');
@@ -63,9 +64,27 @@ public with sharing class CommunionCandidateController {
 			FROM Interaction__c
 			WHERE Candidate__c = :candidateID
 		];
+
+		this.roleValue = ApexPages.currentPage().getParameters().get('role');
 	}
 
 	public PageReference editCandidate() {
+
+		if (status.equals('Decision is made')) {
+			
+			List<Interaction__c> interactions = new List<Interaction__c>();
+			interactions = [
+				SELECT Name, Candidate__r.Surname__c
+				FROM Interaction__c
+				WHERE Candidate__c = :candidateID
+			];
+			
+			for (Integer i = 0; i < interactions.size(); i++) {
+				interactions[i].Name = interactions[i].Candidate__r.Surname__c;
+				update interactions[i];
+			}
+		}
+
 		Candidate__c candidate = new Candidate__c(
 			ID = candidateID,
 			Name = name, 
@@ -82,6 +101,10 @@ public with sharing class CommunionCandidateController {
 			Status__c = status
 		);
 		update candidate;
+
+		if (status.equals('Decision is made')) {
+
+		}
 
 		PageReference page = new PageReference('/apex/communionCandidatePage?candidateID=' + candidateID);
 		page.setRedirect(true);
@@ -101,5 +124,11 @@ public with sharing class CommunionCandidateController {
 		);
 
 		update candidate;
+	}
+
+	public pageReference goToMainPage() {
+		PageReference page = new PageReference('/apex/mainPage?role=' + roleValue);
+		page.setRedirect(true);
+		return page;
 	}
 }

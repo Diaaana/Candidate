@@ -9,9 +9,13 @@
 	<apex:param name="middleName" value="" assignTo="{!middleName}" />
 	<apex:param name="position" value="" assignTo="{!position}" />
 </apex:actionFunction>
+<apex:actionFunction name="mainPage" action="{!goToMainPage}" reRender="view" />
 
 <apex:slds />
 <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+	<div class="slds-align_absolute-center">
+		<button class="slds-button slds-button_brand" onclick="mainPage()" reRender="view">Main page</button>
+	</div>
 	<div class="slds-form-element">
 		<label class="slds-form-element__label" for="text-input-id-1">
 			<abbr class="slds-required" title="required">*</abbr>Name

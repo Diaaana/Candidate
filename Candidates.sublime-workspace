@@ -531,7 +531,7 @@
 			"file": "src/classes/LoginController.cls",
 			"settings":
 			{
-				"buffer_size": 1254,
+				"buffer_size": 1243,
 				"line_ending": "Unix"
 			}
 		}
@@ -703,7 +703,7 @@
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1254,
+						"buffer_size": 1243,
 						"regions":
 						{
 						},
@@ -720,7 +720,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 240.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

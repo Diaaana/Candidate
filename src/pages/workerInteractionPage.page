@@ -1,0 +1,17 @@
+<apex:page showHeader="true" sidebar="true" controller="WorkerInteractionController">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+<head></head>
+<body>
+	<apex:slds />
+	<apex:pageBlock>
+	<apex:pageBlockTable value="{!interactions}" var="interaction" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+	<apex:column value="{!interaction.Interview__c}"/>
+	<apex:column value="{!interaction.Task__c}"/>
+	<apex:column value="{!interaction.Decision__c}"/>
+	<apex:column value="{!interaction.DecisionPeriod__c}"/>
+	<apex:column value="{!interaction.Amount__c}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</body>
+</html>
+</apex:page>

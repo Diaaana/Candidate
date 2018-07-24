@@ -13,6 +13,7 @@ public class AddCandidateController {
 	public String skype { get; set; }
 	public String coming { get; set; }
 	public String contact { get; set; }
+	public String roleValue;
 
 	public List<SelectOption> getHR {
 		get {
@@ -45,6 +46,7 @@ public class AddCandidateController {
 		this.skype = '';
 		this.coming = '';
 		this.contact = '';
+		roleValue = ApexPages.currentPage().getParameters().get('role');
 	}
 
 	public PageReference createCandidate() {
@@ -62,9 +64,17 @@ public class AddCandidateController {
 			Skype__c = skype,
 			Coming__c = coming,
 			Contact__c = contact,
-			Status__c = 'Старт'
+			Status__c = 'Start'
 		);
 
-		return Page.mainPage;
+		PageReference page = new PageReference('/apex/mainPage?role=' + roleValue);
+		page.setRedirect(true);
+		return page;
+	}
+
+	public PageReference goToMainPage() {
+		PageReference page = new PageReference('/apex/mainPage?role=' + roleValue);
+		page.setRedirect(true);
+		return page;
 	}
 }

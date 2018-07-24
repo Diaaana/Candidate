@@ -26,7 +26,8 @@
 	<div class="slds-m-vertical--medium"></div>
 	<div class="slds-align_absolute-center">
 		<a href="javascript:void(0);" class="slds-text-link_reset" onclick="registration()">Registration</a>
-		<button class="slds-button slds-button_brand" onclick="getParameters()">Login</button>
+		<div class="slds-m-left--medium"></div>
+		<button class="slds-button slds-button_brand" onclick="getParameters()">Log In</button>
 	</div>
 </div>
 
