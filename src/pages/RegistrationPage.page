@@ -1,10 +1,12 @@
 <apex:page controller="RegistrationController" title="Registration">
 <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
-<head></head>
+<head>
+	<apex:stylesheet value="{!$Resource.style}"/>
+</head>
 <body>
-	<apex:form >
-	<apex:pageMessages />
-	<apex:actionFunction name="setParameters" action="{!doRegistration}">
+	<apex:form>
+	<apex:pageMessages></apex:pageMessages>
+	<apex:actionFunction name="setParameters" action="{!doRegistration}" reRender="view">
 	<apex:param name="surname" value="" assignTo="{!surname}" />
 	<apex:param name="name" value="" assignTo="{!name}" />
 	<apex:param name="middleName" value="" assignTo="{!middleName}" />
@@ -15,63 +17,125 @@
 
 <apex:slds />
 <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Name
-		</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="name-id" class="slds-input" placeholder="Name" />
+	<form name="form">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Name
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="name-id" class="slds-input" name="name" placeholder="Name" />
+			</div>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Surname
-		</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="surname-id" class="slds-input" placeholder="Surname" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Surname
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="surname-id" class="slds-input" name="surname" placeholder="Surname" />
+			</div>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Middle Name
-		</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="middle-name-id" class="slds-input" placeholder="Middle Name" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Middle Name
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="middle-name-id" class="slds-input" name="middleName" placeholder="Middle Name" />
+			</div>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Login
-		</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="login-id" class="slds-input" placeholder="Login" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Login
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="login-id" class="slds-input" name="login" placeholder="Login" />
+			</div>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Password
-		</label>
-		<div class="slds-form-element__control">
-			<input type="password" id="password-id" class="slds-input" placeholder="Password" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Password
+			</label>
+			<div class="slds-form-element__control">
+				<input type="password" id="password-id" class="slds-input" name="password" placeholder="Password" />
+			</div>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Repeat password
-		</label>
-		<div class="slds-form-element__control">
-			<input type="password" id="repeat-password-id" class="slds-input" placeholder="Repeat password" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Repeat password
+			</label>
+			<div class="slds-form-element__control">
+				<input type="password" id="repeat-password-id" class="slds-input" name="repeatPassword" placeholder="Repeat password" />
+			</div>
 		</div>
-	</div>
+	</form>
 	<div class="slds-m-vertical--medium"></div>
 	<div class="slds-align_absolute-center">
 		<button class="slds-button slds-button_brand" onclick="registration()" reRender="view">Registration</button>
 	</div>
 </div>
 
+
 <script type="text/javascript">
 
+function showError(container, errorMessage) {
+	container.className = 'error';
+	var msgElem = document.createElement('span');
+	msgElem.className = "error-message";
+	msgElem.innerHTML = errorMessage;
+	container.appendChild(msgElem);
+};
+
+function resetError(container) {
+	container.className = '';
+	if (container.lastChild.className == "error-message") {
+		container.removeChild(container.lastChild);
+	}
+};
+
 function registration() {
+	var elems = form.elements;
+
+	resetError(elems.name.parentNode);
+	if (elems.name.value == '') {
+		showError(elems.name.parentNode, 'Please enter your name!');
+		return false;
+	}
+
+	resetError(elems.surname.parentNode);
+	if (elems.surname.value == '') {
+		showError(elems.surname.parentNode, 'Please enter your surname!');
+		return false;
+	}
+
+	resetError(elems.middleName.parentNode);
+	if (elems.middleName.value == '') {
+		showError(elems.middleName.parentNode, 'Please enter your middle name!');
+		return false;
+	}
+
+	resetError(elems.login.parentNode);
+	if (elems.login.value == '') {
+		showError(elems.login.parentNode, 'Please enter your login!');
+		return false;
+	}
+
+	resetError(elems.password.parentNode);
+	if (elems.password.value == '') {
+		showError(elems.password.parentNode, 'Please enter your password!');
+		return false;
+	}
+
+	resetError(elems.repeatPassword.parentNode);
+	if (elems.repeatPassword.value == '') {
+		showError(elems.repeatPassword.parentNode, 'Please repeat your password!');
+		return false;
+	}
+
+	resetError(elems.repeatPassword.parentNode);
+	if (elems.password.value != elems.repeatPassword.value) {
+		showError(elems.repeatPassword.parentNode, 'Passwords do not match!');
+		return false;
+	}
+
 	let surname = document.querySelector('#surname-id').value;
 	let name = document.querySelector('#name-id').value;
 	let middleName = document.querySelector('#middle-name-id').value;
@@ -79,9 +143,7 @@ function registration() {
 	let password = document.querySelector('#password-id').value;
 	let repeatPassword = document.querySelector('#repeat-password-id').value;
 
-	if (repeatPassword == password) {
-		setParameters(surname, name, middleName, login, password);
-	}
+	setParameters(surname, name, middleName, login, password);
 };
 
 </script>

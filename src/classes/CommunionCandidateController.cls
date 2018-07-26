@@ -23,16 +23,11 @@ public with sharing class CommunionCandidateController {
 	public List<Candidate__History> changeCandidate { get; set; }
 	public List<Interaction__c> interactions { get; set; }
 	public String roleValue;
+	public PageReference page = new PageReference('/apex/communionCandidatePage');
 
 	public CommunionCandidateController() {
-		candidateID = ApexPages.currentPage().getParameters().get('candidateID');
-		candidates = [
-			SELECT Name, Surname__c, MiddleName__c, PhoneNumber__c, Mail__c, Skype__c,
-			Position__c, Salary__c, Experience__c, HR__c, Resume__c, Status__c
-			FROM Candidate__c
-			WHERE ID = :candidateID
-		];
-
+		this.candidateID = ApexPages.currentPage().getParameters().get('candidateID');
+		this.roleValue = ApexPages.currentPage().getParameters().get('role');
 		this.surname = '';
 		this.name = '';
 		this.middleName = '';
@@ -53,6 +48,13 @@ public with sharing class CommunionCandidateController {
 		this.decision = '';
 		this.amount = '';
 
+		candidates = [
+			SELECT Name, Surname__c, MiddleName__c, PhoneNumber__c, Mail__c, Skype__c,
+			Position__c, Salary__c, Experience__c, HR__c, Resume__c, Status__c
+			FROM Candidate__c
+			WHERE ID = :candidateID
+		];
+
 		changeCandidate = [
 			SELECT ParentId, OldValue, NewValue, Field, CreatedById, CreatedDate
 			FROM Candidate__History
@@ -65,7 +67,8 @@ public with sharing class CommunionCandidateController {
 			WHERE Candidate__c = :candidateID
 		];
 
-		this.roleValue = ApexPages.currentPage().getParameters().get('role');
+		page.getParameters().put('candidateID', candidateID);
+		page.getParameters().put('role', roleValue);
 	}
 
 	public PageReference editCandidate() {
@@ -102,16 +105,11 @@ public with sharing class CommunionCandidateController {
 		);
 		update candidate;
 
-		if (status.equals('Decision is made')) {
-
-		}
-
-		PageReference page = new PageReference('/apex/communionCandidatePage?candidateID=' + candidateID);
 		page.setRedirect(true);
 		return page;
 	}
 
-	public void createCommunionCandidate() {
+	public PageReference createCommunionCandidate() {
 		Candidate__c candidate = new Candidate__c(ID = candidateID, Coming__c = coming, Contact__c = contact);
 
 		insert new Interaction__c(
@@ -124,6 +122,9 @@ public with sharing class CommunionCandidateController {
 		);
 
 		update candidate;
+
+		page.setRedirect(true);
+		return page;
 	}
 
 	public pageReference goToMainPage() {

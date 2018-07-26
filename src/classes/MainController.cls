@@ -4,6 +4,7 @@ public class MainController {
 			List<User__c> usersList = [
 			SELECT CreatedDate, Worker__r.Name, Worker__r.Surname__c, Worker__r.MiddleName__c, Name
 			FROM User__c
+			ORDER BY CreatedDate DESC
 			];
 			return usersList;
 		} 
@@ -16,6 +17,7 @@ public class MainController {
 			SELECT Name, Surname__c, MiddleName__c, LastMeeting__c, Resume__c, 
 			Position__c, HR__c, Salary__c, Experience__c, PhoneNumber__c, Mail__c, Skype__c, Status__c
 			FROM Candidate__c
+			ORDER BY CreatedDate DESC
 			];
 			return candidatesList;
 		} 
@@ -27,6 +29,7 @@ public class MainController {
 			List<Worker__c> workersList = [
 			SELECT Name, Surname__c, MiddleName__c, Position__c
 			FROM Worker__c
+			ORDER BY CreatedDate DESC
 			];
 			return workersList;
 		} 
@@ -70,7 +73,7 @@ public class MainController {
 	public PageReference deleteWorker() {
 		Worker__c worker = new Worker__c(ID = ID.valueOf(workerID));
 		delete worker;
-		PageReference page = new PageReference('/apex/mainPage');
+		PageReference page = new PageReference('/apex/mainPage?role=' + roleValue);
 		page.setRedirect(true);
 		return page;
 	}
@@ -88,7 +91,9 @@ public class MainController {
 	}
 
 	public PageReference showWorkerInteraction() {
-		PageReference page = new PageReference('/apex/workerInteractionPage?worker=' + workerSurname);
+		PageReference page = Page.workerInteractionPage;
+		page.getParameters().put('worker', workerSurname);
+		page.getParameters().put('role', roleValue);
 		page.setRedirect(true);
 		return page;
 	}

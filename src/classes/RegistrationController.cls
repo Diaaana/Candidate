@@ -4,6 +4,7 @@ public class RegistrationController {
 	public String middleName { get; set; }
 	public String login { get; set; }
 	public String password { get; set; }
+	public List<Worker__c> worker;
 
 	public RegistrationController() {
 		this.surname = '';
@@ -11,10 +12,11 @@ public class RegistrationController {
 		this.middleName = '';
 		this.login = '';
 		this.password = '';
+		this.worker = new List<Worker__c>();
 	}
 
 	public PageReference doRegistration() {
-		List<Worker__c> worker = new List<Worker__c>();
+		ApexPages.getMessages().clear();
 
 		worker = [
 			SELECT ID, Name 
@@ -23,14 +25,13 @@ public class RegistrationController {
 		]; 
 		
 		if (worker.isEmpty()) {
-
 			ApexPages.addMessage(
 				new ApexPages.Message(
 					ApexPages.Severity.ERROR, 
 					'Worker with such data does not exist!'
 				)
 			);
-			return Page.RegistrationPage;
+			return
 			
 		} else {
 			insert new User__c ( 
@@ -38,7 +39,11 @@ public class RegistrationController {
 				Name = login,
 				Password__c = password
 			);
+			PageReference page = new PageReference('/apex/RegistrationPage');
+		page.setRedirect(true);
+		return page;
 		}
-		return Page.loginPage;
+		
+		
 	}
 }

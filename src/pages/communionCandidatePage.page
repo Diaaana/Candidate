@@ -2,32 +2,32 @@
 <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
 <head></head>
 <body>
-	<apex:form >
-	<apex:pageMessages />
+<apex:form >
+<apex:pageMessages />
 	<apex:actionFunction name="setCandidateParameters" action="{!editCandidate}" reRender="view">
-	<apex:param name="surname" value="" assignTo="{!surname}" />
-	<apex:param name="name" value="" assignTo="{!name}" />
-	<apex:param name="middleName" value="" assignTo="{!middleName}" />
-	<apex:param name="resume" value="" assignTo="{!resume}" />
-	<apex:param name="position" value="" assignTo="{!position}" />
-	<apex:param name="HR" value="" assignTo="{!needHR}" />
-	<apex:param name="salary" value="" assignTo="{!salary}" />
-	<apex:param name="experience" value="" assignTo="{!experience}" />
-	<apex:param name="telephone" value="" assignTo="{!telephone}" />
-	<apex:param name="mail" value="" assignTo="{!mail}" />
-	<apex:param name="skype" value="" assignTo="{!skype}" />
-	<apex:param name="status" value="" assignTo="{!status}" />
-</apex:actionFunction>
-<apex:actionFunction name="setCommunionParameters" action="{!createCommunionCandidate}" reRender="view">
-<apex:param name="taskValue" value="" assignTo="{!task}" />
-<apex:param name="comingValue" value="" assignTo="{!coming}" />
-<apex:param name="contactValue" value="" assignTo="{!contact}" />
-<apex:param name="dateInterviewValue" value="" assignTo="{!dateInterview}" />
-<apex:param name="decisionPeriodValue" value="" assignTo="{!decisionPeriod}" />
-<apex:param name="decisionValue" value="" assignTo="{!decision}" />
-<apex:param name="amountValue" value="" assignTo="{!amount}" />
-</apex:actionFunction>
-<apex:actionFunction name="mainPage" action="{!goToMainPage}" reRender="view" />
+		<apex:param name="surname" value="" assignTo="{!surname}" />
+		<apex:param name="name" value="" assignTo="{!name}" />
+		<apex:param name="middleName" value="" assignTo="{!middleName}" />
+		<apex:param name="resume" value="" assignTo="{!resume}" />
+		<apex:param name="position" value="" assignTo="{!position}" />
+		<apex:param name="HR" value="" assignTo="{!needHR}" />
+		<apex:param name="salary" value="" assignTo="{!salary}" />
+		<apex:param name="experience" value="" assignTo="{!experience}" />
+		<apex:param name="telephone" value="" assignTo="{!telephone}" />
+		<apex:param name="mail" value="" assignTo="{!mail}" />
+		<apex:param name="skype" value="" assignTo="{!skype}" />
+		<apex:param name="status" value="" assignTo="{!status}" />
+	</apex:actionFunction>
+	<apex:actionFunction name="setCommunionParameters" action="{!createCommunionCandidate}" reRender="view">
+		<apex:param name="taskValue" value="" assignTo="{!task}" />
+		<apex:param name="comingValue" value="" assignTo="{!coming}" />
+		<apex:param name="contactValue" value="" assignTo="{!contact}" />
+		<apex:param name="dateInterviewValue" value="" assignTo="{!dateInterview}" />
+		<apex:param name="decisionPeriodValue" value="" assignTo="{!decisionPeriod}" />
+		<apex:param name="decisionValue" value="" assignTo="{!decision}" />
+		<apex:param name="amountValue" value="" assignTo="{!amount}" />
+	</apex:actionFunction>
+	<apex:actionFunction name="mainPage" action="{!goToMainPage}" reRender="view" />
 
 <apex:slds />
 <div class="slds-m-vertical--medium"></div>
@@ -141,13 +141,13 @@
 			<div class="slds-form-element__control">
 				<div class="slds-select_container">
 					<apex:selectList styleClass="edit-status-class" size="1">
-					<apex:selectOption itemValue=""/>
-					<apex:selectOption itemValue="Start"/>
-					<apex:selectOption itemValue="Questionnaire"/>
-					<apex:selectOption itemValue="Executing the test task"/>
-					<apex:selectOption itemValue="Interview"/>
-					<apex:selectOption itemValue="Decision making"/>
-					<apex:selectOption itemValue="Decision is made"/>
+						<apex:selectOption itemValue=""/>
+						<apex:selectOption itemValue="Start"/>
+						<apex:selectOption itemValue="Questionnaire"/>
+						<apex:selectOption itemValue="Executing the test task"/>
+						<apex:selectOption itemValue="Interview"/>
+						<apex:selectOption itemValue="Decision making"/>
+						<apex:selectOption itemValue="Decision is made"/>
 				</apex:selectList>
 			</div>
 		</div>
@@ -175,13 +175,13 @@
 <div class="slds-m-vertical--medium"></div>
 <div id="history-candidate-table-id" hidden="true">
 	<apex:pageBlock >
-	<apex:pageBlockTable value="{!changeCandidate}" var="historyCandidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
-	<apex:column value="{!historyCandidate.CreatedDate}" />
-	<apex:column value="{!historyCandidate.Field}" />
-	<apex:column value="{!historyCandidate.OldValue}" />
-	<apex:column value="{!historyCandidate.NewValue}" />
-</apex:pageBlockTable>
-</apex:pageBlock>
+		<apex:pageBlockTable value="{!changeCandidate}" var="historyCandidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+			<apex:column value="{!historyCandidate.CreatedDate}" />
+			<apex:column value="{!historyCandidate.Field}" />
+			<apex:column value="{!historyCandidate.OldValue}" />
+			<apex:column value="{!historyCandidate.NewValue}" />
+		</apex:pageBlockTable>
+	</apex:pageBlock>
 </div>
 <div class="slds-m-vertical--medium"></div>
 
@@ -203,21 +203,21 @@
 	<div class="slds-form-element__control">
 		<div class="slds-select_container">
 			<apex:selectList styleClass="coming-class" size="1">
-			<apex:selectOption itemValue="Invite"/>
-			<apex:selectOption itemValue="Response"/>
-		</apex:selectList>
+				<apex:selectOption itemValue="Invite"/>
+				<apex:selectOption itemValue="Response"/>
+			</apex:selectList>
+		</div>
 	</div>
-</div>
 </div>
 <div class="slds-form-element__control">
 	<div class="slds-select_container">
 		<apex:selectList styleClass="contact-class" size="1">
-		<apex:selectOption itemValue="Skype"/>
-		<apex:selectOption itemValue="Phone"/>
-		<apex:selectOption itemValue="LinkedIn"/>
-		<apex:selectOption itemValue="Job search site"/>
-	</apex:selectList>
-</div>
+			<apex:selectOption itemValue="Skype"/>
+			<apex:selectOption itemValue="Phone"/>
+			<apex:selectOption itemValue="LinkedIn"/>
+			<apex:selectOption itemValue="Job search site"/>
+		</apex:selectList>
+	</div>
 </div>
 <div class="slds-form-element">
 	<label class="slds-form-element__label">Date of interview</label>
@@ -236,12 +236,12 @@
 	<div class="slds-form-element__control">
 		<div class="slds-select_container">
 			<apex:selectList styleClass="decision-class" size="1">
-			<apex:selectOption itemValue="Offer"/>
-			<apex:selectOption itemValue="Closed"/>
-			<apex:selectOption itemValue="Later"/>
-		</apex:selectList>
+				<apex:selectOption itemValue="Offer"/>
+				<apex:selectOption itemValue="Closed"/>
+				<apex:selectOption itemValue="Later"/>
+			</apex:selectList>
+		</div>
 	</div>
-</div>
 </div>
 <div class="slds-form-element">
 	<label class="slds-form-element__label">Amount ($)</label>
@@ -263,14 +263,14 @@
 <div class="slds-m-vertical--medium"></div>
 <div id="interactions-table-id" hidden="true">
 	<apex:pageBlock >
-	<apex:pageBlockTable value="{!interactions}" var="interaction" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
-	<apex:column value="{!interaction.Interview__c}" />
-	<apex:column value="{!interaction.Task__c}" />
-	<apex:column value="{!interaction.DecisionPeriod__c}" />
-	<apex:column value="{!interaction.Decision__c}" />
-	<apex:column value="{!interaction.Amount__c}" />
-</apex:pageBlockTable>
-</apex:pageBlock>
+		<apex:pageBlockTable value="{!interactions}" var="interaction" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+		<apex:column value="{!interaction.Interview__c}" />
+		<apex:column value="{!interaction.Task__c}" />
+		<apex:column value="{!interaction.DecisionPeriod__c}" />
+		<apex:column value="{!interaction.Decision__c}" />
+		<apex:column value="{!interaction.Amount__c}" />
+		</apex:pageBlockTable>
+	</apex:pageBlock>
 </div>
 <div class="slds-m-vertical--medium"></div>
 

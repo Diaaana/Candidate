@@ -1,6 +1,8 @@
 <apex:page controller="AddCandidateController">
 <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
-<head></head>
+<head>
+<apex:stylesheet value="{!$Resource.style}"/>
+</head>
 <body>
 	<apex:form>
 	<apex:actionFunction name="setParameters" action="{!createCandidate}" reRender="view">
@@ -19,50 +21,91 @@
 	<apex:param name="contact" value="" assignTo="{!contact}" />
 </apex:actionFunction>
 <apex:actionFunction name="mainPage" action="{!goToMainPage}" reRender="view" />
+</apex:form>
 
 <apex:slds />
 <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
-	<div class="slds-align_absolute-center">
-		<button class="slds-button slds-button_brand" onclick="mainPage()" reRender="view">Main page</button>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Name
-		</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="name-id" class="slds-input" placeholder="Name" />
+	<form name="form">
+		<div class="slds-align_absolute-center">
+			<button class="slds-button slds-button_brand" onclick="mainPage()" reRender="view">Main page</button>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Surname
-		</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="surname-id" class="slds-input" placeholder="Surname" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Name
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="name-id" class="slds-input" name="name" placeholder="Name" />
+			</div>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Middle Name
-		</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="middle-name-id" class="slds-input" placeholder="Middle Name" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Surname
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="surname-id" class="slds-input" name="surname" placeholder="Surname" />
+			</div>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">Resume link</label>
-		<div class="slds-form-element__control">
-			<input type="url" id="resume-id" class="slds-input" placeholder="Resume link" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Middle Name
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="middle-name-id" class="slds-input" name="middleName" placeholder="Middle Name" />
+			</div>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Position
-		</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="position-id" class="slds-input" placeholder="Position" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">Resume link</label>
+			<div class="slds-form-element__control">
+				<input type="url" id="resume-id" class="slds-input"  name="resume" placeholder="Resume link" />
+			</div>
 		</div>
-	</div>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Position
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="position-id" class="slds-input" name="position" placeholder="Position" />
+			</div>
+		</div>
+		<div class="slds-m-vertical--small"></div>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Salary
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="salary-id" class="slds-input" name="salary" placeholder="Salary" />
+			</div>
+		</div>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Experience
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="experience-id" class="slds-input" name="experience" placeholder="Experience" />
+			</div>
+		</div>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Phone number
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="telephone-id" class="slds-input" name="phoneNumber" placeholder="Phone number" />
+			</div>
+		</div>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">Mail</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="mail-id" class="slds-input" name="mail" placeholder="Mail" />
+			</div>
+		</div>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">Skype</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="skype-id" class="slds-input" name="skype" placeholder="Skype" />
+			</div>
+		</div>
+	</form>
+	<apex:form>
 	<div class="slds-form-element">
 		<label class="slds-form-element__label">
 			<abbr class="slds-required" title="required">*</abbr>HR
@@ -70,85 +113,119 @@
 		<div class="slds-m-vertical--x-small"></div>
 		<div class="slds-form-element__control">
 			<div class="slds-select_container">
-				<apex:selectList styleClass="HR-class" size="1" value="{!selectHR}">
-					<apex:selectOptions value="{!getHR}"/>
-				</apex:selectList>
-			</div>
-		</div>
-	</div>
-	<div class="slds-m-vertical--small"></div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Salary
-		</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="salary-id" class="slds-input" placeholder="Salary" />
-		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Experience
-		</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="experience-id" class="slds-input" placeholder="Experience" />
-		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Phone number
-		</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="telephone-id" class="slds-input" placeholder="Phone number" />
-		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">Mail</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="mail-id" class="slds-input" placeholder="Mail" />
-		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">Skype</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="skype-id" class="slds-input" placeholder="Skype" />
-		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label" for="text-input-id-1">
-			<abbr class="slds-required" title="required">*</abbr>Source
-		</label>
-		<div class="slds-m-vertical--small"></div>
-		<div class="slds-form-element__control">
-			<div class="slds-select_container">
-				<apex:selectList styleClass="coming-class" size="1">
-					<apex:selectOption itemValue="Invite"/>
-					<apex:selectOption itemValue="Response"/>
-				</apex:selectList>
-			</div>
-		</div>
-	</div>
-	<div class="slds-m-vertical--xx-large"></div>
-	<div class="slds-form-element__control">
-		<div class="slds-select_container">
-			<apex:selectList styleClass="contact-class" size="1">
-				<apex:selectOption itemValue="Skype"/>
-				<apex:selectOption itemValue="Phone"/>
-				<apex:selectOption itemValue="LinkedIn"/>
-				<apex:selectOption itemValue="Job search site"/>
+				<apex:selectList styleClass="HR-class" size="1" value="{!selectHR}" >
+				<apex:selectOptions value="{!getHR}"/>
 			</apex:selectList>
 		</div>
 	</div>
-	<div class="slds-m-vertical--medium"></div>
-	<div class="slds-align_absolute-center">
-		<button class="slds-button slds-button_brand" onclick="getParameters()" reRender="view">Create candidate</button>
+</div>
+<div class="slds-form-element">
+	<label class="slds-form-element__label" for="text-input-id-1">
+		<abbr class="slds-required" title="required">*</abbr>Source
+	</label>
+	<div class="slds-m-vertical--small"></div>
+	<div class="slds-form-element__control">
+		<div class="slds-select_container">
+			<apex:selectList styleClass="coming-class" size="1">
+			<apex:selectOption itemValue="Invite"/>
+			<apex:selectOption itemValue="Response"/>
+		</apex:selectList>
 	</div>
+</div>
+</div>
+<div class="slds-m-vertical--xx-large"></div>
+<div class="slds-form-element__control">
+	<div class="slds-select_container">
+		<apex:selectList styleClass="contact-class" size="1">
+		<apex:selectOption itemValue="Skype"/>
+		<apex:selectOption itemValue="Phone"/>
+		<apex:selectOption itemValue="LinkedIn"/>
+		<apex:selectOption itemValue="Job search site"/>
+	</apex:selectList>
+</div>
 </div>
 </apex:form>
 
+<div class="slds-m-vertical--medium"></div>
+<div class="slds-align_absolute-center">
+	<button class="slds-button slds-button_brand" onclick="getParameters()" reRender="view">Create candidate</button>
+</div>
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
+function showError(container, errorMessage) {
+	container.className = 'error';
+	var msgElem = document.createElement('span');
+	msgElem.className = "error-message";
+	msgElem.innerHTML = errorMessage;
+	container.appendChild(msgElem);
+};
+
+function resetError(container) {
+	container.className = '';
+	if (container.lastChild.className == "error-message") {
+		container.removeChild(container.lastChild);
+	}
+};
 
 function getParameters() {
+	var elems = form.elements;
+
+	resetError(elems.name.parentNode);
+	if (elems.name.value == '') {
+		showError(elems.name.parentNode, 'Please enter name of the candidate!');
+		return false;
+	}
+
+	resetError(elems.surname.parentNode);
+	if (elems.surname.value == '') {
+		showError(elems.surname.parentNode, 'Please enter surname of the candidate!');
+		return false;
+	}
+
+	resetError(elems.middleName.parentNode);
+	if (elems.middleName.value == '') {
+		showError(elems.middleName.parentNode, 'Please enter middle name  of the candidate!');
+		return false;
+	}
+
+	resetError(elems.resume.parentNode);
+	if (elems.resume.value == '') {
+		showError(elems.resume.parentNode, 'Please enter resume of the candidate!');
+		return false;
+	}
+
+	resetError(elems.position.parentNode);
+	if (elems.position.value == '') {
+		showError(elems.position.parentNode, 'Please enter position of the candidate!');
+		return false;
+	}
+
+	resetError(elems.salary.parentNode);
+	if (elems.salary.value == '') {
+		showError(elems.salary.parentNode, 'Please enter salary of the candidate!');
+		return false;
+	}
+
+	resetError(elems.experience.parentNode);
+	if (elems.experience.value == '') {
+		showError(elems.experience.parentNode, 'Please enter experience of the candidate!');
+		return false;
+	}
+
+	resetError(elems.phoneNumber.parentNode);
+	if (elems.phoneNumber.value == '') {
+		showError(elems.phoneNumber.parentNode, 'Please enter phone number of the candidate!');
+		return false;
+	}
+
+	resetError(elems.mail.parentNode);
+	if (elems.mail.value == '') {
+		showError(elems.mail.parentNode, 'Please enter mail of the candidate!');
+		return false;
+	}
+
 	let surnameValue = document.querySelector('#surname-id').value;
 	let nameValue = document.querySelector('#name-id').value;
 	let middleNameValue = document.querySelector('#middle-name-id').value;
@@ -164,7 +241,7 @@ function getParameters() {
 	let contactValue = document.querySelector('.contact-class').value;
 	setParameters(surnameValue, nameValue, middleNameValue, resumeValue, positionValue, HRValue, salaryValue, experienceValue, telephoneValue, mailValue, skypeValue, comingValue, contactValue);
 };
-       
+
 </script>
 
 </body>
