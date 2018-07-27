@@ -5,8 +5,8 @@
 </head>
 <body>
 	<apex:form>
-	<apex:pageMessages></apex:pageMessages>
-	<apex:actionFunction name="setParameters" action="{!doRegistration}" reRender="view">
+	<apex:pageMessages id="message-id"/>
+	<apex:actionFunction name="setParameters" action="{!doRegistration}" reRender="message-id">
 	<apex:param name="surname" value="" assignTo="{!surname}" />
 	<apex:param name="name" value="" assignTo="{!name}" />
 	<apex:param name="middleName" value="" assignTo="{!middleName}" />

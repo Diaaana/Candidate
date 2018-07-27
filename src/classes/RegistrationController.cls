@@ -18,32 +18,41 @@ public class RegistrationController {
 	public PageReference doRegistration() {
 		ApexPages.getMessages().clear();
 
-		worker = [
-			SELECT ID, Name 
-			FROM Worker__c 
-			WHERE Surname__c = :surname AND Name = :name AND MiddleName__c = :middleName 
-		]; 
-		
-		if (worker.isEmpty()) {
-			ApexPages.addMessage(
-				new ApexPages.Message(
-					ApexPages.Severity.ERROR, 
-					'Worker with such data does not exist!'
-				)
-			);
-			return
-			
+		List<User__c> users = [
+			SELECT Name
+			FROM User__c
+			WHERE Name = :login
+		];
+
+		if (!users.isEmpty()) {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'User with such login already exists!'));
+			return null;
+
 		} else {
-			insert new User__c ( 
-				Worker__c = worker[0].ID,
-				Name = login,
-				Password__c = password
-			);
-			PageReference page = new PageReference('/apex/RegistrationPage');
-		page.setRedirect(true);
-		return page;
+
+			worker = [
+				SELECT ID, Name 
+				FROM Worker__c 
+				WHERE Surname__c = :surname AND Name = :name AND MiddleName__c = :middleName 
+			]; 
+
+			if (worker.isEmpty()) {
+				ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Worker with such data does not exist!'));
+				return null;
+
+			} else {
+
+				insert new User__c ( 
+					Worker__c = worker[0].ID,
+					Name = login,
+					Password__c = password
+				);
+			}
+
+			PageReference page = new PageReference('/apex/loginPage');
+			page.setRedirect(true);
+			return page;
+			
 		}
-		
-		
 	}
 }

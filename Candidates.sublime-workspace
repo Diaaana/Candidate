@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"m",
+				"message"
+			],
+			[
+				"a",
+				"addMessage"
+			],
+			[
+				"p",
+				"page"
+			],
+			[
+				"P",
+				"PageReference"
+			],
+			[
+				"W",
+				"WHERE"
+			],
+			[
+				"us",
+				"user"
+			],
+			[
+				"Pag",
+				"Page\t(MainController.cls)"
+			],
+			[
 				"ro",
 				"roleValue"
 			],
@@ -18,10 +46,6 @@
 			[
 				"Re",
 				"RecordType\t(LoginController.cls)"
-			],
-			[
-				"W",
-				"Worker__c"
 			],
 			[
 				"Wo",
@@ -82,10 +106,6 @@
 			[
 				"co",
 				"contact"
-			],
-			[
-				"m",
-				"mail"
 			],
 			[
 				"coming",
@@ -228,16 +248,8 @@
 				"addCandidate\t(mainPage.page)"
 			],
 			[
-				"Pag",
-				"PageReference\t(LoginController.cls)"
-			],
-			[
 				"addC",
 				"addCandidatePage.page"
-			],
-			[
-				"P",
-				"Page"
 			],
 			[
 				"N",
@@ -266,10 +278,6 @@
 			[
 				"set",
 				"setParameters"
-			],
-			[
-				"p",
-				"password"
 			],
 			[
 				"middle",
@@ -358,10 +366,6 @@
 			[
 				"c",
 				"condition"
-			],
-			[
-				"a",
-				"addonPrices"
 			],
 			[
 				"A",
@@ -510,45 +514,11 @@
 			[
 				"as",
 				"assignTo"
-			],
-			[
-				"on",
-				"oncomplete\t(String)"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "src/pages/addCandidatePage.page",
-			"settings":
-			{
-				"buffer_size": 9540,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "public class MainController {\n\tpublic List<User__c> usersList {\n\t\tget {\n\t\t\tList<User__c> usersList = [\n\t\t\tSELECT CreatedDate, Worker__r.Name, Worker__r.Surname__c, Worker__r.MiddleName__c, Name\n\t\t\tFROM User__c\n\t\t\tORDER BY CreatedDate DESC\n\t\t\t];\n\t\t\treturn usersList;\n\t\t} \n\t\tset;\n\t}\n\n\tpublic List<Candidate__c> candidatesList {\n\t\tget {\n\t\t\tList<Candidate__c> candidatesList = [\n\t\t\tSELECT Name, Surname__c, MiddleName__c, LastMeeting__c, Resume__c, \n\t\t\tPosition__c, HR__c, Salary__c, Experience__c, PhoneNumber__c, Mail__c, Skype__c, Status__c\n\t\t\tFROM Candidate__c\n\t\t\tORDER BY CreatedDate DESC\n\t\t\t];\n\t\t\treturn candidatesList;\n\t\t} \n\t\tset;\n\t}\n\n\tpublic List<Worker__c> workersList {\n\t\tget {\n\t\t\tList<Worker__c> workersList = [\n\t\t\tSELECT Name, Surname__c, MiddleName__c, Position__c\n\t\t\tFROM Worker__c\n\t\t\tORDER BY CreatedDate DESC\n\t\t\t];\n\t\t\treturn workersList;\n\t\t} \n\t\tset;\n\t}\n\n\tpublic String candidateID { get; set; }\n\tpublic String workerID { get; set; }\n\tpublic String roleValue { get; set; }\n\tpublic String userID { get; set; }\n\tpublic String workerSurname { get; set; }\n\n\tpublic MainController() {\n\t\tthis.candidateID = '';\n\t\tthis.workerID = '';\n\t\tthis.roleValue = '';\n\t\tuserID = ApexPages.currentPage().getParameters().get('user');\n\t\tthis.workerSurname = '';\n\t}\n\n\tpublic PageReference goToAddCandidatePage() {\n\t\tPageReference page = new PageReference('/apex/addCandidatePage?role=' + roleValue);\n\t\tpage.setRedirect(true);\n\t\treturn page;\n\t}\n\n\tpublic PageReference goToAddWorkerPage() {\n\t\tPageReference page = new PageReference('/apex/addWorkerPage?role=' + roleValue);\n\t\tpage.setRedirect(true);\n\t\treturn page;\n\t}\n\n\tpublic PageReference goToCandidatePage() {\n\t\tPageReference page = Page.communionCandidatePage;\n\t\tpage.getParameters().put('candidateID', ID.valueOf(candidateID));\n\t\tpage.getParameters().put('role', roleValue);\n\t\tpage.setRedirect(true);\n\t\treturn page;\n\t}\n\n\tpublic PageReference deleteWorker() {\n\t\tWorker__c worker = new Worker__c(ID = ID.valueOf(workerID));\n\t\tdelete worker;\n\t\tPageReference page = new PageReference('/apex/mainPage?role=' + roleValue);\n\t\tpage.setRedirect(true);\n\t\treturn page;\n\t}\n\n\tpublic PageReference goToPersonalPage() {\n\t\tPageReference page = new PageReference('/apex/personalUserPage?user=' + userID);\n\t\tpage.setRedirect(true);\n\t\treturn page;\n\t}\n\n\tpublic PageReference logout() {\n\t\tPageReference page = new PageReference('/apex/loginPage');\n\t\tpage.setRedirect(true);\n\t\treturn page;\n\t}\n\n\tpublic PageReference showWorkerInteraction() {\n\t\tPageReference page = new PageReference('/apex/workerInteractionPage?worker=' + workerSurname);\n\t\tpage.setRedirect(true);\n\t\treturn page;\n\t}\n\n}",
-			"file": "src/classes/MainController.cls",
-			"file_size": 2587,
-			"file_write_time": 131770747439669907,
-			"settings":
-			{
-				"buffer_size": 2605,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/pages/mainPage.page",
-			"settings":
-			{
-				"buffer_size": 9532,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -603,17 +573,22 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Asus/Documents/Candidates/src/classes/LoginController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/pages/RegistrationPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/addWorkerPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/loginPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/classes/RegistrationController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/triggers/CheckLoginTrigger.trigger",
+		"/C/Users/Asus/Documents/Candidates/src/pages/workerInteractionPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/mainPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/communionCandidatePage.page",
+		"/C/Users/Asus/Documents/Candidates/src/classes/CommunionCandidateController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/MainController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/classes/WorkerInteractionController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/classes/AddCandidateController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/pages/addCandidatePage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/addWorkerPage.page",
 		"/C/Users/Asus/Documents/Candidates/src/resources/style.css",
 		"/C/Users/Asus/Documents/Candidates/src/resources/style",
-		"/C/Users/Asus/Documents/Candidates/src/pages/mainPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/classes/RegistrationController.cls",
-		"/C/Users/Asus/Documents/Candidates/src/classes/LoginController.cls",
-		"/C/Users/Asus/Documents/Candidates/src/classes/AddCandidateController.cls",
-		"/C/Users/Asus/Documents/Candidates/src/pages/loginPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/addCandidatePage.page",
 		"/C/Users/Asus/Documents/Candidates/src/components/dataTable.component",
 		"/C/Users/Asus/Documents/Candidates/src/components/workerTable.component",
 		"/C/Users/Asus/Documents/Candidates/src/components/candidateTable.component",
@@ -682,95 +657,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/pages/addCandidatePage.page",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9540,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								186,
-								141
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/MavensMate/sublime/lang/Visualforce.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/classes/MainController.cls",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2605,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2056,
-								2056
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/MavensMate/sublime/lang/Apex.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1200.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/pages/mainPage.page",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9532,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								9532
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/MavensMate/sublime/lang/Visualforce.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 60.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -863,7 +751,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 329.0,
+	"side_bar_width": 253.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

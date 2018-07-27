@@ -23,17 +23,9 @@ public class LoginController {
 
 		if (user.isEmpty()) {
 			
-			ApexPages.addMessage(
-				new ApexPages.Message(
-					ApexPages.Severity.ERROR, 
-					'Incorrect login or password!'
-				)
-			);
-
-			PageReference page = new PageReference('/apex/loginPage');
-			page.setRedirect(true);
-			return page;
-
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Incorrect login or password!'));
+			return null;
+			
 		}
 
 		if (user[0].Worker__r.Position__c == 'Manager') {

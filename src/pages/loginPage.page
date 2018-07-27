@@ -3,8 +3,8 @@
 <head></head>
 <body>
 	<apex:form >
-	<apex:pageMessages />
-	<apex:actionFunction name="setParameters" action="{!doLogin}" reRender="view">
+	<apex:pageMessages id="message-id"/>
+	<apex:actionFunction name="setParameters" action="{!doLogin}" reRender="message-id">
 	<apex:param name="login" value="" assignTo="{!login}" />
 	<apex:param name="password" value="" assignTo="{!password}" />
 </apex:actionFunction>
