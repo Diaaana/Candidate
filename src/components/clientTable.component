@@ -1,4 +1,4 @@
-<apex:component controller="MainController">
+<apex:component controller="DataTableController">
 <apex:slds />
 	<apex:pageBlock>
 		<apex:pageBlockTable value="{!clientsList}" var="client" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">

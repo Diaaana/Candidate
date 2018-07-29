@@ -3,7 +3,6 @@
 <head></head>
 <body>
 	<apex:form >
-	<apex:actionFunction name="goToRegistration" action="{!goToRegistration}" />
 	<apex:actionFunction name="setParameters" action="{!login}" reRender="view">
 	<apex:param id = "login" name="login" value="" assignTo="{!login}" />
 	<apex:param id="password" name="password" value="" assignTo="{!password}" />
@@ -24,7 +23,7 @@
 	</div>
 	<div class="slds-m-vertical--medium"></div>
 	<div class="slds-align_absolute-center">
-		<button class="slds-button" onclick="goToRegistration()" reRender="view">Registration</button>
+		<a href="javascript:void(0);" class="slds-text-link_reset" onclick="window.location=RegistrationPage.page">Registration</a>
 		<button class="slds-button slds-button_brand" onclick="getParameters()" reRender="view">Login</button>
 	</div>
 </div>

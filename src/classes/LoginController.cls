@@ -24,11 +24,17 @@ public with sharing class LoginController {
 		}
 
 		if (worker.Role__r.Name == 'Manager') {
-			return Page.mainPage;
+			PageReference page = new PageReference('/apex/mainPage?role=manager');
+			page.setRedirect(true);
+			return page;
 		} else if (worker.Role__r.Name == 'HR') {
-			return Page.mainPage;
+			PageReference page = new PageReference('/apex/mainPage?role=HR');
+			page.setRedirect(true);
+			return page;
 		} else {
-			return Page.mainPage;
+			PageReference page = new PageReference('/apex/mainPage?role=worker');
+			page.setRedirect(true);
+			return page;
 		}
 		
 	}

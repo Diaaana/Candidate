@@ -1,0 +1,7 @@
+<apex:component controller="DataTableController">
+<apex:attribute name="type" description="This is the type of worker." type="String" required="false" assignTo="{!typeWorker}"/> 
+<apex:form>
+<apex:actionFunction name="get" action="{!get}" />
+<apex:commandButton onclick="get()" reRender="view" value="Here"></apex:commandButton>
+</apex:form>
+</apex:component>

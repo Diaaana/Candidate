@@ -1,6 +1,6 @@
-<apex:component controller="MainController">
+<apex:component controller="DataTableController">
 	<apex:pageBlock>
-		<apex:pageBlockTable value="{!candidatesList}" var="candidate">
+		<apex:pageBlockTable value="{!candidatesList}" var="candidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
 			<apex:column value="{!candidate.name}"/>
 			<apex:column value="{!candidate.Surname__c}"/>
 			<apex:column value="{!candidate.MiddleName__c}"/>

@@ -4,6 +4,82 @@
 		"selected_items":
 		[
 			[
+				"h",
+				"hidden"
+			],
+			[
+				"ou",
+				"apex:outputLabel"
+			],
+			[
+				"rol",
+				"roleValue"
+			],
+			[
+				"pa",
+				"page"
+			],
+			[
+				"Page",
+				"PageReference"
+			],
+			[
+				"ty",
+				"type"
+			],
+			[
+				"re",
+				"reRender"
+			],
+			[
+				"act",
+				"action\t(loginPage.page)"
+			],
+			[
+				"com",
+				"apex:commandButton"
+			],
+			[
+				"type",
+				"typeWorker\t(DataTableController.cls)"
+			],
+			[
+				"In",
+				"Integer"
+			],
+			[
+				"co",
+				"contact"
+			],
+			[
+				"m",
+				"mail"
+			],
+			[
+				"coming",
+				"comingValue"
+			],
+			[
+				"res",
+				"responseValue"
+			],
+			[
+				"wor",
+				"work-response"
+			],
+			[
+				"in",
+				"inviteValue"
+			],
+			[
+				"it",
+				"itemValue\t(Object)"
+			],
+			[
+				"st",
+				"styleClass\t(String)"
+			],
+			[
 				"C",
 				"ClientName__c\t(MainController.cls)"
 			],
@@ -16,10 +92,6 @@
 				"Surname__c\t(MainController.cls)"
 			],
 			[
-				"co",
-				"controller\t(mainPage.page)"
-			],
-			[
 				"cl",
 				"clientList"
 			],
@@ -30,10 +102,6 @@
 			[
 				"pu",
 				"public"
-			],
-			[
-				"re",
-				"required\t(Boolean)"
 			],
 			[
 				"va",
@@ -90,10 +158,6 @@
 			[
 				"ne",
 				"needHR"
-			],
-			[
-				"m",
-				"middleName"
 			],
 			[
 				"al",
@@ -176,10 +240,6 @@
 				"Worker__c"
 			],
 			[
-				"pa",
-				"password"
-			],
-			[
 				"set",
 				"setParameters"
 			],
@@ -190,10 +250,6 @@
 			[
 				"middle",
 				"middle-name"
-			],
-			[
-				"Page",
-				"Page\t(LoginController.cls)"
 			],
 			[
 				"Http",
@@ -306,10 +362,6 @@
 			[
 				"goTo",
 				"goToPageAddon\t(Wizard.cls)"
-			],
-			[
-				"com",
-				"apex:commandButton"
 			],
 			[
 				"bok",
@@ -515,18 +567,22 @@
 	"file_history":
 	[
 		"/C/Users/Asus/Documents/Candidates/src/pages/mainPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/loginPage.page",
 		"/C/Users/Asus/Documents/Candidates/src/classes/MainController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/pages/addCandidatePage.page",
+		"/C/Users/Asus/Documents/Candidates/src/components/dataTable.component",
 		"/C/Users/Asus/Documents/Candidates/src/components/workerTable.component",
-		"/C/Users/Asus/Documents/Candidates/src/pages/mainHR.page",
 		"/C/Users/Asus/Documents/Candidates/src/components/candidateTable.component",
 		"/C/Users/Asus/Documents/Candidates/src/components/clientTable.component",
-		"/C/Users/Asus/Documents/Candidates/src/pages/clients.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/addCandidatePage.page",
-		"/C/Users/Asus/Documents/Candidates/src/classes/AddCandidateController.cls",
-		"/D/ДИАНА/Airline/src/pages/Booking.page",
+		"/C/Users/Asus/Documents/Candidates/src/classes/DataTableController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/LoginController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/pages/test.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/mainPage.page-meta.xml",
 		"/C/Users/Asus/Documents/Candidates/src/pages/RegistrationPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/loginPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/classes/AddCandidateController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/pages/mainHR.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/clients.page",
+		"/D/ДИАНА/Airline/src/pages/Booking.page",
 		"/C/Users/Asus/Documents/Candidates/src/pages/mainManager.page",
 		"/C/Users/Asus/Documents/Candidates/src/classes/RegistrationController.cls",
 		"/C/Users/Asus/Documents/Airline/src/pages/authenticate.page",
@@ -555,7 +611,7 @@
 	],
 	"find":
 	{
-		"height": 33.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -593,7 +649,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 33.0
+		"height": 36.0
 	},
 	"input":
 	{
@@ -634,7 +690,7 @@
 	"project": "Candidates.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 88.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -680,7 +736,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 317.0,
+	"side_bar_width": 275.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

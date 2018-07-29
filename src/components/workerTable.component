@@ -1,6 +1,6 @@
-<apex:component controller="MainController">
+<apex:component controller="DataTableController">
 	<apex:pageBlock>
-		<apex:pageBlockTable value="{!workersList}" var="worker">
+		<apex:pageBlockTable value="{!workersList}" var="worker" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
 			<apex:column value="{!worker.name}"/>
 			<apex:column value="{!worker.Surname__c}"/>
 			<apex:column value="{!worker.MiddleName__c}"/>

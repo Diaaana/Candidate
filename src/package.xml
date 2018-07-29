@@ -6,6 +6,7 @@
 		<members>MainManager</members>
 		<members>mainPage</members>
 		<members>addCandidatePage</members>
+		<members>test</members>
 		<name>ApexPage</name>
 	</types>
 	<types>
@@ -13,12 +14,14 @@
 		<members>RegistartionController</members>
 		<members>MainController</members>
 		<members>AddCandidateController</members>
+		<members>DataTableController</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
 		<members>clientTable</members>
 		<members>candidateTable</members>
 		<members>workerTable</members>
+		<members>dataTable</members>
 		<name>ApexComponent</name>
 	</types>
 	<version>42.0</version>
