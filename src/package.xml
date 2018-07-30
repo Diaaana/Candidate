@@ -11,6 +11,7 @@
 		<members>personalWorkerPage</members>
 		<members>personalUserPage</members>
 		<members>workerInteractionPage</members>
+		<members>commentsPage</members>
 		<name>ApexPage</name>
 	</types>
 	<types>
@@ -24,6 +25,9 @@
 		<members>PersonalWorkerController</members>
 		<members>PersonalUserController</members>
 		<members>WorkerInteractionController</members>
+		<members>CommentsController</members>
+		<members>RegistrationControllerTest</members>
+		<members>LoginControllerTest</members>
 		<name>ApexClass</name>
 	</types>
 	<types>

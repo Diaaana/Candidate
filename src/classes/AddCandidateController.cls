@@ -1,4 +1,7 @@
 public class AddCandidateController {
+	public PageReference page;
+	public String roleValue;
+	public String tabValue;
 	public String selectHR { get; set; }
 	public String name { get; set; }
 	public String surname { get; set; }
@@ -13,7 +16,6 @@ public class AddCandidateController {
 	public String skype { get; set; }
 	public String coming { get; set; }
 	public String contact { get; set; }
-	public String roleValue;
 
 	public List<SelectOption> getHR {
 		get {
@@ -33,6 +35,11 @@ public class AddCandidateController {
 	}
 
 	public AddCandidateController() {
+		this.page = new PageReference('/apex/mainPage');
+		this.roleValue = ApexPages.currentPage().getParameters().get('role');
+		this.tabValue = ApexPages.currentPage().getParameters().get('tab');
+		this.page.getParameters().put('role', roleValue);
+		this.page.getParameters().put('tab', tabValue);
 		this.surname = '';
 		this.name = '';
 		this.middleName = '';
@@ -46,7 +53,6 @@ public class AddCandidateController {
 		this.skype = '';
 		this.coming = '';
 		this.contact = '';
-		roleValue = ApexPages.currentPage().getParameters().get('role');
 	}
 
 	public PageReference createCandidate() {
@@ -67,13 +73,11 @@ public class AddCandidateController {
 			Status__c = 'Start'
 		);
 
-		PageReference page = new PageReference('/apex/mainPage?role=' + roleValue);
 		page.setRedirect(true);
 		return page;
 	}
 
 	public PageReference goToMainPage() {
-		PageReference page = new PageReference('/apex/mainPage?role=' + roleValue);
 		page.setRedirect(true);
 		return page;
 	}

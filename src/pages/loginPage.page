@@ -1,6 +1,8 @@
 <apex:page controller="LoginController" title="Login">
 <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
-<head></head>
+<head>
+	<apex:stylesheet value="{!$Resource.style}"/>
+</head>
 <body>
 	<apex:form >
 	<apex:pageMessages id="message-id"/>
@@ -13,16 +15,18 @@
 
 <apex:slds />
 <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
-	<div class="slds-form-element">
-		<div class="slds-form-element__control">
-			<input type="text" id="login-id" class="slds-input" placeholder="Login" />
+	<form name="form">
+		<div class="slds-form-element">
+			<div class="slds-form-element__control">
+				<input type="text" id="login-id" class="slds-input" name="login" placeholder="Login" />
+			</div>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<div class="slds-form-element__control">
-			<input type="password" id="password-id" class="slds-input" placeholder="Password" />
+		<div class="slds-form-element">
+			<div class="slds-form-element__control">
+				<input type="password" id="password-id" class="slds-input" name="password" placeholder="Password" />
+			</div>
 		</div>
-	</div>
+	</form>
 	<div class="slds-m-vertical--medium"></div>
 	<div class="slds-align_absolute-center">
 		<a href="javascript:void(0);" class="slds-text-link_reset" onclick="registration()">Registration</a>
@@ -32,8 +36,36 @@
 </div>
 
 <script type="text/javascript">
+function showError(container, errorMessage) {
+	container.className = 'error';
+	var msgElem = document.createElement('span');
+	msgElem.className = "error-message";
+	msgElem.innerHTML = errorMessage;
+	container.appendChild(msgElem);
+};
+
+function resetError(container) {
+	container.className = '';
+	if (container.lastChild.className == "error-message") {
+		container.removeChild(container.lastChild);
+	}
+};
 
 function getParameters() {
+	var elems = form.elements;
+
+	resetError(elems.login.parentNode);
+	if (elems.login.value == '') {
+		showError(elems.login.parentNode, 'Please enter your login!');
+		return false;
+	}
+
+	resetError(elems.password.parentNode);
+	if (elems.password.value == '') {
+		showError(elems.password.parentNode, 'Please enter your password!');
+		return false;
+	}
+
 	let login = document.querySelector('#login-id').value;
 	let password = document.querySelector('#password-id').value;
 	setParameters(login, password);

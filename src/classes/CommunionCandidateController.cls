@@ -1,6 +1,7 @@
-public with sharing class CommunionCandidateController {
-	public List<Candidate__c> candidates { get; set; }
+public class CommunionCandidateController {
+	public PageReference communionPage;
 	public ID candidateID;
+	public String roleValue;
 	public String name { get; set; }
 	public String surname { get; set; }
 	public String middleName { get; set; }
@@ -20,14 +21,16 @@ public with sharing class CommunionCandidateController {
 	public String decisionPeriod { get; set; }
 	public String decision { get; set; }
 	public String amount { get; set; }
+	public List<Candidate__c> candidates { get; set; }
 	public List<Candidate__History> changeCandidate { get; set; }
 	public List<Interaction__c> interactions { get; set; }
-	public String roleValue;
-	public PageReference page = new PageReference('/apex/communionCandidatePage');
 
 	public CommunionCandidateController() {
+		this.communionPage = new PageReference('/apex/communionCandidatePage');
 		this.candidateID = ApexPages.currentPage().getParameters().get('candidateID');
 		this.roleValue = ApexPages.currentPage().getParameters().get('role');
+		this.communionPage.getParameters().put('candidateID', candidateID);
+		this.communionPage.getParameters().put('role', roleValue);
 		this.surname = '';
 		this.name = '';
 		this.middleName = '';
@@ -58,7 +61,8 @@ public with sharing class CommunionCandidateController {
 		changeCandidate = [
 			SELECT ParentId, OldValue, NewValue, Field, CreatedById, CreatedDate
 			FROM Candidate__History
-			WHERE parentId = :CandidateId AND (Field ='Name' OR Field = 'Status__c')
+			WHERE parentId = :CandidateId 
+			AND (Field ='Status__c' OR Field = 'Mail__c' OR Field = 'Skype__c' OR Field = 'PhoneNumber__c')
 		];
 
 		interactions = [
@@ -66,9 +70,6 @@ public with sharing class CommunionCandidateController {
 			FROM Interaction__c
 			WHERE Candidate__c = :candidateID
 		];
-
-		page.getParameters().put('candidateID', candidateID);
-		page.getParameters().put('role', roleValue);
 	}
 
 	public PageReference editCandidate() {
@@ -105,8 +106,8 @@ public with sharing class CommunionCandidateController {
 		);
 		update candidate;
 
-		page.setRedirect(true);
-		return page;
+		communionPage.setRedirect(true);
+		return communionPage;
 	}
 
 	public PageReference createCommunionCandidate() {
@@ -123,12 +124,14 @@ public with sharing class CommunionCandidateController {
 
 		update candidate;
 
-		page.setRedirect(true);
-		return page;
+		communionPage.setRedirect(true);
+		return communionPage;
 	}
 
 	public pageReference goToMainPage() {
-		PageReference page = new PageReference('/apex/mainPage?role=' + roleValue);
+		PageReference page = Page.mainPage;
+		page.getParameters().put('role', roleValue);
+		page.getParameters().put('tab', 'candidates');
 		page.setRedirect(true);
 		return page;
 	}

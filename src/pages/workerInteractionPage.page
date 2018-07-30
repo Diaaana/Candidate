@@ -20,7 +20,6 @@
 			<apex:column value="{!interaction.Amount__c}"/>
 		</apex:pageBlockTable>
 	</apex:pageBlock>
-
 </body>
 </html>
 </apex:page>

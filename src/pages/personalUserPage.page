@@ -1,6 +1,8 @@
 <apex:page showHeader="true" sidebar="true" controller="PersonalUserController">
 <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
-<head></head>
+<head>
+	<apex:stylesheet value="{!$Resource.style}"/>
+</head>
 <body>
 <apex:form>
 	<apex:actionFunction name="setParameters" action="{!editUser}" reRender="view">
@@ -10,7 +12,7 @@
 	<apex:param name="login" value="" assignTo="{!login}" />
 	<apex:param name="password" value="" assignTo="{!password}" />
 </apex:actionFunction>
-<apex:actionFunction name="mainPage" action="{!goToMainPage}" />
+<apex:actionFunction name="mainPage" action="{!goToMainPage}" reRender="view" />
 </apex:form>
 
 <apex:slds />
@@ -19,39 +21,41 @@
 		<button class="slds-button slds-button_brand" onclick="mainPage()" reRender="view">Main page</button>
 	</div>
 	<div class="slds-m-vertical--x-medium"></div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label">Created date: {!user.CreatedDate}</label>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label">Name</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="name-id" class="slds-input" value="{!user.Worker__r.Name}" />
+	<form name="form">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Created date: {!user.CreatedDate}</label>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label">Surname</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="surname-id" class="slds-input" value="{!user.Worker__r.Surname__c}" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Name</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="name-id" class="slds-input" name="name" value="{!user.Worker__r.Name}" />
+			</div>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label">Middle name</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="middle-name-id" class="slds-input" value="{!user.Worker__r.MiddleName__c}" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Surname</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="surname-id" class="slds-input" name="surname" value="{!user.Worker__r.Surname__c}" />
+			</div>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label">Login</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="login-id" class="slds-input" value="{!user.Name}" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Middle name</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="middle-name-id" class="slds-input" name="middleName" value="{!user.Worker__r.MiddleName__c}" />
+			</div>
 		</div>
-	</div>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label">Password</label>
-		<div class="slds-form-element__control">
-			<input type="text" id="password-id" class="slds-input" value="{!user.Password__c}" />
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Login</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="login-id" class="slds-input" name="login" value="{!user.Name}" />
+			</div>
 		</div>
-	</div>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">Password</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="password-id" class="slds-input" name="password" value="{!user.Password__c}" />
+			</div>
+		</div>
+	</form>
 	<div class="slds-m-vertical--medium"></div>
 	<div class="slds-align_absolute-center">
 		<button class="slds-button slds-button_brand" onclick="getParameters()" reRender="view">Edit information</button>
@@ -59,15 +63,62 @@
 </div>
 
 <script type="text/javascript">
-	
-	function getParameters() {
-		let nameValue = document.querySelector('#name-id').value;
-		let surnameValue = document.querySelector('#surname-id').value;
-		let middleNameValue = document.querySelector('#middle-name-id').value;
-		let loginValue = document.querySelector('#login-id').value;
-		let passwordValue = document.querySelector('#password-id').value;
-		setParameters(nameValue, surnameValue, middleNameValue, loginValue, passwordValue);
+function showError(container, errorMessage) {
+	container.className = 'error';
+	var msgElem = document.createElement('span');
+	msgElem.className = "error-message";
+	msgElem.innerHTML = errorMessage;
+	container.appendChild(msgElem);
+};
+
+function resetError(container) {
+	container.className = '';
+	if (container.lastChild.className == "error-message") {
+		container.removeChild(container.lastChild);
 	}
+};
+
+function getParameters() {
+	var elems = form.elements;
+
+	resetError(elems.name.parentNode);
+	if (elems.name.value == '') {
+		showError(elems.name.parentNode, 'Please enter your name!');
+		return false;
+	}
+
+	resetError(elems.surname.parentNode);
+	if (elems.surname.value == '') {
+		showError(elems.surname.parentNode, 'Please enter your name!');
+		return false;
+	}
+
+	resetError(elems.middleName.parentNode);
+	if (elems.middleName.value == '') {
+		showError(elems.middleName.parentNode, 'Please enter your middle name!');
+		return false;
+	}
+
+	resetError(elems.login.parentNode);
+	if (elems.login.value == '') {
+		showError(elems.login.parentNode, 'Please enter your login!');
+		return false;
+	}
+
+	resetError(elems.password.parentNode);
+	if (elems.password.value == '') {
+		showError(elems.password.parentNode, 'Please enter your password!');
+		return false;
+	}
+	
+	let nameValue = document.querySelector('#name-id').value;
+	let surnameValue = document.querySelector('#surname-id').value;
+	let middleNameValue = document.querySelector('#middle-name-id').value;
+	let loginValue = document.querySelector('#login-id').value;
+	let passwordValue = document.querySelector('#password-id').value;
+	setParameters(nameValue, surnameValue, middleNameValue, loginValue, passwordValue);
+
+};
 
 </script>
 

@@ -1,9 +1,10 @@
 <apex:page showHeader="true" sidebar="true" controller="CommunionCandidateController">
 <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
-<head></head>
+<head>
+	<apex:stylesheet value="{!$Resource.style}"/>
+</head>
 <body>
 <apex:form >
-<apex:pageMessages />
 	<apex:actionFunction name="setCandidateParameters" action="{!editCandidate}" reRender="view">
 		<apex:param name="surname" value="" assignTo="{!surname}" />
 		<apex:param name="name" value="" assignTo="{!name}" />
@@ -28,6 +29,7 @@
 		<apex:param name="amountValue" value="" assignTo="{!amount}" />
 	</apex:actionFunction>
 	<apex:actionFunction name="mainPage" action="{!goToMainPage}" reRender="view" />
+</apex:form>
 
 <apex:slds />
 <div class="slds-m-vertical--medium"></div>
@@ -37,245 +39,266 @@
 	<button class="slds-button slds-button_brand" onclick="mainPage()" reRender="view">Main Page</button>
 	<div class="slds-m-vertical--medium"></div>
 </div>
+
+<apex:pageMessage summary="Сandidate does not exist" severity="error" rendered="{!IF(candidates.size>0,'false','true')}" />
+
 <apex:dataList value="{!candidates}" var="candidate">
-<div class="slds-grid slds-wrap">
-	<div class="slds-col slds-size_1-of-2">
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Name</label>
-			<div class="slds-form-element__control">
-				<input type="text" id="name-id" class="slds-input" value="{!candidate.Name}" />
+<form name="form">
+	<div class="slds-grid slds-wrap">
+		<div class="slds-col slds-size_1-of-2">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>Name</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="name-id" class="slds-input" name="name" value="{!candidate.Name}" />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="slds-col slds-size_1-of-2">
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Position</label>
-			<div class="slds-form-element__control">
-				<input type="text" id="position-id" class="slds-input" value="{!candidate.Position__c}" />
+		<div class="slds-col slds-size_1-of-2">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>Position</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="position-id" class="slds-input" name="position" value="{!candidate.Position__c}" />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="slds-col slds-size_1-of-2">
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Surname</label>
-			<div class="slds-form-element__control">
-				<input type="text" id="surname-id" class="slds-input" value="{!candidate.Surname__c}" />
+		<div class="slds-col slds-size_1-of-2">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>Surname</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="surname-id" class="slds-input" name="surname" value="{!candidate.Surname__c}" />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="slds-col slds-size_1-of-2">
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Salary</label>
-			<div class="slds-form-element__control">
-				<input type="text" id="salary-id" class="slds-input" value="{!candidate.Salary__c}" />
+		<div class="slds-col slds-size_1-of-2">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>Salary</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="salary-id" class="slds-input" name="salary" value="{!candidate.Salary__c}" />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="slds-col slds-size_1-of-2">
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Middle Name</label>
-			<div class="slds-form-element__control">
-				<input type="text" id="middle-name-id" class="slds-input" value="{!candidate.MiddleName__c}" />
+		<div class="slds-col slds-size_1-of-2">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>Middle Name</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="middle-name-id" class="slds-input" name="middleName" value="{!candidate.MiddleName__c}" />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="slds-col slds-size_1-of-2">
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Experience</label>
-			<div class="slds-form-element__control">
-				<input type="text" id="experience-id" class="slds-input" value="{!candidate.Experience__c}" />
+		<div class="slds-col slds-size_1-of-2">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>Experience</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="experience-id" class="slds-input" name="experience" value="{!candidate.Experience__c}" />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="slds-col slds-size_1-of-2">
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Phone number</label>
-			<div class="slds-form-element__control">
-				<input type="text" id="telephone-id" class="slds-input" value="{!candidate.PhoneNumber__c}" />
+		<div class="slds-col slds-size_1-of-2">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>Phone number</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="telephone-id" class="slds-input" name="phoneNumber" value="{!candidate.PhoneNumber__c}" />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="slds-col slds-size_1-of-2">
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">HR</label>
-			<div class="slds-form-element__control">
-				<input type="text" id="HR-id" class="slds-input" value="{!candidate.HR__c}" />
+		<div class="slds-col slds-size_1-of-2">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>HR</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="HR-id" class="slds-input" name="HR" value="{!candidate.HR__c}" />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="slds-col slds-size_1-of-2">
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Mail</label>
-			<div class="slds-form-element__control">
-				<input type="text" id="mail-id" class="slds-input" value="{!candidate.Mail__c}" />
+		<div class="slds-col slds-size_1-of-2">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>Mail</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="mail-id" class="slds-input" name="mail" value="{!candidate.Mail__c}" />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="slds-col slds-size_1-of-2">
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Skype</label>
-			<div class="slds-form-element__control">
-				<input type="text" id="skype-id" class="slds-input" value="{!candidate.Skype__c}" />
+		<div class="slds-col slds-size_1-of-2">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">Skype</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="skype-id" class="slds-input" value="{!candidate.Skype__c}" />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="slds-col slds-size_1-of-1">
-		<div class="slds-form-element">
-			<a href="javascript:void(0);" class="slds-text-link_reset" onclick="window.location='{!candidate.Resume__c}'">Resume link</a>
-			<div class="slds-form-element__control">
-				<input type="url" id="resume-id" class="slds-input" value="{!candidate.Resume__c}" />
+		<div class="slds-col slds-size_1-of-1">
+			<div class="slds-form-element">
+				<a href="javascript:void(0);" class="slds-text-link_reset" onclick="window.location='{!candidate.Resume__c}'">
+				<abbr class="slds-required" title="required">*</abbr>Resume link</a>
+				<div class="slds-form-element__control">
+					<input type="url" id="resume-id" class="slds-input" name="resume" value="{!candidate.Resume__c}" />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="slds-col slds-size_1-of-2">
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Status</label>
-			<div class="slds-form-element__control">
-				<input type="text" id="edit-status-id" class="slds-input" value="{!candidate.Status__c}" />
+		<div class="slds-col slds-size_1-of-2">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>Status</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="edit-status-id" class="slds-input" name="status" value="{!candidate.Status__c}" />
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="slds-col slds-size_1-of-2">
-		<div class="slds-form-element">
-			<label class="slds-form-element__label">Status</label>
-			<div class="slds-form-element__control">
-				<div class="slds-select_container">
-					<apex:selectList styleClass="edit-status-class" size="1">
-						<apex:selectOption itemValue=""/>
-						<apex:selectOption itemValue="Start"/>
-						<apex:selectOption itemValue="Questionnaire"/>
-						<apex:selectOption itemValue="Executing the test task"/>
-						<apex:selectOption itemValue="Interview"/>
-						<apex:selectOption itemValue="Decision making"/>
-						<apex:selectOption itemValue="Decision is made"/>
-				</apex:selectList>
+		<apex:form>
+		<div class="slds-col slds-size_1-of-2">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">Status</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<apex:selectList styleClass="edit-status-class" size="1">
+							<apex:selectOption itemValue=""/>
+							<apex:selectOption itemValue="Start"/>
+							<apex:selectOption itemValue="Questionnaire"/>
+							<apex:selectOption itemValue="Executing the test task"/>
+							<apex:selectOption itemValue="Interview"/>
+							<apex:selectOption itemValue="Decision making"/>
+							<apex:selectOption itemValue="Decision is made"/>
+						</apex:selectList>
+					</div>
+				</div>
 			</div>
 		</div>
+		</apex:form>
 	</div>
-</div>
-<div class="slds-col slds-size_1-of-1">
-	<div class="slds-m-vertical--medium"></div>
-	<div class="slds-align_absolute-right">
-		<button class="slds-button slds-button_brand" onclick="getCandidateParameters()" reRender="view">Edit information</button>
+</form>
+<div class="slds-m-vertical--medium"></div>
+<div class="slds-align_absolute-right">
+	<button class="slds-button slds-button_brand" onclick="getCandidateParameters()" reRender="view">Edit information</button>
 	</div>
-</div>
-</div>
 </apex:dataList>
 
 <div class="slds-m-vertical--medium"></div>
-<div class="slds-text-heading_medium" style="font-weight: bold;">Communication with the candidate</div>
-<div class="slds-m-vertical--medium"></div>
-<div class="slds-align_absolute-center">
-	<button class="slds-button slds-button_brand" onclick="showCandidateHistory(); return false;" reRender="view">Show change history of candidate</button>
-	<div class="slds-m-left--medium"></div>
-	<button id="hide-table-id" class="slds-button slds-button_brand" onclick="hideCandidateHistory(); return false;" reRender="view" style="display: none;">Hide table</button>
+<apex:pageBlock rendered="{!IF(candidates.size>0,'true','false')}">
 	<div class="slds-m-vertical--medium"></div>
-</div>
-
-<div class="slds-m-vertical--medium"></div>
-<div id="history-candidate-table-id" hidden="true">
-	<apex:pageBlock >
-		<apex:pageBlockTable value="{!changeCandidate}" var="historyCandidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
-			<apex:column value="{!historyCandidate.CreatedDate}" />
-			<apex:column value="{!historyCandidate.Field}" />
-			<apex:column value="{!historyCandidate.OldValue}" />
-			<apex:column value="{!historyCandidate.NewValue}" />
-		</apex:pageBlockTable>
-	</apex:pageBlock>
-</div>
-<div class="slds-m-vertical--medium"></div>
-
-<div class="slds-align_absolute-left">
-	<button class="slds-button slds-button_brand" onclick="addInteraction(); return false;" reRender="view">Create interaction</button>
-	<button id="button-hide-interaction-id" class="slds-button slds-button_brand" onclick="hideInteraction(); return false;" reRender="view" style="display: none;">Hide Interaction</button>
-</div>
-<div class="slds-m-vertical--medium"></div>
-
-<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small" id="interaction-id" hidden="true">
-<div class="slds-form-element">
-	<label class="slds-form-element__label">Task</label>
-	<div class="slds-form-element__control">
-		<input type="text" id="task-id" class="slds-input" placeholder="Task" />
+	<div class="slds-text-heading_medium" style="font-weight: bold;">Communication with the candidate</div>
+	<div class="slds-m-vertical--medium"></div>
+	<div class="slds-align_absolute-center">
+		<button class="slds-button slds-button_brand" onclick="showCandidateHistory(); return false;" reRender="view">Show change history of candidate</button>
+		<div class="slds-m-left--medium"></div>
+		<button id="hide-table-id" class="slds-button slds-button_brand" onclick="hideCandidateHistory(); return false;" reRender="view" style="display: none;">Hide table</button>
+		<div class="slds-m-vertical--medium"></div>
 	</div>
-</div>
-<div class="slds-form-element">
-	<label class="slds-form-element__label">Source</label>
-	<div class="slds-form-element__control">
-		<div class="slds-select_container">
-			<apex:selectList styleClass="coming-class" size="1">
-				<apex:selectOption itemValue="Invite"/>
-				<apex:selectOption itemValue="Response"/>
-			</apex:selectList>
+
+	<div class="slds-m-vertical--medium"></div>
+	<div id="history-candidate-table-id" hidden="true">
+		<apex:pageBlock >
+			<apex:pageBlockTable value="{!changeCandidate}" var="historyCandidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+				<apex:column value="{!historyCandidate.CreatedDate}" />
+				<apex:column value="{!historyCandidate.Field}" />
+				<apex:column value="{!historyCandidate.OldValue}" />
+				<apex:column value="{!historyCandidate.NewValue}" />
+			</apex:pageBlockTable>
+		</apex:pageBlock>
+	</div>
+	<div class="slds-m-vertical--medium"></div>
+
+	<div class="slds-align_absolute-left">
+		<button class="slds-button slds-button_brand" onclick="addInteraction(); return false;" reRender="view">Create interaction</button>
+		<button id="button-hide-interaction-id" class="slds-button slds-button_brand" onclick="hideInteraction(); return false;" reRender="view" style="display: none;">Hide Interaction</button>
+	</div>
+	<div class="slds-m-vertical--medium"></div>
+
+	<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small" id="interaction-id" hidden="true">
+		<form name="formInteraction">
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">Task</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="task-id" class="slds-input" name="task" placeholder="Task" />
+				</div>
+			</div>
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">Date of interview</label>
+				<div class="slds-form-element__control">
+					<input type="date" id="date-interview-id" class="slds-input" name="dateInterview" placeholder="Date of interview" />
+				</div>
+			</div>
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">Decision period (days) </label>
+				<div class="slds-form-element__control">
+					<input type="text" id="decision-period-id" class="slds-input" name="decisionPeriod" placeholder="Decision period" />
+				</div>
+			</div>
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">Amount ($)</label>
+				<div class="slds-form-element__control">
+					<input type="text" id="amount-id" class="slds-input" name="amount" placeholder="Amount" />
+				</div>
+			</div>
+		</form>
+		<apex:form>
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">Source</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<apex:selectList styleClass="coming-class" size="1">
+							<apex:selectOption itemValue="Invite"/>
+							<apex:selectOption itemValue="Response"/>
+						</apex:selectList>
+					</div>
+				</div>
+			</div>
+			<div class="slds-form-element__control">
+				<div class="slds-select_container">
+					<apex:selectList styleClass="contact-class" size="1">
+						<apex:selectOption itemValue="Skype"/>
+						<apex:selectOption itemValue="Phone"/>
+						<apex:selectOption itemValue="LinkedIn"/>
+						<apex:selectOption itemValue="Job search site"/>
+					</apex:selectList>
+				</div>
+			</div>
+			<div class="slds-form-element">
+				<label class="slds-form-element__label">Decision</label>
+				<div class="slds-form-element__control">
+					<div class="slds-select_container">
+						<apex:selectList styleClass="decision-class" size="1">
+							<apex:selectOption itemValue="Offer"/>
+							<apex:selectOption itemValue="Closed"/>
+							<apex:selectOption itemValue="Later"/>
+						</apex:selectList>
+					</div>
+				</div>
+			</div>
+		</apex:form>
+		<div class="slds-m-vertical--medium"></div>
+		<div class="slds-align_absolute-center">
+			<button class="slds-button slds-button_brand" onclick="getCommunionParameters()" reRender="view">OK</button>
 		</div>
 	</div>
-</div>
-<div class="slds-form-element__control">
-	<div class="slds-select_container">
-		<apex:selectList styleClass="contact-class" size="1">
-			<apex:selectOption itemValue="Skype"/>
-			<apex:selectOption itemValue="Phone"/>
-			<apex:selectOption itemValue="LinkedIn"/>
-			<apex:selectOption itemValue="Job search site"/>
-		</apex:selectList>
-	</div>
-</div>
-<div class="slds-form-element">
-	<label class="slds-form-element__label">Date of interview</label>
-	<div class="slds-form-element__control">
-		<input type="date" id="date-interview-id" class="slds-input" placeholder="Date of interview" />
-	</div>
-</div>
-<div class="slds-form-element">
-	<label class="slds-form-element__label">Decision period (days) </label>
-	<div class="slds-form-element__control">
-		<input type="text" id="decision-period-id" class="slds-input" placeholder="Decision period" />
-	</div>
-</div>
-<div class="slds-form-element">
-	<label class="slds-form-element__label">Decision</label>
-	<div class="slds-form-element__control">
-		<div class="slds-select_container">
-			<apex:selectList styleClass="decision-class" size="1">
-				<apex:selectOption itemValue="Offer"/>
-				<apex:selectOption itemValue="Closed"/>
-				<apex:selectOption itemValue="Later"/>
-			</apex:selectList>
-		</div>
-	</div>
-</div>
-<div class="slds-form-element">
-	<label class="slds-form-element__label">Amount ($)</label>
-	<div class="slds-form-element__control">
-		<input type="text" id="amount-id" class="slds-input" placeholder="Amount" />
-	</div>
-</div>
-<div class="slds-m-vertical--medium"></div>
-<div class="slds-align_absolute-center">
-	<button class="slds-button slds-button_brand" onclick="getCommunionParameters()" reRender="view">OK</button>
-</div>
-</div>
 
-<div class="slds-align_absolute-left">
-	<button class="slds-button slds-button_brand" onclick="showInteractions(); return false;" reRender="view">Show interactions</button>
-	<button id="button-hide-interactions-id" class="slds-button slds-button_brand" onclick="hideInteractions(); return false;" reRender="view" style="display: none;">Hide interactions</button>
-</div>
+	<div class="slds-align_absolute-left">
+		<button class="slds-button slds-button_brand" onclick="showInteractions(); return false;" reRender="view">Show interactions</button>
+		<button id="button-hide-interactions-id" class="slds-button slds-button_brand" onclick="hideInteractions(); return false;" reRender="view" style="display: none;">Hide interactions</button>
+	</div>
 
-<div class="slds-m-vertical--medium"></div>
-<div id="interactions-table-id" hidden="true">
-	<apex:pageBlock >
-		<apex:pageBlockTable value="{!interactions}" var="interaction" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
-		<apex:column value="{!interaction.Interview__c}" />
-		<apex:column value="{!interaction.Task__c}" />
-		<apex:column value="{!interaction.DecisionPeriod__c}" />
-		<apex:column value="{!interaction.Decision__c}" />
-		<apex:column value="{!interaction.Amount__c}" />
-		</apex:pageBlockTable>
-	</apex:pageBlock>
-</div>
-<div class="slds-m-vertical--medium"></div>
+	<div class="slds-m-vertical--medium"></div>
+	<div id="interactions-table-id" hidden="true">
+		<apex:pageBlock >
+			<apex:pageBlockTable value="{!interactions}" var="interaction" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+			<apex:column value="{!interaction.Interview__c}" />
+			<apex:column value="{!interaction.Task__c}" />
+			<apex:column value="{!interaction.DecisionPeriod__c}" />
+			<apex:column value="{!interaction.Decision__c}" />
+			<apex:column value="{!interaction.Amount__c}" />
+			</apex:pageBlockTable>
+		</apex:pageBlock>
+	</div>
+	<div class="slds-m-vertical--medium"></div>
+</apex:pageBlock>
 
-<!-- <div class="slds-text-heading_medium" style="font-weight: bold;">Сomments</div> -->
-</apex:form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -283,7 +306,161 @@ var j$ = jQuery.noConflict();
 </script>
 <script type="text/javascript">
 
+function showError(container, errorMessage) {
+	container.className = 'error';
+	var msgElem = document.createElement('span');
+	msgElem.className = "error-message";
+	msgElem.innerHTML = errorMessage;
+	container.appendChild(msgElem);
+};
+
+function resetError(container) {
+	container.className = '';
+	if (container.lastChild.className == "error-message") {
+		container.removeChild(container.lastChild);
+	}
+};
+
 function getCandidateParameters() {
+	var elems = form.elements;
+	let listStatusValue = document.querySelector('.edit-status-class').value;
+
+	resetError(elems.name.parentNode);
+	if (elems.name.value == '') {
+		showError(elems.name.parentNode, 'Please enter name of the candidate!');
+		return false;
+	}
+
+	resetError(elems.name.parentNode);
+	if (!(/^[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.name.value))) {
+		showError(elems.name.parentNode, 'The name can only contain letters and the symbol "-" and start with a capital letter!');
+        return false;
+    }
+
+	resetError(elems.surname.parentNode);
+	if (elems.surname.value == '') {
+		showError(elems.surname.parentNode, 'Please enter surname of the candidate!');
+		return false;
+	}
+
+	resetError(elems.surname.parentNode);
+	if (!(/^[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.surname.value))) {
+		showError(elems.surname.parentNode, 'Surname can contain only letters and the symbol "-" and start with a capital letter!');
+		return false;
+	}
+
+	resetError(elems.middleName.parentNode);
+	if (elems.middleName.value == '') {
+		showError(elems.middleName.parentNode, 'Please enter middle name  of the candidate!');
+		return false;
+	}
+
+	resetError(elems.middleName.parentNode);
+	if (!(/^[A-ZА-Я][a-zа-я]+$/.test(elems.middleName.value))) {
+		showError(elems.middleName.parentNode, 'The middle name must contain only letters and start with a capital letter!');
+		return false;
+	}
+
+	resetError(elems.phoneNumber.parentNode);
+	if (elems.phoneNumber.value == '') {
+		showError(elems.phoneNumber.parentNode, 'Please enter phone number of the candidate!');
+		return false;
+	}
+
+	resetError(elems.phoneNumber.parentNode);
+	if (elems.phoneNumber.value.length > 17 ) {
+		showError(elems.phoneNumber.parentNode, 'Exceeding the number of characters in the phone number!');
+        return false;
+    } else if (!(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/.test(elems.phoneNumber.value))) {
+    	showError(elems.phoneNumber.parentNode, 'Wrong phone number format!');
+        return false;
+    }
+
+	resetError(elems.mail.parentNode);
+	if (elems.mail.value == '') {
+		showError(elems.mail.parentNode, 'Please enter mail of the candidate!');
+		return false;
+	}
+
+	resetError(elems.mail.parentNode);
+	if (!(/^[\w-\.]+@[\w-]+\.[a-z]{2,3}$/.test(elems.mail.value))) {
+		showError(elems.mail.parentNode, 'Incorrect e-mail address!');
+		return false;
+	}
+
+	resetError(elems.resume.parentNode);
+	if (elems.resume.value == '') {
+		showError(elems.resume.parentNode, 'Please enter resume of the candidate!');
+		return false;
+	}
+
+	resetError(elems.resume.parentNode);
+	if (!(/^(ftp|http|https):\/\/[^ "]+$/.test(elems.resume.value))) {
+		showError(elems.resume.parentNode, 'Wrong resume format!');
+		return false;
+	}
+
+	resetError(elems.status.parentNode);
+	if (listStatusValue == '' && elems.status.value == '') {
+		showError(elems.status.parentNode, 'Please enter status of the candidate!');
+		return false;
+	}
+
+	resetError(elems.position.parentNode);
+	if (elems.position.value == '') {
+		showError(elems.position.parentNode, 'Please enter position of the candidate!');
+		return false;
+	}
+
+	resetError(elems.position.parentNode);
+	if (!(/^[A-ZА-Я][А-ЯA-Za-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.position.value))) {
+		showError(elems.position.parentNode, 'Position of the candidate can contain only letters, a space and a symbol "-" and begin with a capital letter!');
+		return false;
+	}
+
+	resetError(elems.salary.parentNode);
+	if (elems.salary.value == '') {
+		showError(elems.salary.parentNode, 'Please enter salary of the candidate!');
+		return false;
+	}
+
+	resetError(elems.salary.parentNode);
+	if (!(/^[0-9]+$/.test(elems.salary.value))) {
+		showError(elems.salary.parentNode, 'Salary should only contain numbers!');
+		return false;
+	} else if (elems.salary.value < 0 || elems.salary.value > 5000000) {
+		showError(elems.salary.parentNode, 'Salary must be greater than 0!');
+        return false;
+    }
+
+	resetError(elems.experience.parentNode);
+	if (elems.experience.value == '') {
+		showError(elems.experience.parentNode, 'Please enter experience of the candidate!');
+		return false;
+	}
+
+	resetError(elems.experience.parentNode);
+	if (!(/^[0-9]+$/.test(elems.experience.value))) {
+		showError(elems.experience.parentNode, 'Experience should only contain numbers!');
+		return false;
+	} else if (elems.experience.value < 0 || elems.experience.value > 100) {
+		showError(elems.experience.parentNode, 'Experience must be greater than 0!');
+        return false;
+    }
+
+	resetError(elems.HR.parentNode);
+	if (elems.HR.value == '') {
+		showError(elems.HR.parentNode, 'Please enter HR of the candidate!');
+		return false;
+	}
+
+	resetError(elems.HR.parentNode);
+	if (!(/^[A-ZА-Я][А-ЯA-Za-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.HR.value))) {
+		showError(elems.HR.parentNode, 'HR of the candidate can contain only letters, a space and a symbol "-" and begin with a capital letter!');
+		return false;
+	}
+
+	
 	let surnameValue = document.querySelector('#surname-id').value;
 	let nameValue = document.querySelector('#name-id').value;
 	let middleNameValue = document.querySelector('#middle-name-id').value;
@@ -296,7 +473,6 @@ function getCandidateParameters() {
 	let mailValue = document.querySelector('#mail-id').value;
 	let skypeValue = document.querySelector('#skype-id').value;
 	let statusValue = document.querySelector('#edit-status-id').value;
-	let listStatusValue = document.querySelector('.edit-status-class').value;
 	
 	if (listStatusValue != '') {
 		setCandidateParameters(surnameValue, nameValue, middleNameValue, resumeValue, positionValue, HRValue, salaryValue, experienceValue, telephoneValue, mailValue, skypeValue, listStatusValue);
@@ -306,14 +482,58 @@ function getCandidateParameters() {
 };
 
 function getCommunionParameters() {
+	var elems = formInteraction.elements;
+
+	resetError(elems.task.parentNode);
+	if (elems.task.value == '') {
+		showError(elems.task.parentNode, 'Please enter task of the candidate!');
+		return false;
+	}
+
+	resetError(elems.dateInterview.parentNode);
+	if (elems.dateInterview.value == '') {
+		showError(elems.dateInterview.parentNode, 'Please enter date of interview!');
+		return false;
+	}
+
+	resetError(elems.decisionPeriod.parentNode);
+	if (elems.decisionPeriod.value == '') {
+		showError(elems.decisionPeriod.parentNode, 'Please enter decision period!');
+		return false;
+	}
+
+	resetError(elems.decisionPeriod.parentNode);
+	if (!(/^[0-9]+$/.test(elems.decisionPeriod.value))) {
+		showError(elems.decisionPeriod.parentNode, 'Decision period should only contain numbers!');
+		return false;
+	} else if (elems.decisionPeriod.value < 0 || elems.decisionPeriod.value > 100) {
+		showError(elems.decisionPeriod.parentNode, 'Decision period must be greater than 0!');
+        return false;
+    }
+
+	resetError(elems.amount.parentNode);
+	if (elems.amount.value == '') {
+		showError(elems.amount.parentNode, 'Please enter amount!');
+		return false;
+	}
+
+	resetError(elems.amount.parentNode);
+	if (!(/^[0-9]+$/.test(elems.amount.value))) {
+		showError(elems.amount.parentNode, 'Amount should only contain numbers!');
+		return false;
+	} else if (elems.amount.value < 0 || elems.amount.value > 5000000) {
+		showError(elems.amount.parentNode, 'Amount must be greater than 0!');
+        return false;
+    }
+
 	let taskValue = document.querySelector('#task-id').value;
-	let comingValue = document.querySelector('.coming-class').value;
-	let contactValue = document.querySelector('.contact-class').value;
 	let dateInterviewValue = document.querySelector('#date-interview-id').value;
 	let decisionPeriodValue = document.querySelector('#decision-period-id').value;
-	let decisionValue = document.querySelector('.decision-class').value;
 	let amountValue = document.querySelector('#amount-id').value;
-
+	let comingValue = document.querySelector('.coming-class').value;
+	let contactValue = document.querySelector('.contact-class').value;
+	let decisionValue = document.querySelector('.decision-class').value;
+	
 	setCommunionParameters(taskValue, comingValue, contactValue, dateInterviewValue, decisionPeriodValue, decisionValue, amountValue);
 };
 

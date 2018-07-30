@@ -1,0 +1,143 @@
+<apex:page showHeader="true" sidebar="true" controller="CommentsController">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head>
+	<apex:stylesheet value="{!$Resource.style}"/>
+</head>
+<body>
+<apex:form>
+<apex:actionFunction name="setParameters" action="{!addComment}" reRender="view">
+	<apex:param name="name" value="" assignTo="{!name}" />
+	<apex:param name="surname" value="" assignTo="{!surname}" />
+	<apex:param name="comment" value="" assignTo="{!commentValue}" />
+</apex:actionFunction>
+<apex:actionFunction name="mainPage" action="{!goToMainPage}" />
+</apex:form>
+
+<apex:slds />
+<div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+	<div class="slds-align_absolute-center">
+		<button class="slds-button slds-button_brand" onclick="mainPage()" reRender="view">Main page</button>
+	</div>
+	<form name="form">
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>Name
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="name-id" class="slds-input" name="name" placeholder="Name" />
+			</div>
+		</div>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>Surname
+			</label>
+			<div class="slds-form-element__control">
+				<input type="text" id="surname-id" class="slds-input" name="surname" placeholder="Surname" />
+			</div>
+		</div>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>Comment
+			</label>
+			<div class="slds-form-element__control">
+				<textarea id="comment-id" name="comment" placeholder="Leave your comment please.."></textarea>
+				</div>
+		</div>
+	</form>
+	<div class="slds-m-vertical--medium"></div>
+	<div class="slds-align_absolute-center">
+		<button class="slds-button slds-button_brand" onclick="getParameters()" reRender="view">Send</button>
+	</div>
+
+	<div class="slds-m-vertical--medium"></div>
+	<div class="slds-align_absolute-left">
+		<button class="slds-button slds-button_brand" onclick="showComments(); return false;" reRender="view">View comments</button>
+		<button id="hide-comments-button-id" class="slds-button slds-button_brand" onclick="hideComments(); return false;" reRender="view" style="display: none;">Hide</button>
+	</div>
+	<div class="slds-m-vertical--medium"></div>
+	<div id="table-comments-id" hidden="true">
+		<apex:pageBlock>
+			<apex:pageBlockTable value="{!comments}" var="comment" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+				<apex:column value="{!comment.CreatedDate}" />
+				<apex:column value="{!comment.Name__c}" />
+				<apex:column value="{!comment.Surname__c}" />
+				<apex:column value="{!comment.CommentContent__c}" />
+			</apex:pageBlockTable>
+		</apex:pageBlock>
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+var j$ = jQuery.noConflict();
+</script>
+<script type="text/javascript">
+
+function showError(container, errorMessage) {
+	container.className = 'error';
+	var msgElem = document.createElement('span');
+	msgElem.className = "error-message";
+	msgElem.innerHTML = errorMessage;
+	container.appendChild(msgElem);
+};
+
+function resetError(container) {
+	container.className = '';
+	if (container.lastChild.className == "error-message") {
+		container.removeChild(container.lastChild);
+	}
+};
+
+function getParameters() {
+	var elems = form.elements;
+
+	resetError(elems.name.parentNode);
+	if (elems.name.value == '') {
+		showError(elems.name.parentNode, 'Please enter your name!');
+		return false;
+	}
+
+	resetError(elems.name.parentNode);
+	if (!(/^[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.name.value))) {
+		showError(elems.name.parentNode, 'The name can only contain letters and the symbol "-" and start with a capital letter!');
+        return false;
+    }
+
+	resetError(elems.surname.parentNode);
+	if (elems.surname.value == '') {
+		showError(elems.surname.parentNode, 'Please enter your surname!');
+		return false;
+	}
+
+	resetError(elems.surname.parentNode);
+	if (!(/^[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.surname.value))) {
+		showError(elems.surname.parentNode, 'Surname can contain only letters and the symbol "-" and start with a capital letter!');
+		return false;
+	}
+
+	resetError(elems.comment.parentNode);
+	if (elems.comment.value == '') {
+		showError(elems.comment.parentNode, 'Please write your comment!');
+		return false;
+	}
+
+	let nameValue = document.querySelector('#name-id').value;
+	let surnameValue = document.querySelector('#surname-id').value;
+	let commentValue = document.querySelector('#comment-id').value;
+	setParameters(nameValue, surnameValue, commentValue);
+};
+
+function showComments() {
+	j$('#table-comments-id').show();
+	j$('#hide-comments-button-id').show();
+};
+
+function hideComments() {
+	j$('#table-comments-id').hide();
+	j$('#hide-comments-button-id').hide();
+};
+
+</script>
+</body>
+</html>
+</apex:page>

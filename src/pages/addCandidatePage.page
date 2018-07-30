@@ -1,7 +1,7 @@
 <apex:page controller="AddCandidateController">
 <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
 <head>
-<apex:stylesheet value="{!$Resource.style}"/>
+	<apex:stylesheet value="{!$Resource.style}"/>
 </head>
 <body>
 	<apex:form>
@@ -30,7 +30,7 @@
 			<button class="slds-button slds-button_brand" onclick="mainPage()" reRender="view">Main page</button>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Name
 			</label>
 			<div class="slds-form-element__control">
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Surname
 			</label>
 			<div class="slds-form-element__control">
@@ -46,7 +46,7 @@
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Middle Name
 			</label>
 			<div class="slds-form-element__control">
@@ -54,13 +54,13 @@
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">Resume link</label>
+			<label class="slds-form-element__label">Resume link</label>
 			<div class="slds-form-element__control">
 				<input type="url" id="resume-id" class="slds-input"  name="resume" placeholder="Resume link" />
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Position
 			</label>
 			<div class="slds-form-element__control">
@@ -69,7 +69,7 @@
 		</div>
 		<div class="slds-m-vertical--small"></div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Salary
 			</label>
 			<div class="slds-form-element__control">
@@ -77,7 +77,7 @@
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Experience
 			</label>
 			<div class="slds-form-element__control">
@@ -85,7 +85,7 @@
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Phone number
 			</label>
 			<div class="slds-form-element__control">
@@ -93,13 +93,13 @@
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">Mail</label>
+			<label class="slds-form-element__label">Mail</label>
 			<div class="slds-form-element__control">
 				<input type="text" id="mail-id" class="slds-input" name="mail" placeholder="Mail" />
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">Skype</label>
+			<label class="slds-form-element__label">Skype</label>
 			<div class="slds-form-element__control">
 				<input type="text" id="skype-id" class="slds-input" name="skype" placeholder="Skype" />
 			</div>
@@ -178,9 +178,21 @@ function getParameters() {
 		return false;
 	}
 
+	resetError(elems.name.parentNode);
+	if (!(/^[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.name.value))) {
+		showError(elems.name.parentNode, 'The name can only contain letters and the symbol "-" and start with a capital letter!');
+        return false;
+    }
+
 	resetError(elems.surname.parentNode);
 	if (elems.surname.value == '') {
 		showError(elems.surname.parentNode, 'Please enter surname of the candidate!');
+		return false;
+	}
+
+	resetError(elems.surname.parentNode);
+	if (!(/^[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.surname.value))) {
+		showError(elems.surname.parentNode, 'Surname can contain only letters and the symbol "-" and start with a capital letter!');
 		return false;
 	}
 
@@ -190,9 +202,21 @@ function getParameters() {
 		return false;
 	}
 
+	resetError(elems.middleName.parentNode);
+	if (!(/^[A-ZА-Я][a-zа-я]+$/.test(elems.middleName.value))) {
+		showError(elems.middleName.parentNode, 'The middle name must contain only letters and start with a capital letter!');
+		return false;
+	}
+
 	resetError(elems.resume.parentNode);
 	if (elems.resume.value == '') {
 		showError(elems.resume.parentNode, 'Please enter resume of the candidate!');
+		return false;
+	}
+
+	resetError(elems.resume.parentNode);
+	if (!(/^(ftp|http|https):\/\/[^ "]+$/.test(elems.resume.value))) {
+		showError(elems.resume.parentNode, 'Wrong resume format!');
 		return false;
 	}
 
@@ -202,11 +226,26 @@ function getParameters() {
 		return false;
 	}
 
+	resetError(elems.position.parentNode);
+	if (!(/^[A-ZА-Я][А-ЯA-Za-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.position.value))) {
+		showError(elems.position.parentNode, 'Position of the candidate can contain only letters, a space and a symbol "-" and begin with a capital letter!');
+		return false;
+	}
+
 	resetError(elems.salary.parentNode);
 	if (elems.salary.value == '') {
 		showError(elems.salary.parentNode, 'Please enter salary of the candidate!');
 		return false;
 	}
+
+	resetError(elems.salary.parentNode);
+	if (!(/^[0-9]+$/.test(elems.salary.value))) {
+		showError(elems.salary.parentNode, 'Salary should only contain numbers!');
+		return false;
+	} else if (elems.salary.value < 0 || elems.salary.value > 5000000) {
+		showError(elems.salary.parentNode, 'Salary must be greater than 0!');
+        return false;
+    }
 
 	resetError(elems.experience.parentNode);
 	if (elems.experience.value == '') {
@@ -214,15 +253,39 @@ function getParameters() {
 		return false;
 	}
 
+	resetError(elems.experience.parentNode);
+	if (!(/^[0-9]+$/.test(elems.experience.value))) {
+		showError(elems.experience.parentNode, 'Experience should only contain numbers!');
+		return false;
+	} else if (elems.experience.value < 0 || elems.experience.value > 100) {
+		showError(elems.experience.parentNode, 'Experience must be greater than 0!');
+        return false;
+    }
+
 	resetError(elems.phoneNumber.parentNode);
 	if (elems.phoneNumber.value == '') {
 		showError(elems.phoneNumber.parentNode, 'Please enter phone number of the candidate!');
 		return false;
 	}
 
+	resetError(elems.phoneNumber.parentNode);
+	if (elems.phoneNumber.value.length > 17 ) {
+		showError(elems.phoneNumber.parentNode, 'Exceeding the number of characters in the phone number!');
+        return false;
+    } else if (!(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/.test(elems.phoneNumber.value))) {
+    	showError(elems.phoneNumber.parentNode, 'Wrong phone number format!');
+        return false;
+    }
+
 	resetError(elems.mail.parentNode);
 	if (elems.mail.value == '') {
 		showError(elems.mail.parentNode, 'Please enter mail of the candidate!');
+		return false;
+	}
+
+	resetError(elems.mail.parentNode);
+	if (!(/^[\w-\.]+@[\w-]+\.[a-z]{2,3}$/.test(elems.mail.value))) {
+		showError(elems.mail.parentNode, 'Incorrect e-mail address!');
 		return false;
 	}
 

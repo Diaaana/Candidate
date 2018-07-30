@@ -19,7 +19,7 @@
 <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
 	<form name="form">
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Name
 			</label>
 			<div class="slds-form-element__control">
@@ -27,7 +27,7 @@
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Surname
 			</label>
 			<div class="slds-form-element__control">
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Middle Name
 			</label>
 			<div class="slds-form-element__control">
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Login
 			</label>
 			<div class="slds-form-element__control">
@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Password
 			</label>
 			<div class="slds-form-element__control">
@@ -59,7 +59,7 @@
 			</div>
 		</div>
 		<div class="slds-form-element">
-			<label class="slds-form-element__label" for="text-input-id-1">
+			<label class="slds-form-element__label">
 				<abbr class="slds-required" title="required">*</abbr>Repeat password
 			</label>
 			<div class="slds-form-element__control">
@@ -100,9 +100,21 @@ function registration() {
 		return false;
 	}
 
+	resetError(elems.name.parentNode);
+	if (!(/^[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.name.value))) {
+		showError(elems.name.parentNode, 'The name can only contain letters and the symbol "-" and start with a capital letter!');
+        return false;
+    }
+
 	resetError(elems.surname.parentNode);
 	if (elems.surname.value == '') {
 		showError(elems.surname.parentNode, 'Please enter your surname!');
+		return false;
+	}
+
+	resetError(elems.surname.parentNode);
+	if (!(/^[A-ZА-Я][a-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.surname.value))) {
+		showError(elems.surname.parentNode, 'Surname can contain only letters and the symbol "-" and start with a capital letter!');
 		return false;
 	}
 
@@ -112,15 +124,39 @@ function registration() {
 		return false;
 	}
 
+	resetError(elems.middleName.parentNode);
+	if (!(/^[A-ZА-Я][a-zа-я]+$/.test(elems.middleName.value))) {
+		showError(elems.middleName.parentNode, 'The middle name must contain only letters and start with a capital letter!');
+		return false;
+	}
+
 	resetError(elems.login.parentNode);
 	if (elems.login.value == '') {
 		showError(elems.login.parentNode, 'Please enter your login!');
 		return false;
 	}
 
+	resetError(elems.login.parentNode);
+	if (elems.login.value.length < 5) {
+		showError(elems.login.parentNode, 'The username must contain more than 5 characters!');
+		return false;
+	} else if (!(/^[A-Za-z][A-Za-z0-9_]+$/.test(elems.login.value))) {
+		showError(elems.login.parentNode, 'The username can only contain Latin letters and numbers!');
+		return false;
+	}
+
 	resetError(elems.password.parentNode);
 	if (elems.password.value == '') {
 		showError(elems.password.parentNode, 'Please enter your password!');
+		return false;
+	}
+
+	resetError(elems.password.parentNode);
+	if (elems.password.value.length < 6) {
+		showError(elems.password.parentNode, 'The password must contain more than 5 characters!');
+		return false;
+	} else if (!(/^(?=.*[a-z])(?=.*[A-Z]).{4,}$/.test(elems.password.value))) {
+		showError(elems.password.parentNode, 'The password can only contain Latin letters and numbers!');
 		return false;
 	}
 

@@ -1,4 +1,4 @@
-public with sharing class WorkerInteractionController {
+public class WorkerInteractionController {
 	public String roleValue;
 	public String worker;
 	public List<Interaction__c> interactions { get; set; }
@@ -6,6 +6,7 @@ public with sharing class WorkerInteractionController {
 	public WorkerInteractionController() {
 		roleValue = ApexPages.currentPage().getParameters().get('role');
 		worker = ApexPages.currentPage().getParameters().get('worker');
+
 		interactions = [
 			SELECT Name, Interview__c, Task__c, DecisionPeriod__c, Decision__c, Amount__c
 			FROM Interaction__c
@@ -14,7 +15,9 @@ public with sharing class WorkerInteractionController {
 	}
 
 	public PageReference goToMainPage() {
-		PageReference page = new PageReference('/apex/mainPage?role=' + roleValue);
+		PageReference page = Page.mainPage;
+		page.getParameters().put('role', roleValue);
+		page.getParameters().put('tab', 'workers');
 		page.setRedirect(true);
 		return page;
 	}

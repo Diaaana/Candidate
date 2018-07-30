@@ -1,0 +1,33 @@
+.error input,
+.error textarea {
+	border: 1px solid red;
+}
+
+.error {
+	color: red;
+}
+
+.rich-tabhdr-side-cell {border-top:none;}
+	.rich-tabhdr-side-border {background-image:none;}
+
+.tabPanel {
+   border: none !important;
+}
+
+.activeTab {
+    background-color: #236FBD;   
+    color: white; 
+    background-image: none; 
+    font-size: 20px;
+    border-radius: 10px 10px;
+    border: none !important;    
+}
+
+.inactiveTab {
+    background-color: lightgrey;    
+    background-image:none;
+    font-size: 18px;
+    color: black; 
+    border-radius: 10px 10px;
+    border: none !important;
+}

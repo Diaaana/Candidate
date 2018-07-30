@@ -4,12 +4,216 @@
 		"selected_items":
 		[
 			[
+				"l",
+				"login"
+			],
+			[
+				"lo",
+				"loginController"
+			],
+			[
+				"Lo",
+				"LoginControllel"
+			],
+			[
+				"Pag",
+				"PageReference\t(RegistrationControllerTest.cls)"
+			],
+			[
+				"st",
+				"PUBLIC startTest() \tvoid"
+			],
+			[
 				"m",
-				"message"
+				"msg"
+			],
+			[
+				"as",
+				"assert()"
+			],
+			[
+				"get",
+				"getMessages"
+			],
+			[
+				"re",
+				"registrationController"
+			],
+			[
+				"Re",
+				"RegistrationController\t(RegistrationController.cls)"
+			],
+			[
+				"pu",
+				"put\t(PersonalUserController.cls)"
+			],
+			[
+				"Us",
+				"User__c"
+			],
+			[
+				"User",
+				"User__c\t(PersonalUserController.cls)"
+			],
+			[
+				"Mi",
+				"MiddleName__c\t(PersonalUserController.cls)"
+			],
+			[
+				"Wo",
+				"Worker__c"
+			],
+			[
+				"n",
+				"name"
+			],
+			[
+				"f",
+				"form"
+			],
+			[
+				"va",
+				"var"
+			],
+			[
+				"apex",
+				"apex:form"
+			],
+			[
+				"fo",
+				"form\tTag"
+			],
+			[
+				"bl",
+				"blue"
+			],
+			[
+				"col",
+				"color\tproperty"
+			],
+			[
+				"font-",
+				"font-size\tproperty"
+			],
+			[
+				"pho",
+				"phoneNumber"
+			],
+			[
+				"com",
+				"commentsPage\t[Visualforce Page]"
+			],
+			[
+				"wo",
+				"worker"
+			],
+			[
+				"comment",
+				"commentsPage\t[Visualforce Page]"
+			],
+			[
+				"Su",
+				"Surname__c"
+			],
+			[
+				"Com",
+				"Comment__c"
+			],
+			[
+				"surnm",
+				"surnameValue"
+			],
+			[
+				"nam",
+				"nameValue"
+			],
+			[
+				"co",
+				"commentValue"
+			],
+			[
+				"comme",
+				"commentValue"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"te",
+				"textarea\tTag"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"Work",
+				"Worker__c\t(MainController.cls)"
+			],
+			[
+				"wor",
+				"workerID"
+			],
+			[
+				"pageB",
+				"apex:pageBlock"
+			],
+			[
+				"ma",
+				"mainPage"
+			],
+			[
+				"tab",
+				"tabValue"
+			],
+			[
+				"rol",
+				"roleValue"
 			],
 			[
 				"a",
-				"addMessage"
+				"addWorkerPage\t[Visualforce Page]"
+			],
+			[
+				"text-a",
+				"text-align\tproperty"
+			],
+			[
+				"c",
+				"center\ttext-align"
+			],
+			[
+				"hi",
+				"hide"
+			],
+			[
+				"vi",
+				"visibility"
+			],
+			[
+				"in",
+				"inline\tdisplay"
+			],
+			[
+				"u",
+				"users"
+			],
+			[
+				"styl",
+				"style"
+			],
+			[
+				"d",
+				"display\tproperty"
+			],
+			[
+				"s",
+				"style\t(String)"
+			],
+			[
+				"A",
+				"ActiveTab"
 			],
 			[
 				"p",
@@ -28,28 +232,12 @@
 				"user"
 			],
 			[
-				"Pag",
-				"Page\t(MainController.cls)"
-			],
-			[
 				"ro",
 				"roleValue"
 			],
 			[
-				"rol",
-				"role"
-			],
-			[
 				"Cre",
 				"CreatedDate"
-			],
-			[
-				"Re",
-				"RecordType\t(LoginController.cls)"
-			],
-			[
-				"Wo",
-				"Worker__r"
 			],
 			[
 				"Wor",
@@ -58,10 +246,6 @@
 			[
 				"Reco",
 				"RecordType"
-			],
-			[
-				"get",
-				"PUBLIC get(Integer index) \tObject"
 			],
 			[
 				"h",
@@ -84,16 +268,8 @@
 				"type"
 			],
 			[
-				"re",
-				"reRender"
-			],
-			[
 				"act",
 				"action\t(loginPage.page)"
-			],
-			[
-				"com",
-				"apex:commandButton"
 			],
 			[
 				"type",
@@ -104,10 +280,6 @@
 				"Integer"
 			],
 			[
-				"co",
-				"contact"
-			],
-			[
 				"coming",
 				"comingValue"
 			],
@@ -116,20 +288,8 @@
 				"responseValue"
 			],
 			[
-				"wor",
-				"work-response"
-			],
-			[
-				"in",
-				"inviteValue"
-			],
-			[
 				"it",
 				"itemValue\t(Object)"
-			],
-			[
-				"st",
-				"styleClass\t(String)"
 			],
 			[
 				"C",
@@ -150,14 +310,6 @@
 			[
 				"Cl",
 				"Client__c"
-			],
-			[
-				"pu",
-				"public"
-			],
-			[
-				"va",
-				"value\t(mainPage.page)"
 			],
 			[
 				"out",
@@ -192,10 +344,6 @@
 				"apex:pageBlock"
 			],
 			[
-				"l",
-				"length"
-			],
-			[
 				"sh",
 				"showDataTable"
 			],
@@ -222,10 +370,6 @@
 			[
 				"mi",
 				"middleName"
-			],
-			[
-				"te",
-				"telephone"
 			],
 			[
 				"v",
@@ -268,14 +412,6 @@
 				"Worker__c"
 			],
 			[
-				"wo",
-				"workerRole"
-			],
-			[
-				"Work",
-				"Worker__c"
-			],
-			[
 				"set",
 				"setParameters"
 			],
@@ -312,10 +448,6 @@
 				"HttpRequest"
 			],
 			[
-				"pageB",
-				"apex:pageBlockButtons"
-			],
-			[
 				"page",
 				"apex:pageBlockSection"
 			],
@@ -336,16 +468,8 @@
 				"PUBLIC setRedirect(Boolean redirect) \tSystem.PageReference"
 			],
 			[
-				"n",
-				"nextPage"
-			],
-			[
 				"Fl",
 				"Flight__r"
-			],
-			[
-				"f",
-				"flight"
 			],
 			[
 				"Fligh",
@@ -364,20 +488,8 @@
 				"Addon__c"
 			],
 			[
-				"c",
-				"condition"
-			],
-			[
-				"A",
-				"Addon__r"
-			],
-			[
 				"pl",
 				"plaid"
-			],
-			[
-				"fo",
-				"food"
 			],
 			[
 				"ape",
@@ -402,118 +514,6 @@
 			[
 				"to",
 				"totalPrice"
-			],
-			[
-				"da",
-				"dateTo"
-			],
-			[
-				"dat",
-				"dateFrom"
-			],
-			[
-				"To",
-				"TotalPrice__c\t(BookingController.cls)"
-			],
-			[
-				"Dat",
-				"DateTo__c"
-			],
-			[
-				"date",
-				"date_to"
-			],
-			[
-				"Da",
-				"DateTo__c\t(BookingController.cls)"
-			],
-			[
-				"JSON",
-				"JSON\t[Standard Apex Class]"
-			],
-			[
-				"JS",
-				"JSON\t(BookingController.cls)"
-			],
-			[
-				"Rest",
-				"RestResponse\t[Standard Apex Class]"
-			],
-			[
-				"fl",
-				"flight"
-			],
-			[
-				"FL",
-				"Flight__c\t(BookingController.cls)"
-			],
-			[
-				"Book",
-				"BookedFlight__c"
-			],
-			[
-				"tr",
-				"trigger"
-			],
-			[
-				"Flight",
-				"Flight__r\t(Booking.page)"
-			],
-			[
-				"bo",
-				"bookedFlight"
-			],
-			[
-				"b",
-				"bookedFlight"
-			],
-			[
-				"City",
-				"CityFrom__c\t(Booking.page)"
-			],
-			[
-				"fu",
-				"function"
-			],
-			[
-				"D",
-				"DateTo__c\t(BookingController.cls)"
-			],
-			[
-				"Price",
-				"Price__c"
-			],
-			[
-				"tab",
-				"tableData"
-			],
-			[
-				"table",
-				"tableData"
-			],
-			[
-				"pri",
-				"pricesFlights"
-			],
-			[
-				"ta",
-				"tableData"
-			],
-			[
-				"Flig",
-				"Flights"
-			],
-			[
-				"alert",
-				"alert('vsd\t(Booking.page)"
-			],
-			[
-				"Date",
-				"DateFrom__c"
-			],
-			[
-				"as",
-				"assignTo"
 			]
 		]
 	},
@@ -569,25 +569,33 @@
 		"/C/Users/Asus/Documents/Candidates",
 		"/C/Users/Asus/Documents/Candidates/src",
 		"/C/Users/Asus/Documents/Candidates/src/classes",
-		"/C/Users/Asus/Documents/Candidates/src/pages"
+		"/C/Users/Asus/Documents/Candidates/src/pages",
+		"/C/Users/Asus/Documents/Candidates/src/resources"
 	],
 	"file_history":
 	[
-		"/C/Users/Asus/Documents/Candidates/src/classes/LoginController.cls",
-		"/C/Users/Asus/Documents/Candidates/src/pages/RegistrationPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/loginPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/classes/RegistrationController.cls",
-		"/C/Users/Asus/Documents/Candidates/src/triggers/CheckLoginTrigger.trigger",
-		"/C/Users/Asus/Documents/Candidates/src/pages/workerInteractionPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/mainPage.page",
 		"/C/Users/Asus/Documents/Candidates/src/pages/communionCandidatePage.page",
-		"/C/Users/Asus/Documents/Candidates/src/classes/CommunionCandidateController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/pages/RegistrationPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/workerInteractionPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/loginPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/addWorkerPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/commentsPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/classes/RegistrationControllerTest.cls",
+		"/C/Users/Asus/Documents/Candidates/src/classes/LoginControllerTest.cls",
+		"/C/Users/Asus/Documents/Candidates/src/pages/addCandidatePage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/mainPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/classes/PersonalUserController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/pages/personalUserPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/resources/style.css",
+		"/C/Users/Asus/Documents/Candidates/src/classes/LoginController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/classes/CommentsController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/MainController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/classes/CommunionCandidateController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/WorkerInteractionController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/AddCandidateController.cls",
-		"/C/Users/Asus/Documents/Candidates/src/pages/addCandidatePage.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/addWorkerPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/resources/style.css",
+		"/C/Users/Asus/Documents/Candidates/src/classes/AddWorkerController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/classes/RegistrationController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/triggers/CheckLoginTrigger.trigger",
 		"/C/Users/Asus/Documents/Candidates/src/resources/style",
 		"/C/Users/Asus/Documents/Candidates/src/components/dataTable.component",
 		"/C/Users/Asus/Documents/Candidates/src/components/workerTable.component",
@@ -695,7 +703,7 @@
 	"menu_visible": true,
 	"output.MavensMate-OutputPanel":
 	{
-		"height": 200.0
+		"height": 163.0
 	},
 	"output.find_results":
 	{
@@ -705,7 +713,7 @@
 	"project": "Candidates.sublime-project",
 	"replace":
 	{
-		"height": 88.0
+		"height": 76.8
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -751,7 +759,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 253.0,
+	"side_bar_width": 289.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -45,7 +45,9 @@ public class PersonalUserController {
 	}
 
 	public PageReference goToMainPage() {
-		PageReference page = new PageReference('/apex/mainPage?role=worker');
+		PageReference page = Page.mainPage;
+		page.getParameters().put('role', 'worker');
+		page.getParameters().put('user', userIDValue);
 		page.setRedirect(true);
 		return page;
 	}

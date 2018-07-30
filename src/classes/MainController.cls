@@ -14,7 +14,7 @@ public class MainController {
 	public List<Candidate__c> candidatesList {
 		get {
 			List<Candidate__c> candidatesList = [
-			SELECT Name, Surname__c, MiddleName__c, LastMeeting__c, Resume__c, 
+			SELECT Name, Surname__c, MiddleName__c, Resume__c, 
 			Position__c, HR__c, Salary__c, Experience__c, PhoneNumber__c, Mail__c, Skype__c, Status__c
 			FROM Candidate__c
 			ORDER BY CreatedDate DESC
@@ -41,23 +41,29 @@ public class MainController {
 	public String roleValue { get; set; }
 	public String userID { get; set; }
 	public String workerSurname { get; set; }
+	public String activeTab { get; set; }
 
 	public MainController() {
 		this.candidateID = '';
 		this.workerID = '';
-		this.roleValue = '';
-		userID = ApexPages.currentPage().getParameters().get('user');
+		this.roleValue = ApexPages.currentPage().getParameters().get('role');
+		this.userID = ApexPages.currentPage().getParameters().get('user');
 		this.workerSurname = '';
+		this.activeTab = ApexPages.currentPage().getParameters().get('tab');
 	}
 
 	public PageReference goToAddCandidatePage() {
-		PageReference page = new PageReference('/apex/addCandidatePage?role=' + roleValue);
+		PageReference page = Page.addCandidatePage;
+		page.getParameters().put('role', roleValue);
+		page.getParameters().put('tab', 'candidates');
 		page.setRedirect(true);
 		return page;
 	}
 
 	public PageReference goToAddWorkerPage() {
-		PageReference page = new PageReference('/apex/addWorkerPage?role=' + roleValue);
+		PageReference page = Page.addWorkerPage;
+		page.getParameters().put('role', roleValue);
+		page.getParameters().put('tab', 'workers');
 		page.setRedirect(true);
 		return page;
 	}
@@ -73,7 +79,9 @@ public class MainController {
 	public PageReference deleteWorker() {
 		Worker__c worker = new Worker__c(ID = ID.valueOf(workerID));
 		delete worker;
-		PageReference page = new PageReference('/apex/mainPage?role=' + roleValue);
+		PageReference page = Page.mainPage;
+		page.getParameters().put('role', roleValue);
+		page.getParameters().put('tab', 'workers');
 		page.setRedirect(true);
 		return page;
 	}
@@ -93,6 +101,14 @@ public class MainController {
 	public PageReference showWorkerInteraction() {
 		PageReference page = Page.workerInteractionPage;
 		page.getParameters().put('worker', workerSurname);
+		page.getParameters().put('role', roleValue);
+		page.setRedirect(true);
+		return page;
+	}
+
+	public PageReference goToCommentsPage() {
+		PageReference page = Page.commentsPage;
+		page.getParameters().put('worker', workerID);
 		page.getParameters().put('role', roleValue);
 		page.setRedirect(true);
 		return page;
