@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"Po",
+				"Position__c\t(MainController.cls)"
+			],
+			[
+				"W",
+				"Worker__r"
+			],
+			[
 				"Pag",
 				"Page"
 			],
@@ -226,10 +234,6 @@
 			[
 				"P",
 				"PageReference"
-			],
-			[
-				"W",
-				"WHERE"
 			],
 			[
 				"us",
@@ -510,15 +514,20 @@
 			[
 				"av",
 				"availablePrices"
-			],
-			[
-				"to",
-				"totalPrice"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "src/pages/addWorkerPage.page",
+			"settings":
+			{
+				"buffer_size": 5159,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -574,19 +583,19 @@
 	],
 	"file_history":
 	[
-		"/C/Users/Asus/Documents/Candidates/src/pages/mainPage.page",
 		"/C/Users/Asus/Documents/Candidates/src/pages/communionCandidatePage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/addCandidatePage.page",
+		"/C/Users/Asus/Documents/Candidates/src/classes/MainController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/pages/mainPage.page",
 		"/C/Users/Asus/Documents/Candidates/src/pages/workerInteractionPage.page",
 		"/C/Users/Asus/Documents/Candidates/src/pages/RegistrationPage.page",
 		"/C/Users/Asus/Documents/Candidates/src/pages/personalUserPage.page",
 		"/C/Users/Asus/Documents/Candidates/src/pages/loginPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/addCandidatePage.page",
 		"/C/Users/Asus/Documents/Candidates/src/pages/addWorkerPage.page",
 		"/C/Users/Asus/Documents/Candidates/src/classes/RegistrationControllerTest.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/RegistrationController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/CommunionCandidateController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/LoginControllerTest.cls",
-		"/C/Users/Asus/Documents/Candidates/src/classes/MainController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/PersonalUserController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/CommentsController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/pages/commentsPage.page",
@@ -665,8 +674,38 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/pages/addWorkerPage.page",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5159,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4576,
+								4576
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/MavensMate/sublime/lang/Visualforce.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2292.8,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

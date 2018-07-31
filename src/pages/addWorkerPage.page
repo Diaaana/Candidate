@@ -123,7 +123,7 @@ function getParameters() {
 	}
 
 	resetError(elems.position.parentNode);
-	if (!(/^[A-ZА-Я][А-ЯA-Za-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.position.value))) {
+	if (!(/^([A-Za-z]+)\s([A-Za-z]+)$/.test(elems.position.value))) {
 		showError(elems.position.parentNode, 'Position of the worker can contain only letters, a space and a symbol "-" and begin with a capital letter!');
 		return false;
 	}

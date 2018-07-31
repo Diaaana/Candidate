@@ -2,9 +2,9 @@ public class MainController {
 	public List<User__c> usersList {
 		get {
 			List<User__c> usersList = [
-			SELECT CreatedDate, Worker__r.Name, Worker__r.Surname__c, Worker__r.MiddleName__c, Name
-			FROM User__c
-			ORDER BY CreatedDate DESC
+				SELECT CreatedDate, Worker__r.Name, Worker__r.Surname__c, Worker__r.MiddleName__c, Worker__r.Position__c, Name
+				FROM User__c
+				ORDER BY CreatedDate DESC
 			];
 			return usersList;
 		} 
@@ -14,10 +14,10 @@ public class MainController {
 	public List<Candidate__c> candidatesList {
 		get {
 			List<Candidate__c> candidatesList = [
-			SELECT Name, Surname__c, MiddleName__c, Resume__c, 
-			Position__c, HR__c, Salary__c, Experience__c, PhoneNumber__c, Mail__c, Skype__c, Status__c
-			FROM Candidate__c
-			ORDER BY CreatedDate DESC
+				SELECT Name, Surname__c, MiddleName__c, Resume__c, 
+				Position__c, HR__c, Salary__c, Experience__c, PhoneNumber__c, Mail__c, Skype__c, Status__c
+				FROM Candidate__c
+				ORDER BY CreatedDate DESC
 			];
 			return candidatesList;
 		} 
@@ -27,9 +27,9 @@ public class MainController {
 	public List<Worker__c> workersList {
 		get {
 			List<Worker__c> workersList = [
-			SELECT Name, Surname__c, MiddleName__c, Position__c
-			FROM Worker__c
-			ORDER BY CreatedDate DESC
+				SELECT Name, Surname__c, MiddleName__c, Position__c
+				FROM Worker__c
+				ORDER BY CreatedDate DESC
 			];
 			return workersList;
 		} 

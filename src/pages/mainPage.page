@@ -90,6 +90,7 @@
 					<apex:column value="{!user.Worker__r.Name}" />
 					<apex:column value="{!user.Worker__r.Surname__c}" />
 					<apex:column value="{!user.Worker__r.MiddleName__c}" />
+					<apex:column value="{!user.Worker__r.Position__c}" />
 					<apex:column value="{!user.Name}" />
 				</apex:pageBlockTable>
 			</apex:pageBlock>
