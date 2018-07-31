@@ -95,8 +95,9 @@
 			</apex:pageBlock>
 		</apex:tab>
 		<apex:tab label="Candidates" name="candidates" id="li-candidates-id" rendered="{!CASE(roleValue,"worker","false","true")}" styleClass="slds-tabs--default__content slds-show">
-			<button class="slds-button slds-button_brand" onclick="addCandidate()">Add candidate
-			</button>
+			<div class="slds-align_absolute-center">
+				<button class="slds-button slds-button_brand" onclick="addCandidate()">Add candidate</button>
+			</div>
 			<div class="slds-m-vertical--large"></div>
 			<apex:pageMessage summary="Сandidates do not exist" severity="error" rendered="{!IF(candidatesList.size>0,'false','true')}" />
 			<apex:pageBlock rendered="{!IF(candidatesList.size>0,'true','false')}">

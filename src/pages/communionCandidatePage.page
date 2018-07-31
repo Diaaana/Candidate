@@ -455,12 +455,11 @@ function getCandidateParameters() {
 	}
 
 	resetError(elems.HR.parentNode);
-	if (!(/^[A-ZА-Я][А-ЯA-Za-zа-я]+('[a-zа-я]+|-[A-ZА-Я][a-zа-я]+)?$/.test(elems.HR.value))) {
+	if (!(/^[A-Z][a-z]+[\s|,][A-Z][a-z]{1,19}$/.test(elems.HR.value))) {
 		showError(elems.HR.parentNode, 'HR of the candidate can contain only letters, a space and a symbol "-" and begin with a capital letter!');
 		return false;
 	}
 
-	
 	let surnameValue = document.querySelector('#surname-id').value;
 	let nameValue = document.querySelector('#name-id').value;
 	let middleNameValue = document.querySelector('#middle-name-id').value;
@@ -479,6 +478,7 @@ function getCandidateParameters() {
 	} else {
 		setCandidateParameters(surnameValue, nameValue, middleNameValue, resumeValue, positionValue, HRValue, salaryValue, experienceValue, telephoneValue, mailValue, skypeValue, statusValue);
 	}
+
 };
 
 function getCommunionParameters() {
@@ -541,6 +541,7 @@ function getCommunionParameters() {
 	let decisionValue = document.querySelector('.decision-class').value;
 	
 	setCommunionParameters(taskValue, comingValue, contactValue, dateInterviewValue, decisionPeriodValue, decisionValue, amountValue);
+	
 };
 
 function showCandidateHistory() {
