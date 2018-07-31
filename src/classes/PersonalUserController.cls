@@ -39,7 +39,8 @@ public class PersonalUserController {
 
 		update user;
 
-		PageReference page = new PageReference('/apex/personalUserPage?user=' + userIDValue);
+		PageReference page = Page.personalUserPage;
+		page.getParameters().put('user', userIDValue);
 		page.setRedirect(true);
 		return page;
 	}

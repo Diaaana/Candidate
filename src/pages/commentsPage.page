@@ -5,7 +5,8 @@
 </head>
 <body>
 <apex:form>
-<apex:actionFunction name="setParameters" action="{!addComment}" reRender="view">
+<apex:pageMessages id="message-id"/>
+<apex:actionFunction name="setParameters" action="{!addComment}" reRender="message-id">
 	<apex:param name="name" value="" assignTo="{!name}" />
 	<apex:param name="surname" value="" assignTo="{!surname}" />
 	<apex:param name="comment" value="" assignTo="{!commentValue}" />
@@ -50,21 +51,25 @@
 	</div>
 
 	<div class="slds-m-vertical--medium"></div>
-	<div class="slds-align_absolute-left">
-		<button class="slds-button slds-button_brand" onclick="showComments(); return false;" reRender="view">View comments</button>
-		<button id="hide-comments-button-id" class="slds-button slds-button_brand" onclick="hideComments(); return false;" reRender="view" style="display: none;">Hide</button>
-	</div>
-	<div class="slds-m-vertical--medium"></div>
-	<div id="table-comments-id" hidden="true">
-		<apex:pageBlock>
-			<apex:pageBlockTable value="{!comments}" var="comment" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
-				<apex:column value="{!comment.CreatedDate}" />
-				<apex:column value="{!comment.Name__c}" />
-				<apex:column value="{!comment.Surname__c}" />
-				<apex:column value="{!comment.CommentContent__c}" />
-			</apex:pageBlockTable>
-		</apex:pageBlock>
-	</div>
+	<apex:pageMessage summary="Comments do not find" severity="error" rendered="{!IF(comments.size>0,'false','true')}" />
+	<apex:pageBlock rendered="{!IF(comments.size>0,'true','false')}">
+		<div class="slds-align_absolute-left">
+			<button class="slds-button slds-button_brand" onclick="showComments(); return false;" reRender="view">View comments</button>
+			<button id="hide-comments-button-id" class="slds-button slds-button_brand" onclick="hideComments(); return false;" reRender="view" style="display: none;">Hide</button>
+		</div>
+		<div class="slds-m-vertical--medium"></div>
+		
+		<div id="table-comments-id" hidden="true">
+			<apex:pageBlock>
+				<apex:pageBlockTable value="{!comments}" var="comment" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
+					<apex:column value="{!comment.CreatedDate}" />
+					<apex:column value="{!comment.Name__c}" />
+					<apex:column value="{!comment.Surname__c}" />
+					<apex:column value="{!comment.CommentContent__c}" />
+				</apex:pageBlockTable>
+			</apex:pageBlock>
+		</div>
+	</apex:pageBlock>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

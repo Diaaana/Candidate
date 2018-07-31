@@ -2,6 +2,7 @@
 private class LoginControllerTest {
 	
 	@isTest static void loginWithWrongData() {
+		
 		Test.startTest();
 
 		PageReference page = Page.loginPage;

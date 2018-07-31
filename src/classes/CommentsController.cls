@@ -22,18 +22,33 @@ public class CommentsController {
 	}
 
 	public PageReference addComment() {
-		insert new Comment__c(
-			Worker__c = workerID,
-			Name__c = name,
-			Surname__c = surname,
-			CommentContent__c = commentValue
-		);
+		List<Worker__c> worker = [
+			SELECT Name, Surname__c
+			FROM Worker__c
+			WHERE Name = :name AND Surname__c = :surname
+			LIMIT 1
+		];
 
-		PageReference page = Page.commentsPage;
-		page.getParameters().put('worker', workerID);
-		page.getParameters().put('role', roleValue);
-		page.setRedirect(true);
-		return page;
+		if (worker.isEmpty()) {
+			
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Worker with such data does not exist!'));
+			return null;
+
+		} else {
+
+			insert new Comment__c(
+				Worker__c = workerID,
+				Name__c = name,
+				Surname__c = surname,
+				CommentContent__c = commentValue
+			);
+
+			PageReference page = Page.commentsPage;
+			page.getParameters().put('worker', workerID);
+			page.getParameters().put('role', roleValue);
+			page.setRedirect(true);
+			return page;
+		}
 	}
 
 	public pageReference goToMainPage() {

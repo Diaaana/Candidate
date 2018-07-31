@@ -104,6 +104,7 @@ public class CommunionCandidateController {
 			Skype__c = skype,
 			Status__c = status
 		);
+		
 		update candidate;
 
 		communionPage.setRedirect(true);

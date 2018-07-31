@@ -106,54 +106,55 @@
 		</div>
 	</form>
 	<apex:form>
-	<div class="slds-form-element">
-		<label class="slds-form-element__label">
-			<abbr class="slds-required" title="required">*</abbr>HR
-		</label>
-		<div class="slds-m-vertical--x-small"></div>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label">
+				<abbr class="slds-required" title="required">*</abbr>HR
+			</label>
+			<div class="slds-m-vertical--x-small"></div>
+			<div class="slds-form-element__control">
+				<div class="slds-select_container">
+					<apex:selectList styleClass="HR-class" size="1" value="{!selectHR}" >
+						<apex:selectOptions value="{!getHR}"/>
+					</apex:selectList>
+				</div>
+			</div>
+		</div>
+		<div class="slds-form-element">
+			<label class="slds-form-element__label" for="text-input-id-1">
+				<abbr class="slds-required" title="required">*</abbr>Source
+			</label>
+			<div class="slds-m-vertical--small"></div>
+			<div class="slds-form-element__control">
+				<div class="slds-select_container">
+					<apex:selectList styleClass="coming-class" size="1">
+						<apex:selectOption itemValue="Invite"/>
+						<apex:selectOption itemValue="Response"/>
+					</apex:selectList>
+				</div>
+			</div>
+		</div>
+		<div class="slds-m-vertical--xx-large"></div>
 		<div class="slds-form-element__control">
 			<div class="slds-select_container">
-				<apex:selectList styleClass="HR-class" size="1" value="{!selectHR}" >
-				<apex:selectOptions value="{!getHR}"/>
-			</apex:selectList>
+				<apex:selectList styleClass="contact-class" size="1">
+					<apex:selectOption itemValue="Skype"/>
+					<apex:selectOption itemValue="Phone"/>
+					<apex:selectOption itemValue="LinkedIn"/>
+					<apex:selectOption itemValue="Job search site"/>
+				</apex:selectList>
+			</div>
 		</div>
-	</div>
-</div>
-<div class="slds-form-element">
-	<label class="slds-form-element__label" for="text-input-id-1">
-		<abbr class="slds-required" title="required">*</abbr>Source
-	</label>
-	<div class="slds-m-vertical--small"></div>
-	<div class="slds-form-element__control">
-		<div class="slds-select_container">
-			<apex:selectList styleClass="coming-class" size="1">
-			<apex:selectOption itemValue="Invite"/>
-			<apex:selectOption itemValue="Response"/>
-		</apex:selectList>
-	</div>
-</div>
-</div>
-<div class="slds-m-vertical--xx-large"></div>
-<div class="slds-form-element__control">
-	<div class="slds-select_container">
-		<apex:selectList styleClass="contact-class" size="1">
-		<apex:selectOption itemValue="Skype"/>
-		<apex:selectOption itemValue="Phone"/>
-		<apex:selectOption itemValue="LinkedIn"/>
-		<apex:selectOption itemValue="Job search site"/>
-	</apex:selectList>
-</div>
-</div>
-</apex:form>
+	</apex:form>
 
-<div class="slds-m-vertical--medium"></div>
-<div class="slds-align_absolute-center">
-	<button class="slds-button slds-button_brand" onclick="getParameters()" reRender="view">Create candidate</button>
-</div>
+	<div class="slds-m-vertical--medium"></div>
+	<div class="slds-align_absolute-center">
+		<button class="slds-button slds-button_brand" onclick="getParameters()" reRender="view">Create candidate</button>
+	</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
+	
 function showError(container, errorMessage) {
 	container.className = 'error';
 	var msgElem = document.createElement('span');

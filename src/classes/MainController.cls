@@ -87,13 +87,14 @@ public class MainController {
 	}
 
 	public PageReference goToPersonalPage() {
-		PageReference page = new PageReference('/apex/personalUserPage?user=' + userID);
+		PageReference page = Page.personalUserPage;
+		page.getParameters().put('user', userID);
 		page.setRedirect(true);
 		return page;
 	}
 
 	public PageReference logout() {
-		PageReference page = new PageReference('/apex/loginPage');
+		PageReference page = Page.loginPage;
 		page.setRedirect(true);
 		return page;
 	}

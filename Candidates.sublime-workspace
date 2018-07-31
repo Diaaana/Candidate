@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"Pag",
+				"Page"
+			],
+			[
+				"Pa",
+				"Page"
+			],
+			[
 				"l",
 				"login"
 			],
@@ -14,10 +22,6 @@
 			[
 				"Lo",
 				"LoginControllel"
-			],
-			[
-				"Pag",
-				"PageReference\t(RegistrationControllerTest.cls)"
 			],
 			[
 				"st",
@@ -400,10 +404,6 @@
 				"Name"
 			],
 			[
-				"Pa",
-				"Password__c\t(RegistrationController.cls)"
-			],
-			[
 				"L",
 				"Login__c\t(RegistrationController.cls)"
 			],
@@ -574,27 +574,27 @@
 	],
 	"file_history":
 	[
-		"/C/Users/Asus/Documents/Candidates/src/pages/communionCandidatePage.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/RegistrationPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/workerInteractionPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/loginPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/addWorkerPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/pages/commentsPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/classes/RegistrationControllerTest.cls",
-		"/C/Users/Asus/Documents/Candidates/src/classes/LoginControllerTest.cls",
-		"/C/Users/Asus/Documents/Candidates/src/pages/addCandidatePage.page",
 		"/C/Users/Asus/Documents/Candidates/src/pages/mainPage.page",
-		"/C/Users/Asus/Documents/Candidates/src/classes/PersonalUserController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/pages/communionCandidatePage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/workerInteractionPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/RegistrationPage.page",
 		"/C/Users/Asus/Documents/Candidates/src/pages/personalUserPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/loginPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/addCandidatePage.page",
+		"/C/Users/Asus/Documents/Candidates/src/pages/addWorkerPage.page",
+		"/C/Users/Asus/Documents/Candidates/src/classes/RegistrationControllerTest.cls",
+		"/C/Users/Asus/Documents/Candidates/src/classes/RegistrationController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/classes/CommunionCandidateController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/classes/LoginControllerTest.cls",
+		"/C/Users/Asus/Documents/Candidates/src/classes/MainController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/classes/PersonalUserController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/classes/CommentsController.cls",
+		"/C/Users/Asus/Documents/Candidates/src/pages/commentsPage.page",
 		"/C/Users/Asus/Documents/Candidates/src/resources/style.css",
 		"/C/Users/Asus/Documents/Candidates/src/classes/LoginController.cls",
-		"/C/Users/Asus/Documents/Candidates/src/classes/CommentsController.cls",
-		"/C/Users/Asus/Documents/Candidates/src/classes/MainController.cls",
-		"/C/Users/Asus/Documents/Candidates/src/classes/CommunionCandidateController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/WorkerInteractionController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/AddCandidateController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/classes/AddWorkerController.cls",
-		"/C/Users/Asus/Documents/Candidates/src/classes/RegistrationController.cls",
 		"/C/Users/Asus/Documents/Candidates/src/triggers/CheckLoginTrigger.trigger",
 		"/C/Users/Asus/Documents/Candidates/src/resources/style",
 		"/C/Users/Asus/Documents/Candidates/src/components/dataTable.component",
@@ -759,7 +759,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 289.0,
+	"side_bar_width": 309.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

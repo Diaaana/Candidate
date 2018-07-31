@@ -180,6 +180,7 @@ function registration() {
 	let repeatPassword = document.querySelector('#repeat-password-id').value;
 
 	setParameters(surname, name, middleName, login, password);
+	
 };
 
 </script>

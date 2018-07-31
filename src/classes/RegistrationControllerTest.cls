@@ -2,6 +2,7 @@
 private class RegistrationControllerTest {
 	
 	@isTest static void registrationWithSuchLogin() {
+		
 		Worker__c worker = new Worker__c(
 			Name = 'Ivan',
 			Surname__c = 'Ivanov',
@@ -38,6 +39,7 @@ private class RegistrationControllerTest {
 	}
 	
 	@isTest static void registrationWithSuchData() {
+
 		Test.startTest();
 
 		PageReference page = Page.RegistrationPage;

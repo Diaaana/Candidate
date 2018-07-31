@@ -11,7 +11,8 @@
 	<button class="slds-button slds-button_brand" onclick="mainPage()" reRender="view">Main page</button>
 </div>
 <div class="slds-m-vertical--medium"></div>
-	<apex:pageBlock>
+	<apex:pageMessage summary="Interactions do not exist" severity="error" rendered="{!IF(interactions.size>0,'false','true')}" />
+	<apex:pageBlock rendered="{!IF(interactions.size>0,'true','false')}">
 		<apex:pageBlockTable value="{!interactions}" var="interaction" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
 			<apex:column value="{!interaction.Interview__c}"/>
 			<apex:column value="{!interaction.Task__c}"/>

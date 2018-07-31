@@ -43,140 +43,140 @@
 <apex:pageMessage summary="Сandidate does not exist" severity="error" rendered="{!IF(candidates.size>0,'false','true')}" />
 
 <apex:dataList value="{!candidates}" var="candidate">
-<form name="form">
-	<div class="slds-grid slds-wrap">
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">
-				<abbr class="slds-required" title="required">*</abbr>Name</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="name-id" class="slds-input" name="name" value="{!candidate.Name}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">
-				<abbr class="slds-required" title="required">*</abbr>Position</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="position-id" class="slds-input" name="position" value="{!candidate.Position__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">
-				<abbr class="slds-required" title="required">*</abbr>Surname</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="surname-id" class="slds-input" name="surname" value="{!candidate.Surname__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">
-				<abbr class="slds-required" title="required">*</abbr>Salary</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="salary-id" class="slds-input" name="salary" value="{!candidate.Salary__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">
-				<abbr class="slds-required" title="required">*</abbr>Middle Name</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="middle-name-id" class="slds-input" name="middleName" value="{!candidate.MiddleName__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">
-				<abbr class="slds-required" title="required">*</abbr>Experience</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="experience-id" class="slds-input" name="experience" value="{!candidate.Experience__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">
-				<abbr class="slds-required" title="required">*</abbr>Phone number</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="telephone-id" class="slds-input" name="phoneNumber" value="{!candidate.PhoneNumber__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">
-				<abbr class="slds-required" title="required">*</abbr>HR</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="HR-id" class="slds-input" name="HR" value="{!candidate.HR__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">
-				<abbr class="slds-required" title="required">*</abbr>Mail</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="mail-id" class="slds-input" name="mail" value="{!candidate.Mail__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">Skype</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="skype-id" class="slds-input" value="{!candidate.Skype__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-1">
-			<div class="slds-form-element">
-				<a href="javascript:void(0);" class="slds-text-link_reset" onclick="window.location='{!candidate.Resume__c}'">
-				<abbr class="slds-required" title="required">*</abbr>Resume link</a>
-				<div class="slds-form-element__control">
-					<input type="url" id="resume-id" class="slds-input" name="resume" value="{!candidate.Resume__c}" />
-				</div>
-			</div>
-		</div>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">
-				<abbr class="slds-required" title="required">*</abbr>Status</label>
-				<div class="slds-form-element__control">
-					<input type="text" id="edit-status-id" class="slds-input" name="status" value="{!candidate.Status__c}" />
-				</div>
-			</div>
-		</div>
-		<apex:form>
-		<div class="slds-col slds-size_1-of-2">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label">Status</label>
-				<div class="slds-form-element__control">
-					<div class="slds-select_container">
-						<apex:selectList styleClass="edit-status-class" size="1">
-							<apex:selectOption itemValue=""/>
-							<apex:selectOption itemValue="Start"/>
-							<apex:selectOption itemValue="Questionnaire"/>
-							<apex:selectOption itemValue="Executing the test task"/>
-							<apex:selectOption itemValue="Interview"/>
-							<apex:selectOption itemValue="Decision making"/>
-							<apex:selectOption itemValue="Decision is made"/>
-						</apex:selectList>
+	<form name="form">
+		<div class="slds-grid slds-wrap">
+			<div class="slds-col slds-size_1-of-2">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label">
+					<abbr class="slds-required" title="required">*</abbr>Name</label>
+					<div class="slds-form-element__control">
+						<input type="text" id="name-id" class="slds-input" name="name" value="{!candidate.Name}" />
 					</div>
 				</div>
 			</div>
+			<div class="slds-col slds-size_1-of-2">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label">
+					<abbr class="slds-required" title="required">*</abbr>Position</label>
+					<div class="slds-form-element__control">
+						<input type="text" id="position-id" class="slds-input" name="position" value="{!candidate.Position__c}" />
+					</div>
+				</div>
+			</div>
+			<div class="slds-col slds-size_1-of-2">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label">
+					<abbr class="slds-required" title="required">*</abbr>Surname</label>
+					<div class="slds-form-element__control">
+						<input type="text" id="surname-id" class="slds-input" name="surname" value="{!candidate.Surname__c}" />
+					</div>
+				</div>
+			</div>
+			<div class="slds-col slds-size_1-of-2">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label">
+					<abbr class="slds-required" title="required">*</abbr>Salary</label>
+					<div class="slds-form-element__control">
+						<input type="text" id="salary-id" class="slds-input" name="salary" value="{!candidate.Salary__c}" />
+					</div>
+				</div>
+			</div>
+			<div class="slds-col slds-size_1-of-2">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label">
+					<abbr class="slds-required" title="required">*</abbr>Middle Name</label>
+					<div class="slds-form-element__control">
+						<input type="text" id="middle-name-id" class="slds-input" name="middleName" value="{!candidate.MiddleName__c}" />
+					</div>
+				</div>
+			</div>
+			<div class="slds-col slds-size_1-of-2">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label">
+					<abbr class="slds-required" title="required">*</abbr>Experience</label>
+					<div class="slds-form-element__control">
+						<input type="text" id="experience-id" class="slds-input" name="experience" value="{!candidate.Experience__c}" />
+					</div>
+				</div>
+			</div>
+			<div class="slds-col slds-size_1-of-2">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label">
+					<abbr class="slds-required" title="required">*</abbr>Phone number</label>
+					<div class="slds-form-element__control">
+						<input type="text" id="telephone-id" class="slds-input" name="phoneNumber" value="{!candidate.PhoneNumber__c}" />
+					</div>
+				</div>
+			</div>
+			<div class="slds-col slds-size_1-of-2">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label">
+					<abbr class="slds-required" title="required">*</abbr>HR</label>
+					<div class="slds-form-element__control">
+						<input type="text" id="HR-id" class="slds-input" name="HR" value="{!candidate.HR__c}" />
+					</div>
+				</div>
+			</div>
+			<div class="slds-col slds-size_1-of-2">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label">
+					<abbr class="slds-required" title="required">*</abbr>Mail</label>
+					<div class="slds-form-element__control">
+						<input type="text" id="mail-id" class="slds-input" name="mail" value="{!candidate.Mail__c}" />
+					</div>
+				</div>
+			</div>
+			<div class="slds-col slds-size_1-of-2">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label">Skype</label>
+					<div class="slds-form-element__control">
+						<input type="text" id="skype-id" class="slds-input" value="{!candidate.Skype__c}" />
+					</div>
+				</div>
+			</div>
+			<div class="slds-col slds-size_1-of-1">
+				<div class="slds-form-element">
+					<a href="javascript:void(0);" class="slds-text-link_reset" onclick="window.location='{!candidate.Resume__c}'">
+					<abbr class="slds-required" title="required">*</abbr>Resume link</a>
+					<div class="slds-form-element__control">
+						<input type="url" id="resume-id" class="slds-input" name="resume" value="{!candidate.Resume__c}" />
+					</div>
+				</div>
+			</div>
+			<div class="slds-col slds-size_1-of-2">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label">
+					<abbr class="slds-required" title="required">*</abbr>Status</label>
+					<div class="slds-form-element__control">
+						<input type="text" id="edit-status-id" class="slds-input" name="status" value="{!candidate.Status__c}" />
+					</div>
+				</div>
+			</div>
+			<apex:form>
+			<div class="slds-col slds-size_1-of-2">
+				<div class="slds-form-element">
+					<label class="slds-form-element__label">Status</label>
+					<div class="slds-form-element__control">
+						<div class="slds-select_container">
+							<apex:selectList styleClass="edit-status-class" size="1">
+								<apex:selectOption itemValue=""/>
+								<apex:selectOption itemValue="Start"/>
+								<apex:selectOption itemValue="Questionnaire"/>
+								<apex:selectOption itemValue="Executing the test task"/>
+								<apex:selectOption itemValue="Interview"/>
+								<apex:selectOption itemValue="Decision making"/>
+								<apex:selectOption itemValue="Decision is made"/>
+							</apex:selectList>
+						</div>
+					</div>
+				</div>
+			</div>
+			</apex:form>
 		</div>
-		</apex:form>
-	</div>
-</form>
-<div class="slds-m-vertical--medium"></div>
-<div class="slds-align_absolute-right">
-	<button class="slds-button slds-button_brand" onclick="getCandidateParameters()" reRender="view">Edit information</button>
+	</form>
+	<div class="slds-m-vertical--medium"></div>
+	<div class="slds-align_absolute-right">
+		<button class="slds-button slds-button_brand" onclick="getCandidateParameters()" reRender="view">Edit information</button>
 	</div>
 </apex:dataList>
 
@@ -185,24 +185,25 @@
 	<div class="slds-m-vertical--medium"></div>
 	<div class="slds-text-heading_medium" style="font-weight: bold;">Communication with the candidate</div>
 	<div class="slds-m-vertical--medium"></div>
-	<div class="slds-align_absolute-center">
-		<button class="slds-button slds-button_brand" onclick="showCandidateHistory(); return false;" reRender="view">Show change history of candidate</button>
-		<div class="slds-m-left--medium"></div>
-		<button id="hide-table-id" class="slds-button slds-button_brand" onclick="hideCandidateHistory(); return false;" reRender="view" style="display: none;">Hide table</button>
-		<div class="slds-m-vertical--medium"></div>
-	</div>
 
-	<div class="slds-m-vertical--medium"></div>
-	<div id="history-candidate-table-id" hidden="true">
-		<apex:pageBlock >
+	<apex:pageBlock rendered="{!IF(changeCandidate.size>0,'true','false')}">
+		<div class="slds-align_absolute-center">
+			<button class="slds-button slds-button_brand" onclick="showCandidateHistory(); return false;" reRender="view">Show change history of candidate</button>
+			<div class="slds-m-left--medium"></div>
+			<button id="hide-table-id" class="slds-button slds-button_brand" onclick="hideCandidateHistory(); return false;" reRender="view" style="display: none;">Hide table</button>
+			<div class="slds-m-vertical--medium"></div>
+		</div>
+
+		<div class="slds-m-vertical--medium"></div>
+		<div id="history-candidate-table-id" hidden="true">
 			<apex:pageBlockTable value="{!changeCandidate}" var="historyCandidate" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
 				<apex:column value="{!historyCandidate.CreatedDate}" />
 				<apex:column value="{!historyCandidate.Field}" />
 				<apex:column value="{!historyCandidate.OldValue}" />
 				<apex:column value="{!historyCandidate.NewValue}" />
 			</apex:pageBlockTable>
-		</apex:pageBlock>
-	</div>
+		</div>
+	</apex:pageBlock>
 	<div class="slds-m-vertical--medium"></div>
 
 	<div class="slds-align_absolute-left">
@@ -216,7 +217,7 @@
 			<div class="slds-form-element">
 				<label class="slds-form-element__label">Task</label>
 				<div class="slds-form-element__control">
-					<input type="text" id="task-id" class="slds-input" name="task" placeholder="Task" />
+					<input type="url" id="task-id" class="slds-input" name="task" placeholder="Task" />
 				</div>
 			</div>
 			<div class="slds-form-element">
@@ -279,23 +280,22 @@
 		</div>
 	</div>
 
-	<div class="slds-align_absolute-left">
-		<button class="slds-button slds-button_brand" onclick="showInteractions(); return false;" reRender="view">Show interactions</button>
-		<button id="button-hide-interactions-id" class="slds-button slds-button_brand" onclick="hideInteractions(); return false;" reRender="view" style="display: none;">Hide interactions</button>
-	</div>
-
-	<div class="slds-m-vertical--medium"></div>
-	<div id="interactions-table-id" hidden="true">
-		<apex:pageBlock >
+	<apex:pageBlock rendered="{!IF(interactions.size>0,'true','false')}">
+		<div class="slds-align_absolute-left">
+			<button class="slds-button slds-button_brand" onclick="showInteractions(); return false;" reRender="view">Show interactions</button>
+			<button id="button-hide-interactions-id" class="slds-button slds-button_brand" onclick="hideInteractions(); return false;" reRender="view" style="display: none;">Hide interactions</button>
+		</div>
+		<div class="slds-m-vertical--medium"></div>
+		<div id="interactions-table-id" hidden="true">
 			<apex:pageBlockTable value="{!interactions}" var="interaction" styleClass="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered">
-			<apex:column value="{!interaction.Interview__c}" />
-			<apex:column value="{!interaction.Task__c}" />
-			<apex:column value="{!interaction.DecisionPeriod__c}" />
-			<apex:column value="{!interaction.Decision__c}" />
-			<apex:column value="{!interaction.Amount__c}" />
+				<apex:column value="{!interaction.Interview__c}" />
+				<apex:column value="{!interaction.Task__c}" />
+				<apex:column value="{!interaction.DecisionPeriod__c}" />
+				<apex:column value="{!interaction.Decision__c}" />
+				<apex:column value="{!interaction.Amount__c}" />
 			</apex:pageBlockTable>
-		</apex:pageBlock>
-	</div>
+		</div>
+	</apex:pageBlock>
 	<div class="slds-m-vertical--medium"></div>
 </apex:pageBlock>
 
@@ -487,6 +487,12 @@ function getCommunionParameters() {
 	resetError(elems.task.parentNode);
 	if (elems.task.value == '') {
 		showError(elems.task.parentNode, 'Please enter task of the candidate!');
+		return false;
+	}
+
+	resetError(elems.task.parentNode);
+	if (!(/^(ftp|http|https):\/\/[^ "]+$/.test(elems.task.value))) {
+		showError(elems.task.parentNode, 'Wrong task format!');
 		return false;
 	}
 

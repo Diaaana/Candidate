@@ -63,6 +63,7 @@
 </div>
 
 <script type="text/javascript">
+
 function showError(container, errorMessage) {
 	container.className = 'error';
 	var msgElem = document.createElement('span');

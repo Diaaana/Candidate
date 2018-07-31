@@ -49,7 +49,7 @@ public class RegistrationController {
 				);
 			}
 
-			PageReference page = new PageReference('/apex/loginPage');
+			PageReference page = Page.loginPage;
 			page.setRedirect(true);
 			return page;
 			
